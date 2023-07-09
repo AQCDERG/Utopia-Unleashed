@@ -1,0 +1,241 @@
+[gd_scene load_steps=31 format=3]
+
+[ext_resource type="Shader" path="res://Prefabs/VolumetricClouds/clouds.gdshader" id="1_h3xby"]
+[ext_resource type="Texture2D" uid="uid://c8gw3ds38rx3k" path="res://ParticleProject/Images/brightGlowParticle.png" id="1_nd4il"]
+[ext_resource type="CompressedTexture3D" uid="uid://6ky2mwn0ldcp" path="res://Prefabs/VolumetricClouds/perlworlnoise.tga" id="2_1ailq"]
+[ext_resource type="Texture2D" uid="uid://bydpojcnp017f" path="res://Prefabs/VolumetricClouds/weather.bmp" id="3_7eyqw"]
+[ext_resource type="PackedScene" uid="uid://btp7yd7x1h0gs" path="res://FinishedBlednerGoods/Terrain/Mountain/matterhorn_mountain_in_the_alps/scene.gltf" id="3_b5xhh"]
+[ext_resource type="PackedScene" uid="uid://ch0mubgpem5vu" path="res://Scenes/Actualshivering_heights.tscn" id="3_m117w"]
+[ext_resource type="PackedScene" uid="uid://bcny4g4yyx76b" path="res://FinishedBlednerGoods/AShiveringHeights.gltf" id="4_ignfg"]
+[ext_resource type="CompressedTexture3D" uid="uid://s764lw4j2o4w" path="res://Prefabs/VolumetricClouds/worlnoise.bmp" id="4_qvkp5"]
+[ext_resource type="PackedScene" uid="uid://ympy38k3umbr" path="res://Prefabs/chinease_spy_ballon.tscn" id="6_5tr3f"]
+[ext_resource type="Script" path="res://Scripts/bobbleUp.gd" id="10_hwo68"]
+[ext_resource type="PackedScene" uid="uid://cfy7iqvm6fo33" path="res://FinishedBlednerGoods/FloatingIsland.tscn" id="11_55otc"]
+[ext_resource type="AudioStream" uid="uid://b26ai7uvobe0x" path="res://Sounds/chinese-new-year-background-music-127668.mp3" id="12_p3pqj"]
+[ext_resource type="Shader" path="res://Shader/Gradient.gdshader" id="13_pjben"]
+[ext_resource type="FontFile" uid="uid://b00urqx5bpvto" path="res://Fonts/Shanghi Font/shanghai.ttf" id="13_wrdvr"]
+[ext_resource type="Script" path="res://Scripts/Button.gd" id="15_rxb4m"]
+
+[sub_resource type="Gradient" id="Gradient_b1cm2"]
+offsets = PackedFloat32Array(0, 0.710438, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.196078, 0, 1, 1, 0.196078, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6ue83"]
+gradient = SubResource("Gradient_b1cm2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7wrrn"]
+direction = Vector3(0, 1, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 90.0
+scale_min = 70.0
+scale_max = 100.0
+color_ramp = SubResource("GradientTexture1D_6ue83")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_35r63"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_nd4il")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_r58hs"]
+material = SubResource("StandardMaterial3D_35r63")
+
+[sub_resource type="Gradient" id="Gradient_gvmsd"]
+offsets = PackedFloat32Array(0, 0.124579, 0.313131, 0.531987, 0.771044, 0.838384, 1)
+colors = PackedColorArray(1, 0, 0, 0, 1, 0.301961, 0, 1, 1, 1, 0, 1, 0.470588, 0.262745, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nboj4"]
+gradient = SubResource("Gradient_gvmsd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ox2q4"]
+emission_shape = 1
+emission_sphere_radius = 3.0
+gravity = Vector3(0, -1, 0)
+scale_min = 0.1
+scale_max = 0.3
+color_ramp = SubResource("GradientTexture1D_nboj4")
+turbulence_enabled = true
+turbulence_noise_strength = 0.5
+turbulence_noise_scale = 1.0
+turbulence_influence_min = 0.05
+turbulence_influence_max = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u28sj"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_nd4il")
+albedo_texture_msdf = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_6orag"]
+material = SubResource("StandardMaterial3D_u28sj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ilbug"]
+shader = ExtResource("1_h3xby")
+shader_parameter/_density = 0.061
+shader_parameter/cloud_coverage = 0.221
+shader_parameter/_time_scale = 20.0
+shader_parameter/_time_offset = 0.0
+shader_parameter/rayleigh = 1.238
+shader_parameter/rayleigh_color = Color(0.858824, 0.407843, 0, 1)
+shader_parameter/mie = 0.005
+shader_parameter/mie_eccentricity = 0.8
+shader_parameter/mie_color = Color(1, 1, 1, 1)
+shader_parameter/turbidity = 10.198
+shader_parameter/sun_disk_scale = 1.0
+shader_parameter/ground_color = Color(1, 1, 1, 1)
+shader_parameter/exposure = 0.15
+shader_parameter/external_time = null
+shader_parameter/worlnoise = ExtResource("4_qvkp5")
+shader_parameter/perlworlnoise = ExtResource("2_1ailq")
+shader_parameter/weathermap = ExtResource("3_7eyqw")
+
+[sub_resource type="Sky" id="Sky_kyxt0"]
+sky_material = SubResource("ShaderMaterial_ilbug")
+
+[sub_resource type="Environment" id="Environment_k2mcl"]
+background_mode = 2
+sky = SubResource("Sky_kyxt0")
+tonemap_mode = 2
+tonemap_exposure = 0.7
+tonemap_white = 1.02
+sdfgi_enabled = true
+glow_enabled = true
+glow_intensity = 3.53
+glow_bloom = 0.23
+volumetric_fog_density = 0.005
+volumetric_fog_emission = Color(0.607843, 0.905882, 1, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_2reu5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 47.5778, 2.19, 8.19284, 13.3647, 0.598526, 37.3033, -13.3647, -0.598526, -37.3033, 13.644, -2.90926, -50.7028, -2.17873, -6.55609, 4.88766, 2.17873, 6.55609, -4.88766, 3.10584, -6.68823, -97.9962, 0, 0, 0, 0, 0, 0, 28.9411, 4.93359, -121.904, -12.434, -4.26933, -23.1865, 12.434, 4.26933, 23.1865, 129.237, 1.04601, -130.748, 0, 0, 0, 0, 0, 0, 125.806, 7.74561, 3.49033, 14.6134, 10.2889, -13.667, -14.6134, -10.2889, 13.667, 81.0693, 0.180191, 8.43799, 0, 0, 0, 0, 0, 0, 47.5778, 2.19, 8.19284),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aegbx"]
+shader = ExtResource("13_pjben")
+shader_parameter/intensity = 2.0
+shader_parameter/x = true
+shader_parameter/r_horizontal = 0.0
+shader_parameter/g_horizontal = 0.0
+shader_parameter/b_horizontal = null
+shader_parameter/y = true
+shader_parameter/r_vertical = 250.0
+shader_parameter/g_vertical = 1.0
+shader_parameter/b_vertical = 0.0
+
+[node name="Node" type="Node"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.012212, 0.19057, 0.981598, 0.000343886, 0.98167, -0.190588, -0.999925, 0.00266502, 0.0119226, -3.5003, 133.119, -366.059)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D"]
+transform = Transform3D(0.000343885, -0.012212, -0.999925, 0.98167, -0.19057, 0.00266502, -0.190588, -0.981598, 0.0119226, 70.7459, -9.58385, -141.74)
+emitting = false
+amount = 100
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_7wrrn")
+draw_pass_1 = SubResource("QuadMesh_r58hs")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Camera3D"]
+transform = Transform3D(-0.999925, 0.000343954, -0.0122119, 0.00266506, 0.98167, -0.19057, 0.0119226, -0.190588, -0.981598, -116.265, 28.6564, -130.563)
+emitting = false
+amount = 100
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_7wrrn")
+draw_pass_1 = SubResource("QuadMesh_r58hs")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Camera3D"]
+transform = Transform3D(1, -2.56114e-09, -2.23517e-08, -6.98492e-10, 1, -1.44166e-07, 0, -1.74023e-07, 1, -0.0169373, 2.1192, -1.90306)
+amount = 100
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_ox2q4")
+draw_pass_1 = SubResource("QuadMesh_6orag")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.017276, 0.794387, 0.607167, 0.0172763, -0.607404, 0.794205, 0.999701, -0.00323115, -0.0242176, 99.0261, 213.468, -451.52)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_k2mcl")
+
+[node name="scene" parent="." instance=ExtResource("3_b5xhh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 359.589, 111.989, -81.491)
+
+[node name="scene2" parent="." instance=ExtResource("3_b5xhh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 412.851, 62.0138, -279.029)
+
+[node name="AShiveringHeights" parent="." instance=ExtResource("4_ignfg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.653, 143.725, -299.741)
+
+[node name="AShiveringHeights2" parent="." instance=ExtResource("3_m117w")]
+transform = Transform3D(-12.941, 0, -48.2963, 0, 50, 0, 48.2963, 0, -12.941, -102.484, -221.243, -283.95)
+
+[node name="scene6" parent="." instance=ExtResource("11_55otc")]
+transform = Transform3D(2.82843, 0, -2.82843, 0, 4, 0, 2.82843, 0, 2.82843, -94.366, 131.175, -435.516)
+script = ExtResource("10_hwo68")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_p3pqj")
+volume_db = -20.0
+autoplay = true
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -89.4819, 137.969, -348)
+
+[node name="Path3D" type="Path3D" parent="CharacterBody3D"]
+transform = Transform3D(0.258818, 0, 0.965924, 0, 1, 0, -0.965924, 0, 0.258818, 69.4335, 0.520325, 2.40232)
+curve = SubResource("Curve3D_2reu5")
+
+[node name="newOrigin" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182.108, 208, -333)
+
+[node name="chineaseSpyBallon" parent="." node_paths=PackedStringArray("newOrigin") instance=ExtResource("6_5tr3f")]
+transform = Transform3D(-0.599998, 0, 1.03923, 0, 1.2, 0, -1.03923, 0, -0.599998, -182.946, 138.49, -347.967)
+newOrigin = NodePath("../newOrigin")
+angle_speed = 0.05
+rotation_speed = 25
+
+[node name="StartTurning" type="Timer" parent="chineaseSpyBallon"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+material = SubResource("ShaderMaterial_aegbx")
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.3
+theme_override_colors/default_color = Color(1, 0.623529, 0, 1)
+theme_override_colors/font_selected_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.878431, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("13_wrdvr")
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[center]Utopia Unleshed[/center]"
+scroll_active = false
+
+[node name="Button" type="Button" parent="."]
+offset_left = 971.0
+offset_top = 2.0
+offset_right = 1155.0
+offset_bottom = 33.0
+text = "UNDER CONTRUCTION"
+script = ExtResource("15_rxb4m")
+
+[connection signal="timeout" from="chineaseSpyBallon/StartTurning" to="chineaseSpyBallon" method="_on_start_turning_timeout"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

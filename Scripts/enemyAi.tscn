@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfqma3kuiqa43"]
+
+[ext_resource type="Script" path="res://Scripts/enemySpeech.gd" id="1_t0yin"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_t0yin")

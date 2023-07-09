@@ -1,0 +1,26 @@
+[remap]
+
+importer="3d_texture"
+type="CompressedTexture3D"
+uid="uid://s764lw4j2o4w"
+path="res://.godot/imported/worlnoise.bmp-727d46602d664f46a53e3b25ae909f4e.ctex3d"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Prefabs/VolumetricClouds/worlnoise.bmp"
+dest_files=["res://.godot/imported/worlnoise.bmp-727d46602d664f46a53e3b25ae909f4e.ctex3d"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/horizontal=32
+slices/vertical=1

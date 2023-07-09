@@ -1,0 +1,36 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://vlcdqo221p6i"
+path.s3tc="res://.godot/imported/Untitled_158-19ff8969d07d76889c880b70522a6796_Ink.png-f122161ded50922b3f341fc6df1007b2.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={}
+
+[deps]
+
+source_file="res://FinishedBlednerGoods/Terrain/hell-gate-tilt-brush-live-stream-003/source/Hell Tower - Stream 3/Hell Tower - Stream 3/Untitled_158-19ff8969d07d76889c880b70522a6796_Ink.png"
+dest_files=["res://.godot/imported/Untitled_158-19ff8969d07d76889c880b70522a6796_Ink.png-f122161ded50922b3f341fc6df1007b2.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

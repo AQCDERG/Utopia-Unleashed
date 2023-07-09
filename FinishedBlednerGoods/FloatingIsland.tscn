@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfy7iqvm6fo33"]
+
+[ext_resource type="PackedScene" uid="uid://pemqmaolcqgm" path="res://FinishedBlednerGoods/Chinesse/haunted_house_halloween/scene.gltf" id="1_ji1n5"]
+
+[node name="scene" instance=ExtResource("1_ji1n5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(0.00689193, 0, 0, 0, -1.53032e-18, -0.00689193, 0, 0.00689193, -1.53032e-18, 3.007, 0, -2.914)

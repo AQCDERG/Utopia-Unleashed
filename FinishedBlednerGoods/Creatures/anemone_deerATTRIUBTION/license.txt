@@ -1,0 +1,11 @@
+Model Information:
+* title:	Anemone Deer
+* source:	https://sketchfab.com/3d-models/anemone-deer-0626b855fc5947489edf830ff80d1b28
+* author:	Spinnee (https://sketchfab.com/Spinnee)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Anemone Deer" (https://sketchfab.com/3d-models/anemone-deer-0626b855fc5947489edf830ff80d1b28) by Spinnee (https://sketchfab.com/Spinnee) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

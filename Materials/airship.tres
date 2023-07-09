@@ -1,0 +1,22 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3]
+
+[ext_resource type="Texture2D" uid="uid://fejyi7evvpju" path="res://FinishedBlednerGoods/Chinesse/ChineaseAirShip/airship_baseColor.jpg" id="1_kx368"]
+[ext_resource type="Texture2D" uid="uid://0vmmg4k1sjer" path="res://FinishedBlednerGoods/Chinesse/ChineaseAirShip/airship_emissive.jpg" id="2_g3jwk"]
+[ext_resource type="Texture2D" uid="uid://bfage1be3gutq" path="res://FinishedBlednerGoods/Chinesse/ChineaseAirShip/airship_metallicRoughness.png" id="3_g2qgv"]
+[ext_resource type="Texture2D" uid="uid://b680pbuugxlee" path="res://FinishedBlednerGoods/Chinesse/ChineaseAirShip/airship_normal.jpg" id="4_g8asp"]
+
+[resource]
+resource_name = "airship"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_kx368")
+metallic = 1.0
+metallic_texture = ExtResource("3_g2qgv")
+metallic_texture_channel = 2
+roughness = 0.728457
+roughness_texture = ExtResource("3_g2qgv")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_texture = ExtResource("2_g3jwk")
+normal_enabled = true
+normal_texture = ExtResource("4_g8asp")

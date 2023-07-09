@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0nyj6ukvgjbp"]
+
+[ext_resource type="PackedScene" uid="uid://diajsu30c0b8u" path="res://FinishedBlednerGoods/ChineaseSpyBallon/chineaseSpyBallon.gltf" id="1_hxqh5"]
+[ext_resource type="Script" path="res://Scripts/Spyballon.gd" id="2_k0rke"]
+
+[node name="chineaseSpyBallon" instance=ExtResource("1_hxqh5")]
+script = ExtResource("2_k0rke")
+
+[node name="Skeleton3D" parent="armature_balloon" index="0"]
+bones/0/rotation = Quaternion(8.14603e-08, 0, 0, 1)
+bones/2/rotation = Quaternion(3.26215e-08, -1.45851e-07, -0.648559, 0.761165)
+bones/3/rotation = Quaternion(5.84877e-08, 2.34255e-08, 0.648559, 0.761165)
+bones/4/rotation = Quaternion(0.488033, -0.0298983, 0.685213, 0.539827)
+bones/5/rotation = Quaternion(0.129273, 0.0927785, 0.926143, 0.341963)
+bones/6/rotation = Quaternion(0.813116, 0.0085467, 0.0028404, 0.582032)
+bones/7/rotation = Quaternion(-0.823879, 0.194303, -0.164343, 0.50642)
+bones/8/rotation = Quaternion(-0.835222, 0.166639, -0.18023, 0.49209)
+bones/16/rotation = Quaternion(0.967396, 0.0167027, 0.174862, 0.182453)
+bones/17/rotation = Quaternion(-1.06928e-07, -2.8298e-09, 0.896509, 0.443025)
+bones/18/rotation = Quaternion(0.316733, -0.632203, 0.316733, 0.632203)
+bones/19/rotation = Quaternion(0.411319, -0.575166, 0.411319, 0.575167)
+bones/20/rotation = Quaternion(0.518883, -0.480376, 0.518882, 0.480376)
+bones/22/rotation = Quaternion(0.0129755, 0.0111486, 0.205884, 0.978427)
+bones/23/rotation = Quaternion(0.00742095, 0.00861139, 0.0750092, 0.997118)
+bones/24/rotation = Quaternion(0.00266989, 0.00108129, -0.0958006, 0.995396)
+bones/25/rotation = Quaternion(-0.00872451, -0.00960883, -0.282233, 0.959258)
+bones/26/rotation = Quaternion(0.814261, -0.0608202, -0.0206134, 0.576936)
+bones/27/rotation = Quaternion(0.00784294, -0.540076, -0.839772, 0.0551249)
+bones/37/rotation = Quaternion(-0.088613, 0.020758, -0.186291, 0.97827)
+bones/38/rotation = Quaternion(-0.0305626, 0.0147627, -0.0689013, 0.997046)
+bones/39/rotation = Quaternion(0.0534257, -0.0248843, 0.0795649, 0.995086)
+bones/40/rotation = Quaternion(0.171325, -0.127498, 0.224453, 0.950796)
+bones/41/rotation = Quaternion(-0.807147, 0.123422, -0.109356, 0.566852)
+bones/42/rotation = Quaternion(-0.839722, -0.057861, 0.0120973, 0.53979)
+bones/49/rotation = Quaternion(-0.707107, 3.09086e-08, 0.707107, 3.09086e-08)
+bones/50/rotation = Quaternion(0.926736, 0.0200254, 0.0744831, 0.367711)
+bones/51/rotation = Quaternion(-0.305324, 0.642252, 0.307799, 0.6321)
+bones/51/scale = Vector3(1, 1, 1)
+bones/52/rotation = Quaternion(-0.278058, -0.658069, -0.267515, 0.646579)
+bones/52/scale = Vector3(1, 1, 1)
+bones/53/rotation = Quaternion(-0.229293, 0.674175, 0.232592, 0.662431)
+bones/53/scale = Vector3(1, 1, 1)
+bones/54/rotation = Quaternion(0.221484, -0.218739, 0.0460837, 0.949197)
+bones/54/scale = Vector3(1, 1, 1)
+bones/55/rotation = Quaternion(0.0665638, 0.946444, -0.226909, 0.219832)
+bones/55/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" parent="." index="2"]
+method_call_mode = 1
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

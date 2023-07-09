@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj2ygs60icgdr"]
+
+[ext_resource type="Script" path="res://Templates/Animal/NPCAnimal/NPCAnimal.gd" id="1_sl8x4"]
+
+[node name="NPCAnimal" type="CharacterBody3D"]
+script = ExtResource("1_sl8x4")
+
+[node name="MoveTimer" type="Timer" parent="."]
+
+[node name="idleAnimation" type="AnimationPlayer" parent="."]
+
+[node name="DetectArea" type="Area3D" parent="."]
+
+[connection signal="body_shape_entered" from="DetectArea" to="." method="_on_detect_area_body_shape_entered"]

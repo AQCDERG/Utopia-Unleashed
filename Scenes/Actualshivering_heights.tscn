@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch0mubgpem5vu"]
+
+[ext_resource type="PackedScene" uid="uid://bcny4g4yyx76b" path="res://FinishedBlednerGoods/AShiveringHeights.gltf" id="1_pc5sc"]
+
+[node name="AShiveringHeights" instance=ExtResource("1_pc5sc")]
+
+[node name="Object_2" parent="." index="0"]
+transform = Transform3D(10.3295, 0, 0, 0, -1.23137e-06, 10.3295, 0, -10.3295, -1.23137e-06, 0.258022, 1.63482, 1.55299)

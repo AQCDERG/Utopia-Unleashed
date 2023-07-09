@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://6cmjmwg18cuv"]
+
+[ext_resource type="PackedScene" uid="uid://mqjspjp880a6" path="res://FinishedBlednerGoods/Chinesse/ChineaseAirShip/ChineaseAirShip.gltf" id="1_1i54p"]
+
+[node name="ChineaseAirShip" instance=ExtResource("1_1i54p")]
+
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(-1.78224e-09, 0.0149505, 8.91121e-10, 1.28166e-05, 0, -0.0149505, -0.0149505, -8.91121e-10, -1.28179e-05, 2.15781, -4.07473, 8.45114)
+
+[node name="Skeleton3D" parent="Sketchfab_model/11214a1eb2d04c8e97932477a53f3a3cfbx/Object_2/RootNode/armature_balloon/Object_6" index="4"]
+bones/9/rotation = Quaternion(0.835222, -0.166639, 0.18023, -0.49209)
+bones/10/rotation = Quaternion(0.500001, -0.5, -0.5, -0.5)
+bones/11/rotation = Quaternion(0.500001, -0.5, -0.5, -0.5)
+bones/12/rotation = Quaternion(0.500001, -0.5, -0.5, -0.5)
+bones/13/rotation = Quaternion(0.500001, -0.5, -0.5, -0.5)
+bones/32/rotation = Quaternion(0.211767, -0.0181855, 0.941719, -0.26075)
+bones/48/rotation = Quaternion(-0.232582, 0.0416503, 0.971616, -0.0115719)

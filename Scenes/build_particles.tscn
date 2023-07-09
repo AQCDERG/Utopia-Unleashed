@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmg33t58k4y3t"]
+
+[ext_resource type="Texture2D" uid="uid://c8gw3ds38rx3k" path="res://ParticleProject/Images/brightGlowParticle.png" id="1_46qni"]
+
+[sub_resource type="Gradient" id="Gradient_kljd8"]
+offsets = PackedFloat32Array(0, 0.348993, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1dj7g"]
+gradient = SubResource("Gradient_kljd8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n4fbn"]
+spread = 180.0
+gravity = Vector3(0, 1, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+scale_min = 0.2
+color_ramp = SubResource("GradientTexture1D_1dj7g")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atwg4"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 0.709804, 1)
+albedo_texture = ExtResource("1_46qni")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_klu6i"]
+material = SubResource("StandardMaterial3D_atwg4")
+size = Vector2(0.5, 0.5)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="finishBuildingParticle" type="GPUParticles3D" parent="."]
+amount = 40
+lifetime = 1.5
+speed_scale = 2.0
+explosiveness = 0.68
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_n4fbn")
+draw_pass_1 = SubResource("QuadMesh_klu6i")

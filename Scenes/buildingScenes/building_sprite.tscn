@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://g3qoxg367ei4"]
+
+[ext_resource type="Script" path="res://Scripts/Buildings/building_sprite.gd" id="1_ed5hi"]
+[ext_resource type="PackedScene" uid="uid://dyrusigikm186" path="res://Prefabs/Buildings/Headquater/headqauters.tscn" id="2_r52oh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdy2m"]
+render_priority = -50
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.211765)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_baliq"]
+material = SubResource("StandardMaterial3D_mdy2m")
+
+[node name="BuildingSprite" type="Node3D"]
+script = ExtResource("1_ed5hi")
+zypersFMedal = ExtResource("2_r52oh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0413059, 0, 0, 0, 1, -0.938089, -0.212708, 0.636433)
+mesh = SubResource("CylinderMesh_baliq")

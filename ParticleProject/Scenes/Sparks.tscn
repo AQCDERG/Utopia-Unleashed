@@ -1,0 +1,229 @@
+[gd_scene load_steps=33 format=3 uid="uid://cgc8tpujb3ryf"]
+
+[ext_resource type="Texture2D" uid="uid://c8gw3ds38rx3k" path="res://Images/brightGlowParticle.png" id="1_un8wp"]
+
+[sub_resource type="Gradient" id="Gradient_l2r4f"]
+offsets = PackedFloat32Array(0, 0.469388, 1)
+colors = PackedColorArray(0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0.627451, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ui3fq"]
+gradient = SubResource("Gradient_l2r4f")
+
+[sub_resource type="Curve" id="Curve_atxnd"]
+_data = [Vector2(0, 0.472727), 0.0, 0.0, 0, 0, Vector2(0.493392, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_msdsf"]
+curve = SubResource("Curve_atxnd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tp62v"]
+direction = Vector3(0, 1, 0)
+spread = 40.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.2
+initial_velocity_max = 1.0
+scale_min = 0.1
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_msdsf")
+color_ramp = SubResource("GradientTexture1D_ui3fq")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_03xvw"]
+load_path = "res://.godot/imported/brightGlowParticle.png-bcdc83506cd54283f77cfa8b0be087d6.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rtjeb"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("CompressedTexture2D_03xvw")
+albedo_texture_force_srgb = true
+billboard_mode = 1
+billboard_keep_scale = true
+use_point_size = true
+point_size = 74.9
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_6ngv7"]
+material = SubResource("StandardMaterial3D_rtjeb")
+size = 0.304
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yx235"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0.223529, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_13ctl"]
+sky_material = SubResource("ProceduralSkyMaterial_yx235")
+
+[sub_resource type="Environment" id="Environment_w8882"]
+background_mode = 2
+sky = SubResource("Sky_13ctl")
+glow_enabled = true
+glow_intensity = 0.43
+glow_bloom = 1.0
+glow_blend_mode = 1
+glow_hdr_threshold = 4.0
+glow_hdr_scale = 4.0
+glow_hdr_luminance_cap = 256.0
+glow_map_strength = 0.0
+
+[sub_resource type="Gradient" id="Gradient_ubh07"]
+offsets = PackedFloat32Array(0, 0.0969388, 0.214286, 0.469388, 1)
+colors = PackedColorArray(0, 0, 1, 0, 0.196078, 0, 1, 0, 0.454902, 0, 1, 0.454902, 1, 0, 0, 1, 1, 0, 0.627451, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vnpfd"]
+gradient = SubResource("Gradient_ubh07")
+
+[sub_resource type="Curve" id="Curve_euv6s"]
+_data = [Vector2(0, 0.472727), 0.0, 0.0, 0, 0, Vector2(0.493392, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xf45a"]
+curve = SubResource("Curve_euv6s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ks3l4"]
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.2
+initial_velocity_max = 1.0
+scale_min = 0.1
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_xf45a")
+color_ramp = SubResource("GradientTexture1D_vnpfd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s57qp"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("1_un8wp")
+albedo_texture_force_srgb = true
+billboard_mode = 2
+billboard_keep_scale = true
+grow = true
+grow_amount = 1.019
+point_size = 74.9
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_6y7g0"]
+material = SubResource("StandardMaterial3D_s57qp")
+size = 0.304
+
+[sub_resource type="Gradient" id="Gradient_0n1ex"]
+offsets = PackedFloat32Array(0, 0.0816327, 0.22449, 0.469388, 1)
+colors = PackedColorArray(1, 1, 0, 0, 1, 1, 0, 0.0196078, 1, 0.317647, 0.501961, 1, 1, 0, 0.25, 1, 1, 0, 0.568627, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_smcr4"]
+gradient = SubResource("Gradient_0n1ex")
+
+[sub_resource type="Curve" id="Curve_bmuhm"]
+_data = [Vector2(0, 0.472727), 0.0, 0.0, 0, 0, Vector2(0.493392, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2vase"]
+curve = SubResource("Curve_bmuhm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3ff76"]
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.2
+initial_velocity_max = 1.0
+scale_min = 0.1
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_2vase")
+color_ramp = SubResource("GradientTexture1D_smcr4")
+
+[sub_resource type="Gradient" id="Gradient_1v1dr"]
+offsets = PackedFloat32Array(0, 0.0816327, 0.229592, 0.469388, 1)
+colors = PackedColorArray(1, 1, 0, 0, 1, 1, 0.615686, 0, 1, 1, 0.698039, 1, 1, 0.745098, 0.52549, 1, 1, 1, 0.568627, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1kcye"]
+gradient = SubResource("Gradient_1v1dr")
+
+[sub_resource type="Curve" id="Curve_3fcqa"]
+_data = [Vector2(0, 0.472727), 0.0, 0.0, 0, 0, Vector2(0.493392, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_reaqb"]
+curve = SubResource("Curve_3fcqa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g0swn"]
+direction = Vector3(0, 1, 0)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.6
+initial_velocity_max = 3.0
+scale_min = 0.1
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_reaqb")
+color_ramp = SubResource("GradientTexture1D_1kcye")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gcvkx"]
+load_path = "res://.godot/imported/brightGlowParticle.png-bcdc83506cd54283f77cfa8b0be087d6.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1mm48"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = SubResource("CompressedTexture2D_gcvkx")
+albedo_texture_force_srgb = true
+billboard_mode = 2
+billboard_keep_scale = true
+grow_amount = 1.019
+point_size = 74.9
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_v0pom"]
+material = SubResource("StandardMaterial3D_1mm48")
+size = 0.3
+sections = 2
+
+[node name="Node3D" type="Node3D"]
+
+[node name="FinalTrail" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 3, 0, 0)
+amount = 80
+trail_enabled = true
+trail_lifetime = 0.7
+process_material = SubResource("ParticleProcessMaterial_tp62v")
+draw_pass_1 = SubResource("RibbonTrailMesh_6ngv7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w8882")
+
+[node name="FinalTrail2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 2, 0, 0)
+amount = 200
+lifetime = 2.0
+speed_scale = 3.0
+trail_enabled = true
+trail_lifetime = 0.7
+process_material = SubResource("ParticleProcessMaterial_ks3l4")
+draw_pass_1 = SubResource("RibbonTrailMesh_6y7g0")
+
+[node name="FinalTrail3" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.999885, -0.0151489, 0, 0, 0, -1, 0.0151489, 0.999885, 0, 0.7, 0, 0)
+amount = 200
+lifetime = 2.0
+speed_scale = 4.0
+trail_enabled = true
+trail_lifetime = 0.7
+process_material = SubResource("ParticleProcessMaterial_3ff76")
+draw_pass_1 = SubResource("RibbonTrailMesh_6y7g0")
+
+[node name="FinalTrail4" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.999885, -0.0151489, 0, 0, 0, -1, 0.0151489, 0.999885, 0, -0.3, 0, 0)
+amount = 200
+lifetime = 0.15
+trail_enabled = true
+trail_lifetime = 0.7
+process_material = SubResource("ParticleProcessMaterial_g0swn")
+draw_pass_1 = SubResource("RibbonTrailMesh_v0pom")

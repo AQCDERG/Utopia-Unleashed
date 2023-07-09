@@ -1,0 +1,11 @@
+Model Information:
+* title:	Letter U
+* source:	https://sketchfab.com/3d-models/letter-u-b3ff19d995c2482c804ed327cf7f3cf4
+* author:	deadricpaldin (https://sketchfab.com/deadricpaldin)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Letter U" (https://sketchfab.com/3d-models/letter-u-b3ff19d995c2482c804ed327cf7f3cf4) by deadricpaldin (https://sketchfab.com/deadricpaldin) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

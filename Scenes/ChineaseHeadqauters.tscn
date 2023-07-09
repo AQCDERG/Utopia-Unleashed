@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://tbtfdocu67mm"]
+
+[ext_resource type="PackedScene" uid="uid://cbjkomilqcngh" path="res://FinishedBlednerGoods/Chinesse/NewChineaseHeadquaters/WorkingChineaseHeadqauters.glb" id="1_cka87"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorkingChineaseHeadqauters" parent="." instance=ExtResource("1_cka87")]

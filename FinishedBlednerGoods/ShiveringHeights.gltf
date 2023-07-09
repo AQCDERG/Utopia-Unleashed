@@ -1,0 +1,254 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v3.3.27",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Object_5",
+            "rotation" : [
+                -0.7071068286895752,
+                0,
+                -0.7071068286895752,
+                1.3738310598159235e-16
+            ],
+            "translation" : [
+                2.6052989959716797,
+                2.4711971282958984,
+                -2.6703128814697266
+            ]
+        }
+    ],
+    "animations" : [
+        {
+            "channels" : [
+                {
+                    "sampler" : 0,
+                    "target" : {
+                        "node" : 0,
+                        "path" : "translation"
+                    }
+                },
+                {
+                    "sampler" : 1,
+                    "target" : {
+                        "node" : 0,
+                        "path" : "rotation"
+                    }
+                },
+                {
+                    "sampler" : 2,
+                    "target" : {
+                        "node" : 0,
+                        "path" : "scale"
+                    }
+                }
+            ],
+            "name" : "Object_5",
+            "samplers" : [
+                {
+                    "input" : 4,
+                    "interpolation" : "LINEAR",
+                    "output" : 5
+                },
+                {
+                    "input" : 4,
+                    "interpolation" : "LINEAR",
+                    "output" : 6
+                },
+                {
+                    "input" : 4,
+                    "interpolation" : "LINEAR",
+                    "output" : 7
+                }
+            ]
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "emissiveFactor" : [
+                0.20007622241973877,
+                0.20007622241973877,
+                0.20007622241973877
+            ],
+            "emissiveTexture" : {
+                "index" : 0
+            },
+            "name" : "material_0",
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 1
+                },
+                "metallicFactor" : 0
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Object_3",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "textures" : [
+        {
+            "sampler" : 0,
+            "source" : 0
+        },
+        {
+            "sampler" : 0,
+            "source" : 0
+        }
+    ],
+    "images" : [
+        {
+            "mimeType" : "image/png",
+            "name" : "material_0_baseColor",
+            "uri" : "material_0_baseColor.png"
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 11026,
+            "max" : [
+                1.000008463859558,
+                0.24375808238983154,
+                1.000007152557373
+            ],
+            "min" : [
+                -1.763784166541882e-05,
+                -4.5894485083408654e-05,
+                -9.397217581863515e-06
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 11026,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 11026,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 47181,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 4,
+            "componentType" : 5126,
+            "count" : 673,
+            "max" : [
+                28
+            ],
+            "min" : [
+                0
+            ],
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 5,
+            "componentType" : 5126,
+            "count" : 673,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 6,
+            "componentType" : 5126,
+            "count" : 673,
+            "type" : "VEC4"
+        },
+        {
+            "bufferView" : 7,
+            "componentType" : 5126,
+            "count" : 673,
+            "type" : "VEC3"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 132312,
+            "byteOffset" : 0,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 132312,
+            "byteOffset" : 132312,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 88208,
+            "byteOffset" : 264624,
+            "target" : 34962
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 94362,
+            "byteOffset" : 352832,
+            "target" : 34963
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 2692,
+            "byteOffset" : 447196
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 8076,
+            "byteOffset" : 449888
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 10768,
+            "byteOffset" : 457964
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 8076,
+            "byteOffset" : 468732
+        }
+    ],
+    "samplers" : [
+        {
+            "magFilter" : 9729,
+            "minFilter" : 9987
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 476808,
+            "uri" : "ShiveringHeights.bin"
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhx2fdios6gqj"]
+
+[ext_resource type="PackedScene" uid="uid://3v8ebd54d8fn" path="res://Templates/Building/building.tscn" id="1_r7n73"]
+
+[node name="DefenderBuilding" instance=ExtResource("1_r7n73")]
+_creationTimeSeconds = 2.0
+
+[node name="AttackAnimation" type="AnimationPlayer" parent="Animations" index="2"]
+
+[node name="AttackArea" type="Area3D" parent="." index="3"]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea" index="0"]

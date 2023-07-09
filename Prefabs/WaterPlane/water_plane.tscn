@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1hbkw2piuhot"]
+
+[ext_resource type="Material" uid="uid://dumf556fxjdwy" path="res://Prefabs/WaterPlane/water_material.tres" id="1_4ku1w"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2de3p"]
+material = ExtResource("1_4ku1w")
+size = Vector2(10000, 10000)
+
+[node name="water_plane" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+gi_mode = 2
+mesh = SubResource("PlaneMesh_2de3p")

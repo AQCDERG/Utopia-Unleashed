@@ -1,0 +1,11 @@
+Model Information:
+* title:	Matterhorn Mountain in the Alps
+* source:	https://sketchfab.com/3d-models/matterhorn-mountain-in-the-alps-10ede47fe61440999f33d3811459f73e
+* author:	Nate Loper   🗺️ ⛏🏺  #ArizonaGuide (https://sketchfab.com/arizonaguide)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Matterhorn Mountain in the Alps" (https://sketchfab.com/3d-models/matterhorn-mountain-in-the-alps-10ede47fe61440999f33d3811459f73e) by Nate Loper   🗺️ ⛏🏺  #ArizonaGuide (https://sketchfab.com/arizonaguide) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

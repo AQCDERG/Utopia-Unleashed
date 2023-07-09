@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctes4pp03xb6q"]
+
+[ext_resource type="Script" path="res://TEST.gd" id="1_1rdsx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2j517"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y5qj1"]
+
+[sub_resource type="Sky" id="Sky_82aia"]
+sky_material = SubResource("ProceduralSkyMaterial_y5qj1")
+
+[sub_resource type="Environment" id="Environment_c4maj"]
+background_mode = 2
+sky = SubResource("Sky_82aia")
+sdfgi_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+mesh = SubResource("CapsuleMesh_2j517")
+script = ExtResource("1_1rdsx")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0260374, 0.999661, 0, -0.999661, -0.0260374, 0, 25.3899, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_c4maj")
