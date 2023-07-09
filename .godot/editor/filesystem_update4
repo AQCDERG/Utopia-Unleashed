@@ -20,3 +20,7 @@ res://Prefabs/Buildings/HonorGenerator/HonorGenerator.gd
 res://Scripts/MainCameraMove.gd
 res://managers/BuildingFactory.gd
 res://Scripts/LabelScripts/LifeLabel.gd
+res://components/PathFindingComponent.gd
+res://components/PositionPathFinderComponent.gd
+res://components/PathFinderComponent.gd
+res://components/TargetedPathFinderComponent.gd

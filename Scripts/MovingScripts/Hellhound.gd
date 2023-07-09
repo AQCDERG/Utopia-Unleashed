@@ -31,7 +31,8 @@ func _process(delta: float) -> void:
 	move_and_slide()
 
 func _physics_process(delta: float) -> void:
-	agent.get_next_path_position()
+	var positionToGoTo: Vector3 = agent.get_next_path_position()
+	# Have logic to move to "positionToGoTo"
 
 
 func chase_enemy(enemyLocation: Vector3) -> void:
