@@ -3,6 +3,7 @@ extends Node
 
 signal onDeath
 signal onHealthChanged(newHealth: int)
+signal onHealthDecreased(byAmount: int)
 
 var _health: int
 @export var maxHealth: int = 100
@@ -14,9 +15,11 @@ var currentHealth: int:
   set(value):
     if(_health == value):
       return
+    var old_health: int = _health
     _health = value
     _clampToMaxHealth()
     _handleDeath()
+    onHealthDecreased.emit(old_health - _health)
     onHealthChanged.emit(_health)
   get:
     return _health

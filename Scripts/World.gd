@@ -2,14 +2,6 @@ class_name World
 extends Node
 
 signal onBuildingAdded(building: Building)
-signal onCashChanged(oldCash: int, newCash: int)
-signal onScienceChanged(oldScience: int, newScience: int)
-signal onSoldierChanged(oldSoldier: int, newSoldier: int)
-signal onManaChanged(oldMana: int, newMana: int)
-signal onLifeChanged(oldLife: int, newLife: int)
-signal onPassionChanged(oldPassion: int, newPassion: int)
-signal onHarmonyChanged(oldHarmony: int, newHarmony: int)
-signal onDeathChanged(oldDeath: int, newDeath: int)
 signal doCameraShake(amount: float)
 
 @export var passiveIncomeIntervalSeconds: float = 5.0
@@ -19,9 +11,13 @@ signal doCameraShake(amount: float)
 @export var music1: AudioStreamPlayer
 @export var music2: AudioStreamPlayer
 
+@onready var animalFactory: AnimalFactory = %AnimalFactory
 @onready var buildingFactory: BuildingFactory = %BuildingFactory
+
 @onready var cashLabel: RichTextLabel = %CashLabel
 @onready var poorSound: AudioStreamPlayer = %Poor
+
+var _log: Log
 
 var honor: CurrencyManager = CurrencyManager.new()
 var science: CurrencyManager = CurrencyManager.new()
@@ -35,9 +31,11 @@ var harmony: CurrencyManager = CurrencyManager.new()
 #COMMAND CONSOLE IS CONTROL SHIFT P SKINSO
 
 func _enter_tree():
+	_log = Log.new(get_script())
 	Game.SetWorld(self)
 
 func _ready() -> void:# Give money IMMEDIATELY.
+	_passiveIncome()
 	_playRandomMusic()
 	_createAndConfigureIncomeTimer()
 	_updateCurrencyMaterialsOnChanged()
@@ -81,7 +79,7 @@ func _passiveIncome() -> void:
 	death.add(4)
 	life.add(6)
 	harmony.add(7)
-	print("NO")
+	_log.info("Passive income added.")
 
 
 func createBuilding(type: Building.Type, position: Vector3) -> Building:

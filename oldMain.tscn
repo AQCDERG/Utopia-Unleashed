@@ -1,15 +1,11 @@
-[gd_scene load_steps=88 format=3 uid="uid://cxtf4ckw87i7k"]
+[gd_scene load_steps=83 format=3 uid="uid://cxtf4ckw87i7k"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_b3r3f"]
-[ext_resource type="PackedScene" uid="uid://dyrusigikm186" path="res://Prefabs/Buildings/Headquater/headqauters.tscn" id="2_p56jy"]
 [ext_resource type="Script" path="res://Scripts/MainCameraMove.gd" id="3_lbsnc"]
 [ext_resource type="Script" path="res://CameraMovement.gd" id="3_o7aj4"]
-[ext_resource type="PackedScene" uid="uid://4cvrtsed0f7p" path="res://Prefabs/Buildings/LogCabin/LogCabin.tscn" id="4_1oi4t"]
 [ext_resource type="Script" path="res://Scripts/placeBuilding.gd" id="4_odcal"]
 [ext_resource type="Script" path="res://Scripts/camZoom.gd" id="5_ery2r"]
-[ext_resource type="PackedScene" uid="uid://d1hg22jgnkh2e" path="res://Prefabs/Buildings/EvilCastle/evilCastle.tscn" id="5_uojx5"]
 [ext_resource type="Script" path="res://Scripts/CashMonies.gd" id="5_w1egc"]
-[ext_resource type="PackedScene" uid="uid://nepbp7mfngeu" path="res://Prefabs/Buildings/ManaDog/manaGenerator.tscn" id="6_cmmxx"]
 [ext_resource type="PackedScene" uid="uid://g3qoxg367ei4" path="res://Scenes/buildingScenes/building_sprite.tscn" id="8_sdao0"]
 [ext_resource type="Shader" path="res://Shader/Currency.gdshader" id="10_cmv7e"]
 [ext_resource type="FontFile" uid="uid://b00urqx5bpvto" path="res://Fonts/Shanghi Font/shanghai.ttf" id="10_yc4np"]
@@ -43,7 +39,6 @@
 [ext_resource type="Texture2D" uid="uid://khxo85jvhqop" path="res://SpriteImages/medieval-red-buttons-ui-game-menu-elements/thirdRedButton.png" id="27_arj3t"]
 [ext_resource type="Texture2D" uid="uid://dnmfbcmug6pyi" path="res://SpriteImages/medieval-red-buttons-ui-game-menu-elements/firstRedButton.png" id="28_fle54"]
 [ext_resource type="Texture2D" uid="uid://y7lrekfcat5" path="res://SpriteImages/monsterButtons/unknown.png" id="29_rn750"]
-[ext_resource type="PackedScene" uid="uid://bdu1pf4a6qt22" path="res://Scenes/animals.tscn" id="29_x6wu4"]
 [ext_resource type="Texture2D" uid="uid://7lw5rv4c4ama" path="res://SpriteImages/decorative-chinese-pattern-red-background/image(1).png" id="32_m3us7"]
 [ext_resource type="Texture2D" uid="uid://cjxc3h4m0tgbi" path="res://SpriteImages/decorative-chinese-pattern-red-background/download.png" id="34_l577u"]
 [ext_resource type="Texture2D" uid="uid://7y5clusmwfjl" path="res://SpriteImages/decorative-chinese-pattern-red-background/download (1).png" id="35_3sbjg"]
@@ -58,14 +53,14 @@
 [ext_resource type="AudioStream" uid="uid://gs7pkksk80qq" path="res://Sounds/wrong-47985.mp3" id="40_r2d6d"]
 [ext_resource type="Script" path="res://Scripts/LabelScripts/ManaLabel.gd" id="42_u8dso"]
 [ext_resource type="Script" path="res://Scripts/LabelScripts/LifeLabel.gd" id="43_by333"]
-[ext_resource type="PackedScene" uid="uid://dqkatkpbhunes" path="res://Scenes/Hellhound.tscn" id="44_4i42m"]
+[ext_resource type="PackedScene" uid="uid://dqkatkpbhunes" path="res://Scenes/BOZO.tscn" id="44_4i42m"]
 [ext_resource type="Script" path="res://Scripts/LabelScripts/DeathLabel.gd" id="44_hvah5"]
 [ext_resource type="Script" path="res://Scripts/LabelScripts/PassionLabel.gd" id="45_w7hjd"]
 [ext_resource type="Script" path="res://Scripts/LabelScripts/HarmonyLabel.gd" id="46_djpet"]
 [ext_resource type="PackedScene" uid="uid://coetwrp7qbui0" path="res://FinishedBlednerGoods/Terrain/Mountain/fixedMountain.glb" id="46_vvvvr"]
 [ext_resource type="Script" path="res://managers/BuildingFactory.gd" id="56_cbi5d"]
-[ext_resource type="PackedScene" uid="uid://dsdqcvgne7wp6" path="res://Prefabs/Buildings/HonorGenerator/HonorGenerator.tscn" id="58_tbwlt"]
 [ext_resource type="PackedScene" uid="uid://c5wxqy3kel0v4" path="res://Prefabs/Buildings/DefenderBuildings/LavaTower/LavaTower.tscn" id="60_ljpxv"]
+[ext_resource type="Script" path="res://managers/AnimalFactory.gd" id="61_fx1g6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a3n3s"]
 
@@ -979,15 +974,6 @@ mesh = SubResource("PlaneMesh_41niq")
 [node name="decimatedDwarfs" parent="." instance=ExtResource("23_1t85d")]
 transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 18.5013, 2.4034, 129.152)
 
-[node name="Animals" parent="." instance=ExtResource("29_x6wu4")]
-
-[node name="Lava deer" parent="Animals" instance=ExtResource("26_a04nx")]
-transform = Transform3D(1.4, 0.000718801, -0.000461912, -0.00071853, 1.4, 0.000803592, 0.000462332, -0.000803351, 1.4, 22.5082, 9.26717, 8.7551)
-startingHealth = 0
-
-[node name="CharacterBody3D" parent="Animals" instance=ExtResource("44_4i42m")]
-transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 22.4077, 8.28531, -9.97416)
-
 [node name="Music" type="Node3D" parent="."]
 
 [node name="AmbientMusic" type="AudioStreamPlayer" parent="Music"]
@@ -1083,14 +1069,23 @@ visible = false
 [node name="FinishedlavaTowwer" parent="." instance=ExtResource("60_ljpxv")]
 transform = Transform3D(-0.144935, 0, 0.989441, 0, 1, 0, -0.989441, 0, -0.144935, -107.582, 1.36253, -8.04757)
 
-[node name="BuildingFactory" type="Node" parent="."]
+[node name="Factories" type="Node" parent="."]
+
+[node name="AnimalFactory" type="Node" parent="Factories"]
+unique_name_in_owner = true
+script = ExtResource("61_fx1g6")
+
+[node name="BuildingFactory" type="Node" parent="Factories"]
 unique_name_in_owner = true
 script = ExtResource("56_cbi5d")
-headquatersPackedScene = ExtResource("2_p56jy")
-honorGeneratorPackedScene = ExtResource("58_tbwlt")
-logCabinPackedScene = ExtResource("4_1oi4t")
-evilCastlePackedScene = ExtResource("5_uojx5")
-manaDogPackedScene = ExtResource("6_cmmxx")
+
+[node name="AnimalManager" type="Node3D" parent="."]
+
+[node name="Lava deer" parent="AnimalManager" instance=ExtResource("26_a04nx")]
+transform = Transform3D(1.4, 0.000718801, -0.000461912, -0.00071853, 1.4, 0.000803592, 0.000462332, -0.000803351, 1.4, 22.5082, 9.26717, 8.7551)
+
+[node name="CharacterBody3D" parent="AnimalManager" instance=ExtResource("44_4i42m")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 22.4077, 8.28531, -9.97416)
 
 [connection signal="pressed" from="UI/Menus/BuildingMenu/HeadquarterLabel/Headquarter" to="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/RayCast3D" method="_on_headquarter_pressed"]
 [connection signal="pressed" from="UI/Menus/BuildingMenu/MineLabel/Mine" to="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/RayCast3D" method="_on_mine_pressed"]

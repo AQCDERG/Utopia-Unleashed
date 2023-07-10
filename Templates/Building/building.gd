@@ -1,6 +1,14 @@
 class_name Building
 extends StaticBody3D
 
+static func GetScene() -> PackedScene:
+	push_error("This method should be overriden by the child class!")
+	return null
+
+static func GetCurrencyCost() -> Array[Currency]:
+	push_error("This method should be overriden by the child class!")
+	return []
+
 enum Type {
   HONOR_GENERATOR = 0,
   LOG_CABIN = 1,
@@ -10,14 +18,7 @@ enum Type {
   LAVA_TOWER = 5
 }
 
-const HONOR_GENERATOR_PRICE = 1
-const LOG_CABIN_PRICE = 1
-const EVIL_CASTLE_PRICE = 1
-const HEADQUARTER_PRICE = 1
-const MANA_DOG_PRICE = 1
-const LAVA_TOWER_PRICE = 1
-
-enum Level {
+enum Level { # unimplemented
 	LEVEL_1 = 1,
 	LEVEL_2 = 2,
 	LEVEL_3 = 3,

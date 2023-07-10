@@ -44,38 +44,38 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_vogbt")
 size = Vector2(3, 3)
 
-[sub_resource type="Gradient" id="Gradient_a0bmm"]
+[sub_resource type="Gradient" id="Gradient_kjbgc"]
 offsets = PackedFloat32Array(0, 0.270408, 0.632653, 0.806122, 0.913265, 1)
 colors = PackedColorArray(0.752941, 0.752941, 0.752941, 0.54902, 0.482353, 0.482353, 0.482353, 0.403922, 0.486275, 0.486275, 0.486275, 0.329412, 0.407843, 0.407843, 0.407843, 0.231373, 0.407843, 0.407843, 0.407843, 0.14902, 0.407843, 0.407843, 0.407843, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_d7tj0"]
-gradient = SubResource("Gradient_a0bmm")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8b73l"]
+gradient = SubResource("Gradient_kjbgc")
 
-[sub_resource type="Curve" id="Curve_n4xjj"]
+[sub_resource type="Curve" id="Curve_t0gme"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.118943, 0.127273), 0.0, 0.0, 0, 0, Vector2(1, 0.0727272), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_ngf4v"]
-curve = SubResource("Curve_n4xjj")
+[sub_resource type="CurveTexture" id="CurveTexture_m53bv"]
+curve = SubResource("Curve_t0gme")
 
-[sub_resource type="Curve" id="Curve_v0exd"]
+[sub_resource type="Curve" id="Curve_51ggf"]
 max_value = 10.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.343612, 1.90909), 0.0, 0.0, 0, 0, Vector2(0.9163, 4.45455), 0.0, 0.0, 0, 0, Vector2(1, 5.45455), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_3p8yy"]
-curve = SubResource("Curve_v0exd")
+[sub_resource type="CurveTexture" id="CurveTexture_yfqpg"]
+curve = SubResource("Curve_51ggf")
 
-[sub_resource type="Curve" id="Curve_v2ldn"]
+[sub_resource type="Curve" id="Curve_plni6"]
 min_value = -30.0
 max_value = 30.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.577092, 4.36364), 0.0, 0.0, 0, 0, Vector2(0.806167, 7.09091), 0.0, 0.0, 0, 0, Vector2(1, 7.63636), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_14sng"]
-curve = SubResource("Curve_v2ldn")
+[sub_resource type="CurveTexture" id="CurveTexture_866vi"]
+curve = SubResource("Curve_plni6")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7kwhw"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1oab6"]
 spread = 90.0
 flatness = 0.2
 gravity = Vector3(0, 0, 0)
@@ -84,21 +84,21 @@ initial_velocity_max = 0.4
 angular_velocity_max = 40.0
 linear_accel_min = 0.01
 linear_accel_max = 0.01
-linear_accel_curve = SubResource("CurveTexture_ngf4v")
+linear_accel_curve = SubResource("CurveTexture_m53bv")
 tangential_accel_min = 0.04
 tangential_accel_max = 0.04
-tangential_accel_curve = SubResource("CurveTexture_14sng")
+tangential_accel_curve = SubResource("CurveTexture_866vi")
 angle_max = 360.0
 scale_min = 0.2
 scale_max = 0.4
-scale_curve = SubResource("CurveTexture_3p8yy")
+scale_curve = SubResource("CurveTexture_yfqpg")
 color = Color(0.560784, 0.560784, 0.560784, 1)
-color_ramp = SubResource("GradientTexture1D_d7tj0")
+color_ramp = SubResource("GradientTexture1D_8b73l")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 anim_offset_max = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bmlgb"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o0cuf"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
@@ -110,8 +110,8 @@ particles_anim_h_frames = 6
 particles_anim_v_frames = 5
 particles_anim_loop = false
 
-[sub_resource type="QuadMesh" id="QuadMesh_xrx6h"]
-material = SubResource("StandardMaterial3D_bmlgb")
+[sub_resource type="QuadMesh" id="QuadMesh_abwb6"]
+material = SubResource("StandardMaterial3D_o0cuf")
 
 [sub_resource type="Animation" id="Animation_fkb4r"]
 length = 0.001
@@ -151,7 +151,7 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_lnxag"]
 size = Vector3(21.8413, 35.4045, 19.4051)
 
-[node name="StaticBody3D" type="StaticBody3D"]
+[node name="StaticBody3D" type="Node3D"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.3, 0)
 script = ExtResource("1_ylhwr")
 buildingType = 1
@@ -183,8 +183,8 @@ one_shot = true
 speed_scale = 3.0
 explosiveness = 1.0
 randomness = 1.0
-process_material = SubResource("ParticleProcessMaterial_7kwhw")
-draw_pass_1 = SubResource("QuadMesh_xrx6h")
+process_material = SubResource("ParticleProcessMaterial_1oab6")
+draw_pass_1 = SubResource("QuadMesh_abwb6")
 
 [node name="Animations" type="Node3D" parent="."]
 

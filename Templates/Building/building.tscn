@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c8gw3ds38rx3k" path="res://ParticleProject/Images/brightGlowParticle.png" id="2_5kahi"]
 [ext_resource type="Script" path="res://components/ClickDetectionComponent.gd" id="3_8yfd6"]
 [ext_resource type="Texture2D" uid="uid://cnckwdw8gjqss" path="res://ParticleProject/Images/SuperSmokeCCO.png" id="3_tyd5j"]
-[ext_resource type="Script" path="res://components/HealthComponent.gd" id="5_mb00y"]
+[ext_resource type="Script" path="res://components/HealthComponent.gd" id="5_h7n8k"]
 [ext_resource type="AudioStream" uid="uid://clq0p801xbhka" path="res://Sounds/building.wav" id="5_msk2t"]
 
 [sub_resource type="Gradient" id="Gradient_mp06n"]
@@ -159,7 +159,7 @@ script = ExtResource("3_8yfd6")
 
 [node name="HealthComponent" type="Node" parent="Componenets"]
 unique_name_in_owner = true
-script = ExtResource("5_mb00y")
+script = ExtResource("5_h7n8k")
 
 [node name="Audios" type="Node3D" parent="."]
 

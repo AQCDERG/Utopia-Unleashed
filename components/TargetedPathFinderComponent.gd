@@ -1,4 +1,4 @@
-class_name TargetedPathFinderComponente
+class_name TargetedPathFinderComponent
 extends PathFinderComponent
 
 signal onTargetLost
@@ -25,4 +25,4 @@ func _physics_process(delta: float) -> void:
 	# -----------------------------
 
 	target_position = target.global_position
-	super()
+	super(delta)

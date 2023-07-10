@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://bu88417t0mqr0"]
+
+[ext_resource type="Script" path="res://Templates/Animal/Animal.gd" id="1_gsic3"]
+[ext_resource type="Script" path="res://components/HealthComponent.gd" id="2_cvmep"]
+[ext_resource type="Shader" path="res://Shader/HealthBar.gdshader" id="3_aikgh"]
+[ext_resource type="Script" path="res://components/TargetedPathFinderComponent.gd" id="4_o32d6"]
+[ext_resource type="Script" path="res://Templates/Animal/Controllers/AutonomousAnimalController.gd" id="5_0vtim"]
+[ext_resource type="Script" path="res://components/AnimalDetectionComponent.gd" id="5_84qvd"]
+[ext_resource type="Script" path="res://Templates/Animal/Controllers/PlayerAnimalController.gd" id="6_b2utl"]
+[ext_resource type="Script" path="res://Templates/Animal/Actions/AnimalActionManager.gd" id="7_xdx1e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1vtuf"]
+render_priority = 0
+shader = ExtResource("3_aikgh")
+shader_parameter/hpChange = null
+
+[sub_resource type="SphereMesh" id="SphereMesh_ngfdk"]
+material = SubResource("ShaderMaterial_1vtuf")
+
+[node name="Animal" type="CharacterBody3D"]
+script = ExtResource("1_gsic3")
+
+[node name="Components" type="Node3D" parent="."]
+
+[node name="HealthComponent" type="Node" parent="Components"]
+script = ExtResource("2_cvmep")
+
+[node name="AnimalDetectionComponent" type="Area3D" parent="Components"]
+script = ExtResource("5_84qvd")
+
+[node name="TargetedPathFinderComponent" type="NavigationAgent3D" parent="Components"]
+script = ExtResource("4_o32d6")
+
+[node name="Controllers" type="Node3D" parent="."]
+
+[node name="AutonomousAnimalController" type="Node" parent="Controllers"]
+script = ExtResource("5_0vtim")
+
+[node name="PlayerAnimalController" type="Node" parent="Controllers"]
+script = ExtResource("6_b2utl")
+
+[node name="AnimalActionManager" type="Node" parent="."]
+script = ExtResource("7_xdx1e")
+
+[node name="HurtParticle" type="GPUParticles3D" parent="."]
+
+[node name="HealthBar" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.65715, 0)
+mesh = SubResource("SphereMesh_ngfdk")
+
+[node name="Animations" type="Node3D" parent="."]
+
+[node name="MovingAnimation" type="AnimationPlayer" parent="Animations"]
+root_node = NodePath("../..")
+
+[node name="DyingAnimation" type="AnimationPlayer" parent="Animations"]
+root_node = NodePath("../..")
+
+[node name="AttakingAnimation" type="AnimationPlayer" parent="Animations"]
+root_node = NodePath("../..")
+
+[node name="Collisions" type="Node3D" parent="."]
+
+[node name="AreaOfAttack" type="Area3D" parent="Collisions"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collisions/AreaOfAttack"]
+
+[node name="CollisionBody" type="CollisionShape3D" parent="Collisions"]
+
+[node name="Name" type="Label3D" parent="."]

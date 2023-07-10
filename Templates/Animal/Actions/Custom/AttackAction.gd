@@ -1,0 +1,2 @@
+class_name AttackAction
+extends AnimalAction 
