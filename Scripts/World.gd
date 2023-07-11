@@ -80,14 +80,18 @@ func _passiveIncome() -> void:
 	life.add(6)
 	harmony.add(7)
 	_log.info("Passive income added.")
+	# Clean up late.er
+	var deer = animalFactory.createAnimal(Animal.Type.LAVA_DEER)
+	add_child(deer)
+	deer.global_position = Vector3(0, 90, 0)
 
 
 func createBuilding(type: Building.Type, position: Vector3) -> Building:
-	if !(buildingFactory.canCreateBuilding(type)):
-		poorSound.playing = true
-		return
+	#if !(buildingFactory.canCreateBuilding(type)): # TODO: Implement poor logic.
+	#	poorSound.playing = true
+	#	return
 
-	var building: Building = buildingFactory.getBuilding(type)
+	var building: Building = buildingFactory.createBuilding(type)
 	building.position = position
 	add_child(building)
 

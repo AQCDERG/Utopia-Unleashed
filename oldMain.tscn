@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://cxtf4ckw87i7k"]
+[gd_scene load_steps=81 format=3 uid="uid://cxtf4ckw87i7k"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_b3r3f"]
 [ext_resource type="Script" path="res://Scripts/MainCameraMove.gd" id="3_lbsnc"]
@@ -33,7 +33,6 @@
 [ext_resource type="Texture2D" uid="uid://djruke62v0hp" path="res://SpriteImages/decorative-chinese-pattern-red-background/SL-101321-46120-66.jpg" id="25_0nbes"]
 [ext_resource type="Texture2D" uid="uid://12hbgrvkuavx" path="res://SpriteImages/139Z_chinese_frame_6.png" id="25_qnu3w"]
 [ext_resource type="Script" path="res://Scripts/LabelScripts/BuildingMenu.gd" id="25_x6wdk"]
-[ext_resource type="PackedScene" uid="uid://bnb0md6ax48rb" path="res://FinishedBlednerGoods/Creatures/lavaDeer.tscn" id="26_a04nx"]
 [ext_resource type="AudioStream" uid="uid://bpwlkfptl7qpt" path="res://Sounds/japan-koto-folk-background-music-124876.mp3" id="26_e8pra"]
 [ext_resource type="Texture2D" uid="uid://c4n6a1o0hpnnb" path="res://SpriteImages/medieval-red-buttons-ui-game-menu-elements/fifthRedButton.png" id="26_psyuh"]
 [ext_resource type="Texture2D" uid="uid://khxo85jvhqop" path="res://SpriteImages/medieval-red-buttons-ui-game-menu-elements/thirdRedButton.png" id="27_arj3t"]
@@ -53,7 +52,6 @@
 [ext_resource type="AudioStream" uid="uid://gs7pkksk80qq" path="res://Sounds/wrong-47985.mp3" id="40_r2d6d"]
 [ext_resource type="Script" path="res://Scripts/LabelScripts/ManaLabel.gd" id="42_u8dso"]
 [ext_resource type="Script" path="res://Scripts/LabelScripts/LifeLabel.gd" id="43_by333"]
-[ext_resource type="PackedScene" uid="uid://dqkatkpbhunes" path="res://Scenes/BOZO.tscn" id="44_4i42m"]
 [ext_resource type="Script" path="res://Scripts/LabelScripts/DeathLabel.gd" id="44_hvah5"]
 [ext_resource type="Script" path="res://Scripts/LabelScripts/PassionLabel.gd" id="45_w7hjd"]
 [ext_resource type="Script" path="res://Scripts/LabelScripts/HarmonyLabel.gd" id="46_djpet"]
@@ -1080,12 +1078,6 @@ unique_name_in_owner = true
 script = ExtResource("56_cbi5d")
 
 [node name="AnimalManager" type="Node3D" parent="."]
-
-[node name="Lava deer" parent="AnimalManager" instance=ExtResource("26_a04nx")]
-transform = Transform3D(1.4, 0.000718801, -0.000461912, -0.00071853, 1.4, 0.000803592, 0.000462332, -0.000803351, 1.4, 22.5082, 9.26717, 8.7551)
-
-[node name="CharacterBody3D" parent="AnimalManager" instance=ExtResource("44_4i42m")]
-transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 22.4077, 8.28531, -9.97416)
 
 [connection signal="pressed" from="UI/Menus/BuildingMenu/HeadquarterLabel/Headquarter" to="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/RayCast3D" method="_on_headquarter_pressed"]
 [connection signal="pressed" from="UI/Menus/BuildingMenu/MineLabel/Mine" to="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/RayCast3D" method="_on_mine_pressed"]

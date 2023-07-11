@@ -53,6 +53,7 @@ func _physics_process(delta: float) -> void:
 	# 	return
 
 	_handleGravity(delta)
+	move_and_slide()
 
 func _handleGravity(delta: float) -> void:
 	if (!is_on_floor()):

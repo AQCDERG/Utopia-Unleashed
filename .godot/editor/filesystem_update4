@@ -3,7 +3,10 @@ res://Prefabs/Buildings/EvilCastle/CreationParticle.tres
 res://Shader/HealthBar.gdshader
 res://oldMain.tscn
 res://Prefabs/Buildings/Headquater/headqauters.tscn
-res://Prefabs/Buildings/HonorGenerator/HonorGenerator.tscn
-res://Prefabs/Buildings/LogCabin/LogCabin.tscn
 res://Templates/Building/building.tscn
+res://Prefabs/Buildings/HonorGenerator/HonorGenerator.tscn
 res://Prefabs/Buildings/ManaDog/manaGenerator.tscn
+res://Prefabs/Buildings/LogCabin/LogCabin.tscn
+res://Prefabs/Buildings/DefenderBuildings/LavaTower/LavaTower.tscn
+res://FinishedBlednerGoods/Creatures/lavaDeer.tscn
+res://Prefabs/Animals/LavaDeer/LavaDeer.tscn

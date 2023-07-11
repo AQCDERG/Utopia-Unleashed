@@ -4,7 +4,7 @@ extends Animal
 static var _scene: PackedScene
 static func GetScene() -> PackedScene:
 	if _scene == null:
-		_scene = load("res://Prefabs/Animals/Hellhound/Hellhound.tscn")
+		_scene = load("res://Prefabs/Animals/Hunter/Hunter.tscn")
 	return _scene
 
 static var _currencyCost: Array[Currency]
