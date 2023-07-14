@@ -2,6 +2,7 @@ class_name World
 extends Node
 
 signal onBuildingAdded(building: Building)
+signal onAnimalAdded(animal: Animal)
 signal doCameraShake(amount: float)
 
 @export var passiveIncomeIntervalSeconds: float = 5.0
@@ -79,12 +80,22 @@ func _passiveIncome() -> void:
 	death.add(4)
 	life.add(6)
 	harmony.add(7)
-	_log.info("Passive income added.")
-	# Clean up late.er
+	#_log.info("Passive income added.")
+	_spawnDeerRandomly()
+	_spawnWolfRandomly()
+
+func _spawnDeerRandomly() -> void:
 	var deer = animalFactory.createAnimal(Animal.Type.LAVA_DEER)
 	add_child(deer)
-	deer.global_position = Vector3(0, 90, 0)
+	deer.global_position = Vector3(randi_range(-40, 40), 40, randi_range(-40, 40))
+	onAnimalAdded.emit(deer)
 
+func _spawnWolfRandomly() -> void:
+	var wolf = animalFactory.createAnimal(Animal.Type.HELL_HOUND)
+	add_child(wolf)
+	wolf.global_position = Vector3(randi_range(-40, 40), 40, randi_range(-40, 40))
+	onAnimalAdded.emit(wolf)
+	
 
 func createBuilding(type: Building.Type, position: Vector3) -> Building:
 	#if !(buildingFactory.canCreateBuilding(type)): # TODO: Implement poor logic.
@@ -93,6 +104,7 @@ func createBuilding(type: Building.Type, position: Vector3) -> Building:
 
 	var building: Building = buildingFactory.createBuilding(type)
 	building.position = position
+	Building.GetCurrencyCost()
 	add_child(building)
 
 	# todo: Remove monies.

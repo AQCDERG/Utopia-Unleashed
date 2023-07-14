@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://58mh5u7btynd"]
+
+[ext_resource type="Texture2D" uid="uid://cefgkf83x2rsw" path="res://SpriteImages/decorative-chinese-pattern-red-background/download (4).png" id="1_rklxi"]
+
+[node name="EvilCastleMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="EvilMenu" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1152.0
+offset_right = 2582.0
+offset_bottom = 3810.0
+scale = Vector2(-0.17, 0.17)
+texture = ExtResource("1_rklxi")
+expand_mode = 1

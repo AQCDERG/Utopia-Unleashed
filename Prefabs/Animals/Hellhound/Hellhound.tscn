@@ -1,9 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://ci5jeohor7xdm"]
+[gd_scene load_steps=19 format=3 uid="uid://ci5jeohor7xdm"]
 
 [ext_resource type="PackedScene" uid="uid://bu88417t0mqr0" path="res://Templates/Animal.tscn" id="1_jma5k"]
 [ext_resource type="Script" path="res://Prefabs/Animals/Hellhound/Hellhound.gd" id="2_spyk5"]
 [ext_resource type="AudioStream" uid="uid://bkqoyvjplnsva" path="res://Sounds/wolf-howl-6310.mp3" id="3_2mw02"]
 [ext_resource type="Texture2D" uid="uid://bk44td7l7hu16" path="res://SpriteImages/BakedGoods/Diffuse.png" id="3_i7exm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8o732"]
+size = Vector3(4.40985, 4.2443, 9.11859)
 
 [sub_resource type="Animation" id="Animation_a641x"]
 resource_name = "Attack"
@@ -866,6 +869,10 @@ _data = {
 "Bip01|Take 001|BaseLayer": SubResource("Animation_g1dxx")
 }
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_drruk"]
+radius = 1.848
+height = 8.627
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_epqck"]
 shading_mode = 0
 albedo_texture = ExtResource("3_i7exm")
@@ -1420,6 +1427,11 @@ _data = {
 
 [node name="HellHound" instance=ExtResource("1_jma5k")]
 script = ExtResource("2_spyk5")
+type = 2
+
+[node name="CollisionShape3D" parent="Components/ClickDetectionComponent" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.271226, 3.47097, 1.3866)
+shape = SubResource("BoxShape3D_8o732")
 
 [node name="Howling" type="AnimationPlayer" parent="Animations" index="3"]
 libraries = {
@@ -1434,6 +1446,10 @@ pitch_scale = 0.75
 libraries = {
 "": SubResource("AnimationLibrary_68w8g")
 }
+
+[node name="CollisionBody" parent="." index="7"]
+transform = Transform3D(2.98023e-08, 0, -1, -1, -4.37114e-08, -2.98023e-08, -4.37114e-08, 1, -1.3027e-15, 0, 3.29604, 0.891026)
+shape = SubResource("CapsuleShape3D_drruk")
 
 [node name="hellHound" type="Node3D" parent="." index="8"]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
@@ -1678,3 +1694,7 @@ skin = SubResource("Skin_f28fq")
 libraries = {
 "": SubResource("AnimationLibrary_hlets")
 }
+
+[node name="Name" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.58263, 0)
+pixel_size = 0.02

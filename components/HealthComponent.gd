@@ -45,3 +45,6 @@ func heal(amount: int) -> void:
     push_error("heal called with negative amount: " + str(amount))
     
   currentHealth += amount
+
+func getHealth() -> int:
+  return _health

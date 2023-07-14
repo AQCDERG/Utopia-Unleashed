@@ -18,4 +18,3 @@ func createAnimal(type: Animal.Type) -> Animal:
     _:
       _log.error("Unknown animal type: " + Animal.Type.find_key(type))
   return animal
-

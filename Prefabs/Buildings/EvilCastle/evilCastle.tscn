@@ -168,14 +168,14 @@ draw_pass_1 = SubResource("QuadMesh_xrx6h")
 
 [node name="Animations" type="Node3D" parent="."]
 
-[node name="CreationAnimationPlayer2" type="AnimationPlayer" parent="Animations"]
+[node name="CreationAnimationPlayer" type="AnimationPlayer" parent="Animations"]
 unique_name_in_owner = true
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_3bdea")
 }
 
-[node name="DestructionAnimationPlayer2" type="AnimationPlayer" parent="Animations"]
+[node name="DestructionAnimationPlayer" type="AnimationPlayer" parent="Animations"]
 unique_name_in_owner = true
 root_node = NodePath("../..")
 
@@ -185,17 +185,17 @@ root_node = NodePath("../..")
 unique_name_in_owner = true
 script = ExtResource("4_q3kyn")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Componenets/ClickDetectionComponent"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Componenets/ClickDetectionComponent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.84515, 1.98511)
 shape = SubResource("BoxShape3D_reymo")
 
-[node name="HealthComponent2" type="Node" parent="Componenets"]
+[node name="HealthComponent" type="Node" parent="Componenets"]
 unique_name_in_owner = true
 script = ExtResource("5_ruk4s")
 
 [node name="Audios" type="Node3D" parent="."]
 
-[node name="CreationAudio2" type="AudioStreamPlayer3D" parent="Audios"]
+[node name="CreationAudio" type="AudioStreamPlayer3D" parent="Audios"]
 unique_name_in_owner = true
 stream = ExtResource("6_atnsm")
 volume_db = -10.0

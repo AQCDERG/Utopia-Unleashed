@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://0n5ky1fkeblx"]
+[gd_scene load_steps=18 format=3 uid="uid://0n5ky1fkeblx"]
 
 [ext_resource type="PackedScene" uid="uid://bu88417t0mqr0" path="res://Templates/Animal.tscn" id="1_jma5k"]
 [ext_resource type="Script" path="res://Prefabs/Animals/Hellhound/Hellhound.gd" id="2_4xvey"]
@@ -866,6 +866,10 @@ _data = {
 "Bip01|Take 001|BaseLayer": SubResource("Animation_g1dxx")
 }
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dl0j4"]
+radius = 1.84818
+height = 8.6273
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_epqck"]
 shading_mode = 0
 albedo_texture = ExtResource("3_i7exm")
@@ -1420,6 +1424,7 @@ _data = {
 
 [node name="HellHound" instance=ExtResource("1_jma5k")]
 script = ExtResource("2_4xvey")
+type = 2
 
 [node name="Howling" type="AnimationPlayer" parent="Animations" index="3"]
 libraries = {
@@ -1434,6 +1439,10 @@ pitch_scale = 0.75
 libraries = {
 "": SubResource("AnimationLibrary_68w8g")
 }
+
+[node name="CollisionBody" parent="." index="7"]
+transform = Transform3D(-4.37114e-08, 0, -1, -1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1.91069e-15, 0, 2.93029, 1.11284)
+shape = SubResource("CapsuleShape3D_dl0j4")
 
 [node name="hellHound" type="Node3D" parent="." index="8"]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciis01vjtuje7"]
+
+[ext_resource type="Texture2D" uid="uid://b7yfkfutj830g" path="res://SpriteImages/decorative-chinese-pattern-red-background/download (2).png" id="1_uj3x6"]
+
+[node name="LogCabinMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="LogCabinMenu" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = 1152.0
+offset_right = 2582.0
+offset_bottom = 3810.0
+scale = Vector2(-0.17, 0.17)
+texture = ExtResource("1_uj3x6")
+expand_mode = 1

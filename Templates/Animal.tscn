@@ -1,13 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://bu88417t0mqr0"]
+[gd_scene load_steps=16 format=3 uid="uid://bu88417t0mqr0"]
 
 [ext_resource type="Script" path="res://Templates/Animal/Animal.gd" id="1_gsic3"]
 [ext_resource type="Script" path="res://components/HealthComponent.gd" id="2_cvmep"]
 [ext_resource type="Shader" path="res://Shader/HealthBar.gdshader" id="3_aikgh"]
+[ext_resource type="Script" path="res://components/PathFinderComponent.gd" id="4_m6wsd"]
 [ext_resource type="Script" path="res://components/TargetedPathFinderComponent.gd" id="4_o32d6"]
 [ext_resource type="Script" path="res://Templates/Animal/Controllers/AutonomousAnimalController.gd" id="5_0vtim"]
 [ext_resource type="Script" path="res://components/AnimalDetectionComponent.gd" id="5_84qvd"]
 [ext_resource type="Script" path="res://Templates/Animal/Controllers/PlayerAnimalController.gd" id="6_b2utl"]
+[ext_resource type="Script" path="res://components/ClickDetectionComponent.gd" id="6_grcnt"]
 [ext_resource type="Script" path="res://Templates/Animal/Actions/AnimalActionManager.gd" id="7_xdx1e"]
+[ext_resource type="Script" path="res://Templates/Animal/Actions/Custom/WanderingAction.gd" id="8_1lkvh"]
+[ext_resource type="Script" path="res://Scripts/GamertagGenerator.gd" id="12_jhtwa"]
+[ext_resource type="Script" path="res://Scripts/AnimalName.gd" id="13_gtwk0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1vtuf"]
 render_priority = 0
@@ -16,6 +21,8 @@ shader_parameter/hpChange = null
 
 [sub_resource type="SphereMesh" id="SphereMesh_ngfdk"]
 material = SubResource("ShaderMaterial_1vtuf")
+radius = 0.25
+height = 0.5
 
 [node name="Animal" type="CharacterBody3D"]
 script = ExtResource("1_gsic3")
@@ -30,9 +37,18 @@ script = ExtResource("2_cvmep")
 unique_name_in_owner = true
 script = ExtResource("5_84qvd")
 
+[node name="PathFinderComponent" type="NavigationAgent3D" parent="Components"]
+script = ExtResource("4_m6wsd")
+
 [node name="TargetedPathFinderComponent" type="NavigationAgent3D" parent="Components"]
 unique_name_in_owner = true
 script = ExtResource("4_o32d6")
+
+[node name="ClickDetectionComponent" type="Area3D" parent="Components"]
+unique_name_in_owner = true
+script = ExtResource("6_grcnt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Components/ClickDetectionComponent"]
 
 [node name="Controllers" type="Node3D" parent="."]
 
@@ -47,6 +63,10 @@ script = ExtResource("6_b2utl")
 [node name="AnimalActionManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("7_xdx1e")
+
+[node name="WanderingAction" type="Node" parent="AnimalActionManager"]
+unique_name_in_owner = true
+script = ExtResource("8_1lkvh")
 
 [node name="HurtParticles" type="GPUParticles3D" parent="."]
 unique_name_in_owner = true
@@ -72,6 +92,16 @@ root_node = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Collisions/AreaOfAttack"]
 
-[node name="Name" type="Label3D" parent="."]
-
 [node name="CollisionBody" type="CollisionShape3D" parent="."]
+
+[node name="NameGenerator" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("12_jhtwa")
+
+[node name="Name" type="Label3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14453, 0)
+pixel_size = 0.01
+billboard = 1
+text = "wfeewffew"
+script = ExtResource("13_gtwk0")

@@ -202,7 +202,7 @@ unique_name_in_owner = true
 script = ExtResource("4_65i2g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Componenets/ClickDetectionComponent"]
-transform = Transform3D(2.03514, 0, 0, 0, 2.97919, 0, 0, 0, 1.74206, 0.27122, 1.43573, 0)
+transform = Transform3D(2.03514, 0, 0, 0, 2.97919, 0, 0, 0, 1.74206, 0.27122, -1.17787, 0)
 shape = SubResource("BoxShape3D_bgruq")
 
 [node name="HealthComponent" type="Node" parent="Componenets"]

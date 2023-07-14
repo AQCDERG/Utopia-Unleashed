@@ -1,9 +1,11 @@
-res://Prefabs/Buildings/EvilCastle
+res://Scripts/LabelScripts
+res://Prefabs/BuildingMenus
+res://Scripts
+res://Anime
 res://
+res://Prefabs/Buildings/EvilCastle
 res://Prefabs/Animals/Hellhound
 res://Prefabs/Animals/Hunter
 res://Prefabs/Animals/LavaDeer
 res://Shader
-res://Scripts
-res://Scripts/LabelScripts
 res://managers
