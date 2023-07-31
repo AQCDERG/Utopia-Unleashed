@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3]
+[gd_scene load_steps=33 format=3 uid="uid://dt82srqd46778"]
 
 [ext_resource type="Shader" path="res://Prefabs/VolumetricClouds/clouds.gdshader" id="1_h3xby"]
 [ext_resource type="Texture2D" uid="uid://c8gw3ds38rx3k" path="res://ParticleProject/Images/brightGlowParticle.png" id="1_nd4il"]
@@ -14,8 +14,8 @@
 [ext_resource type="AudioStream" uid="uid://b26ai7uvobe0x" path="res://Sounds/chinese-new-year-background-music-127668.mp3" id="12_p3pqj"]
 [ext_resource type="Shader" path="res://Shader/Gradient.gdshader" id="13_pjben"]
 [ext_resource type="FontFile" uid="uid://b00urqx5bpvto" path="res://Fonts/Shanghi Font/shanghai.ttf" id="13_wrdvr"]
-[ext_resource type="Script" path="res://Scripts/Button.gd" id="15_rxb4m"]
 [ext_resource type="Texture2D" uid="uid://ddy4tm3tyfk3x" path="res://SpriteImages/yinyangSymbol.png" id="16_shrjk"]
+[ext_resource type="Script" path="res://Scripts/ButtonManager.gd" id="17_4eb44"]
 [ext_resource type="Script" path="res://Scripts/YinyangSymbol.gd" id="17_riax0"]
 
 [sub_resource type="Gradient" id="Gradient_b1cm2"]
@@ -231,14 +231,6 @@ bbcode_enabled = true
 text = "[center]Utopia Unleshed[/center]"
 scroll_active = false
 
-[node name="Button" type="Button" parent="."]
-offset_left = 971.0
-offset_top = 2.0
-offset_right = 1155.0
-offset_bottom = 33.0
-text = "UNDER CONTRUCTION"
-script = ExtResource("15_rxb4m")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="YinyangSymbol" type="Sprite2D" parent="."]
@@ -248,5 +240,35 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("16_shrjk")
 script = ExtResource("17_riax0")
 
+[node name="ButtonManager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("17_4eb44")
+
+[node name="Play" type="Button" parent="ButtonManager"]
+unique_name_in_owner = true
+offset_left = 527.0
+offset_top = 203.0
+offset_right = 711.0
+offset_bottom = 234.0
+text = "UNDER CONTRUCTION"
+
+[node name="Credits" type="Button" parent="ButtonManager"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 513.0
+offset_top = 246.0
+offset_right = 521.0
+offset_bottom = 254.0
+scale = Vector2(5, 5)
+text = "Play"
+
+[node name="MoreInfo" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
 [connection signal="timeout" from="chineaseSpyBallon/StartTurning" to="chineaseSpyBallon" method="_on_start_turning_timeout"]
-[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="ButtonManager/Play" to="ButtonManager/Play" method="_on_pressed"]

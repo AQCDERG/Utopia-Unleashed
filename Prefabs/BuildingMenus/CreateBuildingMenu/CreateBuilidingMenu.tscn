@@ -1,0 +1,164 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc13ydrtwfu2x"]
+
+[ext_resource type="Texture2D" uid="uid://bewtavuy7n3fo" path="res://SpriteImages/decorative-chinese-pattern-red-background/SL-101321-46120-66 - Copy.jpg" id="1_03qlk"]
+[ext_resource type="Script" path="res://Prefabs/BuildingMenus/CreateBuildingMenu/CreateBuilidingMenu.gd" id="1_ykcqn"]
+[ext_resource type="FontFile" uid="uid://b00urqx5bpvto" path="res://Fonts/Shanghi Font/shanghai.ttf" id="2_n0cob"]
+
+[sub_resource type="Theme" id="Theme_0ijm4"]
+default_font = ExtResource("2_n0cob")
+default_font_size = 100
+
+[node name="CreateBuilidingMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ykcqn")
+
+[node name="BuildingMenu" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1430.0
+offset_bottom = 3810.0
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("1_03qlk")
+expand_mode = 1
+
+[node name="HeadquarterLabel" type="RichTextLabel" parent="BuildingMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.146
+anchor_top = 0.165
+anchor_right = 0.146
+anchor_bottom = 0.165
+offset_left = -150.581
+offset_top = -95.316
+offset_right = 596.419
+offset_bottom = 236.684
+mouse_filter = 1
+theme = SubResource("Theme_0ijm4")
+text = "Headquater
+
+"
+
+[node name="Headquarter" type="Button" parent="BuildingMenu/HeadquarterLabel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -64.8657
+offset_top = 0.763428
+offset_right = 741.134
+offset_bottom = 133.763
+flat = true
+
+[node name="MineLabel" type="RichTextLabel" parent="BuildingMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.146
+anchor_top = 0.165
+anchor_right = 0.146
+anchor_bottom = 0.165
+offset_left = -157.248
+offset_top = 347.594
+offset_right = 589.752
+offset_bottom = 679.594
+mouse_filter = 1
+theme = SubResource("Theme_0ijm4")
+text = "Mine"
+
+[node name="Mine" type="Button" parent="BuildingMenu/MineLabel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -4.86533
+offset_top = 20.3038
+offset_right = 222.135
+offset_bottom = 131.304
+flat = true
+
+[node name="HunterCabinLabel" type="RichTextLabel" parent="BuildingMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.146
+anchor_top = 0.165
+anchor_right = 0.146
+anchor_bottom = 0.165
+offset_left = -150.581
+offset_top = 770.964
+offset_right = 596.419
+offset_bottom = 1102.97
+mouse_filter = 1
+theme = SubResource("Theme_0ijm4")
+text = "Hunter Cabin
+"
+
+[node name="HunterCabin" type="Button" parent="BuildingMenu/HunterCabinLabel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.274
+offset_left = -13.3333
+offset_top = -19.5399
+offset_right = 633.667
+offset_bottom = 71.491
+flat = true
+
+[node name="ResearchFacilityLabel" type="RichTextLabel" parent="BuildingMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.146
+anchor_top = 0.165
+anchor_right = 0.146
+anchor_bottom = 0.165
+offset_left = -157.581
+offset_top = 1194.15
+offset_right = 895.419
+offset_bottom = 1546.15
+mouse_filter = 1
+theme = SubResource("Theme_0ijm4")
+text = "Mana Dog"
+
+[node name="ManaDogButton" type="Button" parent="BuildingMenu/ResearchFacilityLabel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 490.0
+offset_bottom = 136.0
+flat = true
+
+[node name="EvilCastleLabel" type="RichTextLabel" parent="BuildingMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.146
+anchor_top = 0.165
+anchor_right = 0.146
+anchor_bottom = 0.165
+offset_left = -157.248
+offset_top = 1617.71
+offset_right = 589.752
+offset_bottom = 1949.71
+mouse_filter = 1
+theme = SubResource("Theme_0ijm4")
+text = "Evil Castle
+"
+
+[node name="EvilCastleButton" type="Button" parent="BuildingMenu/EvilCastleLabel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 513.0
+offset_bottom = 117.0
+flat = true
+
+[node name="AtvexTwwLabel" type="RichTextLabel" parent="BuildingMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.146
+anchor_top = 0.165
+anchor_right = 0.146
+anchor_bottom = 0.165
+offset_left = -163.915
+offset_top = 2067.13
+offset_right = 583.085
+offset_bottom = 2399.13
+mouse_filter = 1
+theme = SubResource("Theme_0ijm4")
+text = "@Atvex Tww"

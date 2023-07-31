@@ -12,6 +12,8 @@ static func GetScene() -> PackedScene:
 @export var howling: AnimationPlayer
 @export var howlAudio: AudioStreamPlayer3D
 
+@onready var wanderingAction: WanderingAction = %WanderingAction 
+
 
 func play_howl_animation() -> void:
 	howling.play("Howl")
@@ -21,3 +23,7 @@ func play_attack_animation() -> void:
 
 func play_moving_animation() -> void:
 	movingAnimation.play("Bip01|Take 001|BaseLayer")
+
+func _ready() -> void:
+	super()
+	actionManager.changeActionTo(wanderingAction)

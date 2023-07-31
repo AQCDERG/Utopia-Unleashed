@@ -3,20 +3,23 @@ extends Node
 
 signal onBuildingAdded(building: Building)
 signal onAnimalAdded(animal: Animal)
-signal doCameraShake(amount: float)
+signal doCameraShake(amount: float) # not ideal, but it works.
 
 @export var passiveIncomeIntervalSeconds: float = 5.0
-@export var scienceLabel: RichTextLabel
-@export var soldierLabel: RichTextLabel
-@export var waterColor: MeshInstance3D
-@export var music1: AudioStreamPlayer
-@export var music2: AudioStreamPlayer
+@onready var scienceLabel: RichTextLabel = %ScienceLabel
+@onready var soldierLabel: RichTextLabel = %SoldierLabel
+@onready var waterColor: MeshInstance3D = %Water
+@onready var music1: AudioStreamPlayer = %Music1
+@onready var music2: AudioStreamPlayer = %Music2
 
 @onready var animalFactory: AnimalFactory = %AnimalFactory
 @onready var buildingFactory: BuildingFactory = %BuildingFactory
 
 @onready var cashLabel: RichTextLabel = %CashLabel
 @onready var poorSound: AudioStreamPlayer = %Poor
+
+@onready var cameraRay: RayCast3D = %CameraRay # Be sure to rename your ray to this, with the right script.
+@onready var createBuildingMenu: CreateBuildingMenu = %CreateBuildingMenu # Same.
 
 var _log: Log
 
@@ -35,11 +38,12 @@ func _enter_tree():
 	_log = Log.new(get_script())
 	Game.SetWorld(self)
 
-func _ready() -> void:# Give money IMMEDIATELY.
-	_passiveIncome()
+func _ready() -> void:
 	_playRandomMusic()
-	_createAndConfigureIncomeTimer()
 	_updateCurrencyMaterialsOnChanged()
+	_createAndConfigureIncomeTimer()
+	_passiveIncome() # Give money IMMEDIATELY.
+	_spawnBuildingOnRequested()
 
 
 func _playRandomMusic() -> void:
@@ -70,7 +74,6 @@ func _createAndConfigureIncomeTimer() -> void:
 	add_child(timer)
 	timer.start()
 
-
 func _passiveIncome() -> void:
 	honor.add(250)
 	science.add(1)
@@ -84,6 +87,12 @@ func _passiveIncome() -> void:
 	_spawnDeerRandomly()
 	_spawnWolfRandomly()
 
+func _spawnBuildingOnRequested() -> void:
+	createBuildingMenu.on_building_creation_requested.connect(func(type: Building.Type) -> void:
+		var creationPosition: Vector3 = cameraRay.get_collision_point()
+		spawnBuilding(type, creationPosition)
+	)
+
 func _spawnDeerRandomly() -> void:
 	var deer = animalFactory.createAnimal(Animal.Type.LAVA_DEER)
 	add_child(deer)
@@ -96,19 +105,17 @@ func _spawnWolfRandomly() -> void:
 	wolf.global_position = Vector3(randi_range(-40, 40), 40, randi_range(-40, 40))
 	onAnimalAdded.emit(wolf)
 	
-
-func createBuilding(type: Building.Type, position: Vector3) -> Building:
-	#if !(buildingFactory.canCreateBuilding(type)): # TODO: Implement poor logic.
+func spawnBuilding(type: Building.Type, position: Vector3) -> Building:
+	#if !(buildingFactory.canCreateBuilding(type)): # TODO: Implement poor logic. 	#Building.GetCurrencyCost()
 	#	poorSound.playing = true
 	#	return
 
 	var building: Building = buildingFactory.createBuilding(type)
 	building.position = position
-	Building.GetCurrencyCost()
 	add_child(building)
+	
 
 	# todo: Remove monies.
-
 	doCameraShake.emit(0.3)
 	onBuildingAdded.emit(building)
 	return building

@@ -1,14 +1,16 @@
+Button
+Control
+CreateBuildingMenu
+TextureRect
 MeshInstance3D
 Node
 RichTextLabel
 AnimalMenuManager
 AnimalActionManager
-TextureRect
 CanvasLayer
 Label
 AnimalMenu
 Label3D
-Control
 CollisionShape3D
 ClickDetectionComponent
 PathVisualiserComponent
@@ -28,5 +30,3 @@ Area3D
 AnimationPlayer
 CharacterBody3D
 ShaderGlobalsOverride
-NavigationAgent3D
-NavigationLink3D

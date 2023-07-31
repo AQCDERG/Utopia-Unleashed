@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdy6a5rdlcjp2"]
+[gd_scene load_steps=3 format=3 uid="uid://bdy6a5rdlcjp2"]
 
+[ext_resource type="Script" path="res://Prefabs/AnimalMenus/Hellhound/HellhoundAnimalMenu.gd" id="1_id6bk"]
 [ext_resource type="Texture2D" uid="uid://bnq4r4llen24n" path="res://SpriteImages/HellHoundImage.jpg" id="1_xs03g"]
 
 [node name="Hellhound" type="Control"]
@@ -7,14 +8,59 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1152.0
-offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_id6bk")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
+offset_top = 350.0
 offset_right = 344.0
-offset_bottom = 597.0
-scale = Vector2(0.4, 0.4)
+offset_bottom = 947.0
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_xs03g")
+
+[node name="AnimalGamerTag" type="RichTextLabel" parent="TextureRect"]
+unique_name_in_owner = true
+offset_left = 346.0
+offset_top = 44.0
+offset_right = 1334.0
+offset_bottom = 132.0
+theme_override_colors/default_color = Color(0.286275, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "Name
+"
+
+[node name="Health" type="RichTextLabel" parent="TextureRect"]
+offset_left = 346.0
+offset_top = 250.0
+offset_right = 718.0
+offset_bottom = 824.0
+theme_override_colors/default_color = Color(0.29, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "Health"
+
+[node name="AnimalAction" type="RichTextLabel" parent="TextureRect"]
+unique_name_in_owner = true
+offset_left = 346.0
+offset_top = 500.0
+offset_right = 1188.0
+offset_bottom = 580.0
+theme_override_colors/default_color = Color(0.29, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "Action
+"
+
+[node name="AnimalHealth" type="RichTextLabel" parent="TextureRect"]
+unique_name_in_owner = true
+offset_left = 346.0
+offset_top = 310.0
+offset_right = 1140.0
+offset_bottom = 388.0
+theme_override_colors/default_color = Color(0.29, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "HealthInt"

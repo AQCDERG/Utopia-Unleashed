@@ -10,7 +10,7 @@ func _process(delta: float) -> void:
 func _enter_tree() -> void:
 	var world: World = Game.world
 	if(world != null):
-		world.doCameraShake.connect(func(amount: float):
+		world.doCameraShake.connect(func(amount: float): # not ideal, but it works.
 			add_shake_tension(amount)
 		)
 func add_shake_tension(amount: float) -> void:

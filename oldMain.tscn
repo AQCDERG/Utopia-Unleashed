@@ -1,12 +1,10 @@
-[gd_scene load_steps=85 format=3 uid="uid://cxtf4ckw87i7k"]
+[gd_scene load_steps=84 format=3 uid="uid://cxtf4ckw87i7k"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_b3r3f"]
 [ext_resource type="Script" path="res://Scripts/MainCameraMove.gd" id="3_lbsnc"]
 [ext_resource type="Script" path="res://CameraMovement.gd" id="3_o7aj4"]
-[ext_resource type="Script" path="res://Scripts/placeBuilding.gd" id="4_odcal"]
 [ext_resource type="Script" path="res://Scripts/camZoom.gd" id="5_ery2r"]
 [ext_resource type="Script" path="res://Scripts/CashMonies.gd" id="5_w1egc"]
-[ext_resource type="PackedScene" uid="uid://g3qoxg367ei4" path="res://Scenes/buildingScenes/building_sprite.tscn" id="8_sdao0"]
 [ext_resource type="Shader" path="res://Shader/Currency.gdshader" id="10_cmv7e"]
 [ext_resource type="FontFile" uid="uid://b00urqx5bpvto" path="res://Fonts/Shanghi Font/shanghai.ttf" id="10_yc4np"]
 [ext_resource type="Texture2D" uid="uid://1rqmyy1oqx2j" path="res://SpriteImages/TopUiElement.png" id="11_e46yx"]
@@ -57,6 +55,7 @@
 [ext_resource type="Script" path="res://Scripts/LabelScripts/HarmonyLabel.gd" id="46_djpet"]
 [ext_resource type="Script" path="res://managers/BuildingFactory.gd" id="56_cbi5d"]
 [ext_resource type="PackedScene" uid="uid://c5wxqy3kel0v4" path="res://Prefabs/Buildings/DefenderBuildings/LavaTower/LavaTower.tscn" id="60_ljpxv"]
+[ext_resource type="PackedScene" uid="uid://cc13ydrtwfu2x" path="res://Prefabs/BuildingMenus/CreateBuildingMenu/CreateBuilidingMenu.tscn" id="60_sq3v5"]
 [ext_resource type="ArrayOccluder3D" uid="uid://dsewlunvhxvor" path="res://oldMain.occ" id="60_xibtd"]
 [ext_resource type="Script" path="res://managers/AnimalFactory.gd" id="61_fx1g6"]
 [ext_resource type="Script" path="res://Scripts/LabelScripts/AnimalMenuManager.gd" id="62_hxnab"]
@@ -2618,14 +2617,9 @@ agent_max_climb = 0.4
 [sub_resource type="BoxShape3D" id="BoxShape3D_ysjqk"]
 size = Vector3(0.0130914, 0.0905176, 1)
 
-[node name="world" type="Node" node_paths=PackedStringArray("scienceLabel", "soldierLabel", "waterColor", "music1", "music2")]
+[node name="world" type="Node"]
 script = ExtResource("1_b3r3f")
 passiveIncomeIntervalSeconds = 1.0
-scienceLabel = NodePath("UI/CashLabels/ScienceLabel")
-soldierLabel = NodePath("UI/CashLabels/WarrioirLabel")
-waterColor = NodePath("Water")
-music1 = NodePath("Music/AmbientMusic")
-music2 = NodePath("Music/AmbientMusic2")
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4007, -1.31781, -14.1167)
@@ -2653,17 +2647,10 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 
 mesh = SubResource("BoxMesh_5ffk6")
 skeleton = NodePath("../../../..")
 
-[node name="RayCast3D" type="RayCast3D" parent="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D" node_paths=PackedStringArray("buildingsprite", "headqaurterButton", "hunterCabinButton", "mineButton", "evilCastleButton", "manaDogButton")]
+[node name="CameraRay" type="RayCast3D" parent="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40635, 0.685088, 2.2331)
 target_position = Vector3(0, 0, -40)
-script = ExtResource("4_odcal")
-wall_sprite = ExtResource("8_sdao0")
-buildingsprite = NodePath("../../../../../../UI/Menus/BuildingMenu")
-headqaurterButton = NodePath("../../../../../../UI/Menus/BuildingMenu/HeadquarterLabel/Headquarter")
-hunterCabinButton = NodePath("../../../../../../UI/Menus/BuildingMenu/HunterCabinLabel/HunterCabin")
-mineButton = NodePath("../../../../../../UI/Menus/BuildingMenu/MineLabel/Mine")
-evilCastleButton = NodePath("../../../../../../UI/Menus/BuildingMenu/EvilCastleLabel/EvilCastleButton")
-manaDogButton = NodePath("../../../../../../UI/Menus/BuildingMenu/ResearchFacilityLabel/ManaDogButton")
 
 [node name="newBuildings" type="Node3D" parent="."]
 
@@ -2913,9 +2900,12 @@ offset_bottom = 40.0
 mouse_filter = 1
 
 [node name="BuildingMenu" type="TextureRect" parent="UI/Menus"]
+visible = false
 layout_mode = 1
-offset_right = 1430.0
-offset_bottom = 3810.0
+offset_left = 311.0
+offset_top = 45.0
+offset_right = 1741.0
+offset_bottom = 3855.0
 scale = Vector2(0.17, 0.17)
 texture = ExtResource("14_c4yfs")
 expand_mode = 1
@@ -3351,6 +3341,7 @@ tab_size = 6
 script = ExtResource("5_w1egc")
 
 [node name="ScienceLabel" type="RichTextLabel" parent="UI/CashLabels"]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_j6l0f")
 layout_mode = 1
 anchors_preset = -1
@@ -3374,7 +3365,8 @@ text = "0
 fit_content = true
 script = ExtResource("14_hyi1d")
 
-[node name="WarrioirLabel" type="RichTextLabel" parent="UI/CashLabels"]
+[node name="SoldierLabel" type="RichTextLabel" parent="UI/CashLabels"]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_4jtet")
 layout_mode = 0
 offset_left = 858.0
@@ -3391,6 +3383,7 @@ text = "o"
 script = ExtResource("19_aekwy")
 
 [node name="ManaLabel" type="RichTextLabel" parent="UI/CashLabels"]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_j6l0f")
 layout_mode = 1
 anchors_preset = -1
@@ -3415,6 +3408,7 @@ fit_content = true
 script = ExtResource("42_u8dso")
 
 [node name="LifeLabel" type="RichTextLabel" parent="UI/CashLabels"]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_j6l0f")
 layout_mode = 1
 anchors_preset = -1
@@ -3439,6 +3433,7 @@ fit_content = true
 script = ExtResource("43_by333")
 
 [node name="DeathLabel" type="RichTextLabel" parent="UI/CashLabels"]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_j6l0f")
 layout_mode = 1
 anchors_preset = -1
@@ -3463,6 +3458,7 @@ fit_content = true
 script = ExtResource("44_hvah5")
 
 [node name="PassionLabel" type="RichTextLabel" parent="UI/CashLabels"]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_j6l0f")
 layout_mode = 1
 anchors_preset = -1
@@ -3487,6 +3483,7 @@ fit_content = true
 script = ExtResource("45_w7hjd")
 
 [node name="HarmonyLabel" type="RichTextLabel" parent="UI/CashLabels"]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_j6l0f")
 layout_mode = 1
 anchors_preset = -1
@@ -3511,6 +3508,7 @@ fit_content = true
 script = ExtResource("46_djpet")
 
 [node name="Water" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 200, 13.0625, -4.40519, 121.16)
 mesh = SubResource("PlaneMesh_41niq")
 
@@ -3519,11 +3517,13 @@ transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 
 
 [node name="Music" type="Node3D" parent="."]
 
-[node name="AmbientMusic" type="AudioStreamPlayer" parent="Music"]
+[node name="Music1" type="AudioStreamPlayer" parent="Music"]
+unique_name_in_owner = true
 stream = ExtResource("21_j3eil")
 volume_db = -25.0
 
-[node name="AmbientMusic2" type="AudioStreamPlayer" parent="Music"]
+[node name="Music2" type="AudioStreamPlayer" parent="Music"]
+unique_name_in_owner = true
 stream = ExtResource("36_ibuab")
 volume_db = -28.0
 
@@ -3604,18 +3604,38 @@ script = ExtResource("56_cbi5d")
 occluder = ExtResource("60_xibtd")
 bake_simplification_distance = 0.5
 
-[node name="BuildingMenuManager" type="Node" parent="."]
-script = ExtResource("62_k401m")
-
-[node name="AnimalMenuManager" type="Node" parent="."]
+[node name="AnimalMenuManager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("62_hxnab")
+metadata/_edit_lock_ = true
+
+[node name="BuildingMenuManager" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("62_k401m")
+metadata/_edit_lock_ = true
 
 [node name="Node" type="Node" parent="."]
 
-[connection signal="pressed" from="UI/Menus/BuildingMenu/HeadquarterLabel/Headquarter" to="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/RayCast3D" method="_on_headquarter_pressed"]
-[connection signal="pressed" from="UI/Menus/BuildingMenu/MineLabel/Mine" to="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/RayCast3D" method="_on_mine_pressed"]
-[connection signal="pressed" from="UI/Menus/BuildingMenu/HunterCabinLabel/HunterCabin" to="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/RayCast3D" method="_on_hunter_cabin_pressed"]
-[connection signal="pressed" from="UI/Menus/BuildingMenu/ResearchFacilityLabel/ManaDogButton" to="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/RayCast3D" method="_on_mana_dog_button_pressed"]
-[connection signal="pressed" from="UI/Menus/BuildingMenu/EvilCastleLabel/EvilCastleButton" to="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/RayCast3D" method="_on_evil_castle_button_pressed"]
+[node name="CreateBuildingMenu" parent="." instance=ExtResource("60_sq3v5")]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="UI/Menus/BuildingMenu/HeadquarterLabel/Headquarter" to="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/CameraRay" method="_on_headquarter_pressed"]
+[connection signal="pressed" from="UI/Menus/BuildingMenu/MineLabel/Mine" to="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/CameraRay" method="_on_mine_pressed"]
+[connection signal="pressed" from="UI/Menus/BuildingMenu/HunterCabinLabel/HunterCabin" to="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/CameraRay" method="_on_hunter_cabin_pressed"]
+[connection signal="pressed" from="UI/Menus/BuildingMenu/ResearchFacilityLabel/ManaDogButton" to="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/CameraRay" method="_on_mana_dog_button_pressed"]
+[connection signal="pressed" from="UI/Menus/BuildingMenu/EvilCastleLabel/EvilCastleButton" to="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/CameraRay" method="_on_evil_castle_button_pressed"]
 
 [editable path="NavigationRegion3D/rampTerrian"]

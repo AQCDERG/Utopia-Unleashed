@@ -1,30 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2p0mxahjx8m6"]
+[gd_scene load_steps=3 format=3 uid="uid://d2p0mxahjx8m6"]
 
 [ext_resource type="Texture2D" uid="uid://dot1bak1j1qow" path="res://SpriteImages/LavaDeerImage.jpg" id="1_rr2p3"]
+[ext_resource type="Script" path="res://Prefabs/AnimalMenus/LavaDeer/LavaDeerAnimalMenu.gd" id="1_unsiv"]
 
 [node name="LavaDeerMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -324.0
-offset_bottom = -324.0
+anchor_right = 0.286458
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_unsiv")
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
-offset_top = 349.0
-offset_right = 342.0
-offset_bottom = 948.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 342.0
+offset_bottom = 342.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_rr2p3")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Name" type="RichTextLabel" parent="TextureRect"]
+[node name="AnimalGamerTag" type="RichTextLabel" parent="TextureRect"]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 360.0
-offset_top = 20.0
-offset_right = 1348.0
-offset_bottom = 108.0
+offset_left = 346.0
+offset_top = 44.0
+offset_right = 1334.0
+offset_bottom = 132.0
 theme_override_colors/default_color = Color(0.286275, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 50
@@ -33,33 +41,35 @@ text = "Name
 
 [node name="Health" type="RichTextLabel" parent="TextureRect"]
 layout_mode = 0
-offset_left = 360.0
+offset_left = 346.0
 offset_top = 250.0
-offset_right = 732.0
+offset_right = 718.0
 offset_bottom = 824.0
 theme_override_colors/default_color = Color(0.29, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 50
 text = "Health"
 
-[node name="Action" type="RichTextLabel" parent="TextureRect"]
+[node name="AnimalAction" type="RichTextLabel" parent="TextureRect"]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 360.0
-offset_top = 490.0
-offset_right = 1202.0
-offset_bottom = 570.0
+offset_left = 346.0
+offset_top = 500.0
+offset_right = 1188.0
+offset_bottom = 580.0
 theme_override_colors/default_color = Color(0.29, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 50
 text = "Action
 "
 
-[node name="HealthInteger" type="RichTextLabel" parent="TextureRect"]
+[node name="AnimalHealth" type="RichTextLabel" parent="TextureRect"]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 360.0
-offset_top = 300.0
-offset_right = 1154.0
-offset_bottom = 378.0
+offset_left = 346.0
+offset_top = 310.0
+offset_right = 1140.0
+offset_bottom = 388.0
 theme_override_colors/default_color = Color(0.29, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 50
