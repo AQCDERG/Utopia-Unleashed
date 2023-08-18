@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://cxtf4ckw87i7k"]
+[gd_scene load_steps=85 format=3 uid="uid://cxtf4ckw87i7k"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_b3r3f"]
 [ext_resource type="Script" path="res://Scripts/MainCameraMove.gd" id="3_lbsnc"]
@@ -53,6 +53,7 @@
 [ext_resource type="Script" path="res://Scripts/LabelScripts/DeathLabel.gd" id="44_hvah5"]
 [ext_resource type="Script" path="res://Scripts/LabelScripts/PassionLabel.gd" id="45_w7hjd"]
 [ext_resource type="Script" path="res://Scripts/LabelScripts/HarmonyLabel.gd" id="46_djpet"]
+[ext_resource type="AudioStream" uid="uid://n6kjj381721" path="res://Sounds/chinese-music-traditional-new-year-celebration-115500.mp3" id="52_h1wf8"]
 [ext_resource type="Script" path="res://managers/BuildingFactory.gd" id="56_cbi5d"]
 [ext_resource type="PackedScene" uid="uid://c5wxqy3kel0v4" path="res://Prefabs/Buildings/DefenderBuildings/LavaTower/LavaTower.tscn" id="60_ljpxv"]
 [ext_resource type="PackedScene" uid="uid://cc13ydrtwfu2x" path="res://Prefabs/BuildingMenus/CreateBuildingMenu/CreateBuilidingMenu.tscn" id="60_sq3v5"]
@@ -2670,6 +2671,7 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="DAssetscom" type="Control" parent="UI"]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -2894,6 +2896,7 @@ scale = Vector2(2.078, 1.37)
 texture = ExtResource("25_qnu3w")
 
 [node name="Menus" type="Control" parent="UI"]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -3544,6 +3547,11 @@ unique_name_in_owner = true
 stream = ExtResource("40_r2d6d")
 volume_db = -15.446
 
+[node name="Music3" type="AudioStreamPlayer" parent="Music"]
+unique_name_in_owner = true
+stream = ExtResource("52_h1wf8")
+volume_db = -18.749
+
 [node name="TextEdit" type="TextEdit" parent="."]
 offset_right = 8.0
 offset_bottom = 8.0
@@ -3578,10 +3586,10 @@ navigation_mesh = SubResource("NavigationMesh_8emcf")
 [node name="rampTerrian" parent="NavigationRegion3D" instance=ExtResource("22_s4t82")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22466, -0.594472, 2.15572)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+[node name="Border" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(7596.08, 0, 0, 0, 358.493, 0, 0, 0, 0.273816, -1.0474, 0.703708, -35.3262)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Border"]
 transform = Transform3D(0.755832, 0, 0, 0, 0.0968899, 0, 0, 0, 0.0760854, 0, 0, 0)
 shape = SubResource("BoxShape3D_ysjqk")
 

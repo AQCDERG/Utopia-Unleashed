@@ -1,6 +1,7 @@
 class_name AnimalAction 
 extends Node
 
+# protected
 var _log: Log
 
 func _enter_tree() -> void:

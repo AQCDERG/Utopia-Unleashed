@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bu88417t0mqr0"]
+[gd_scene load_steps=17 format=3 uid="uid://bu88417t0mqr0"]
 
 [ext_resource type="Script" path="res://Templates/Animal/Animal.gd" id="1_gsic3"]
 [ext_resource type="Script" path="res://components/HealthComponent.gd" id="2_cvmep"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://components/ClickDetectionComponent.gd" id="6_grcnt"]
 [ext_resource type="Script" path="res://Templates/Animal/Actions/AnimalActionManager.gd" id="7_xdx1e"]
 [ext_resource type="Script" path="res://Templates/Animal/Actions/Custom/WanderingAction.gd" id="8_1lkvh"]
+[ext_resource type="Script" path="res://Templates/Animal/Actions/Custom/AttackAction.gd" id="11_71ria"]
 [ext_resource type="Script" path="res://Scripts/GamertagGenerator.gd" id="12_jhtwa"]
 [ext_resource type="Script" path="res://Scripts/AnimalName.gd" id="13_gtwk0"]
 
@@ -68,6 +69,15 @@ script = ExtResource("7_xdx1e")
 unique_name_in_owner = true
 script = ExtResource("8_1lkvh")
 
+[node name="AttackAction" type="Node" parent="AnimalActionManager"]
+unique_name_in_owner = true
+script = ExtResource("11_71ria")
+
+[node name="AttackArea" type="Area3D" parent="AnimalActionManager/AttackAction"]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimalActionManager/AttackAction/AttackArea"]
+
 [node name="HurtParticles" type="GPUParticles3D" parent="."]
 unique_name_in_owner = true
 
@@ -78,12 +88,15 @@ mesh = SubResource("SphereMesh_ngfdk")
 [node name="Animations" type="Node3D" parent="."]
 
 [node name="MovingAnimation" type="AnimationPlayer" parent="Animations"]
+unique_name_in_owner = true
 root_node = NodePath("../..")
 
 [node name="DyingAnimation" type="AnimationPlayer" parent="Animations"]
+unique_name_in_owner = true
 root_node = NodePath("../..")
 
 [node name="AttakingAnimation" type="AnimationPlayer" parent="Animations"]
+unique_name_in_owner = true
 root_node = NodePath("../..")
 
 [node name="Collisions" type="Node3D" parent="."]
@@ -105,3 +118,5 @@ pixel_size = 0.01
 billboard = 1
 text = "wfeewffew"
 script = ExtResource("13_gtwk0")
+
+[connection signal="body_entered" from="AnimalActionManager/AttackAction/AttackArea" to="AnimalActionManager/AttackAction" method="_on_attack_area_body_entered"]

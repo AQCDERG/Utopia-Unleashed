@@ -1,5 +1,6 @@
 class_name AnimalActionManager
 extends Node
+
 enum ActionType {
 	STATIONARY,
 	WANDERING,
@@ -39,4 +40,4 @@ func _beginNewAction(action: AnimalAction) -> void:
 		animal.currentAction.begin(animal)
 
 func getCurrentAction() -> ActionType:
-	return ActionType.WANDERING
+	return ActionType.ATTACKING

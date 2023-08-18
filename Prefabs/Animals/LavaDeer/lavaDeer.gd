@@ -15,6 +15,8 @@ static func GetScene() -> PackedScene:
 
 @onready var wanderingAction: WanderingAction = %WanderingAction 
 
+
+
 func _playMovingAnimation() -> void:
 	movingAnimation.play("Moving")
 
@@ -24,3 +26,7 @@ func _playMustacheTwirlAnimation() -> void:
 func _ready() -> void:
 	super()
 	actionManager.changeActionTo(wanderingAction)
+	actionManager.onActionChanged.connect(func(_previousAction: AnimalAction, newAction: AnimalAction):
+		if newAction is WanderingAction:
+			_playMovingAnimation()
+	)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dt82srqd46778"]
+[gd_scene load_steps=34 format=3 uid="uid://dt82srqd46778"]
 
 [ext_resource type="Shader" path="res://Prefabs/VolumetricClouds/clouds.gdshader" id="1_h3xby"]
 [ext_resource type="Texture2D" uid="uid://c8gw3ds38rx3k" path="res://ParticleProject/Images/brightGlowParticle.png" id="1_nd4il"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bydpojcnp017f" path="res://Prefabs/VolumetricClouds/weather.bmp" id="3_7eyqw"]
 [ext_resource type="PackedScene" uid="uid://btp7yd7x1h0gs" path="res://FinishedBlednerGoods/Terrain/Mountain/matterhorn_mountain_in_the_alps/scene.gltf" id="3_b5xhh"]
 [ext_resource type="PackedScene" uid="uid://ch0mubgpem5vu" path="res://Scenes/Actualshivering_heights.tscn" id="3_m117w"]
-[ext_resource type="PackedScene" uid="uid://bcny4g4yyx76b" path="res://FinishedBlednerGoods/AShiveringHeights.gltf" id="4_ignfg"]
 [ext_resource type="CompressedTexture3D" uid="uid://s764lw4j2o4w" path="res://Prefabs/VolumetricClouds/worlnoise.bmp" id="4_qvkp5"]
 [ext_resource type="PackedScene" uid="uid://ympy38k3umbr" path="res://Prefabs/chinease_spy_ballon.tscn" id="6_5tr3f"]
 [ext_resource type="Script" path="res://Scripts/bobbleUp.gd" id="10_hwo68"]
@@ -16,7 +15,9 @@
 [ext_resource type="FontFile" uid="uid://b00urqx5bpvto" path="res://Fonts/Shanghi Font/shanghai.ttf" id="13_wrdvr"]
 [ext_resource type="Texture2D" uid="uid://ddy4tm3tyfk3x" path="res://SpriteImages/yinyangSymbol.png" id="16_shrjk"]
 [ext_resource type="Script" path="res://Scripts/ButtonManager.gd" id="17_4eb44"]
+[ext_resource type="Texture2D" uid="uid://bnq4r4llen24n" path="res://SpriteImages/HellHoundImage.jpg" id="17_f6djx"]
 [ext_resource type="Script" path="res://Scripts/YinyangSymbol.gd" id="17_riax0"]
+[ext_resource type="Texture2D" uid="uid://12hbgrvkuavx" path="res://SpriteImages/139Z_chinese_frame_6.png" id="17_sljma"]
 
 [sub_resource type="Gradient" id="Gradient_b1cm2"]
 offsets = PackedFloat32Array(0, 0.710438, 1)
@@ -184,9 +185,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 359.589, 111.989, -81.491)
 [node name="scene2" parent="." instance=ExtResource("3_b5xhh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 412.851, 62.0138, -279.029)
 
-[node name="AShiveringHeights" parent="." instance=ExtResource("4_ignfg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.653, 143.725, -299.741)
-
 [node name="AShiveringHeights2" parent="." instance=ExtResource("3_m117w")]
 transform = Transform3D(-12.941, 0, -48.2963, 0, 50, 0, 48.2963, 0, -12.941, -102.484, -221.243, -283.95)
 
@@ -247,28 +245,65 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("17_4eb44")
 
+[node name="UiBackground" type="TextureRect" parent="ButtonManager"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 430.0
+offset_top = 206.0
+offset_right = 470.0
+offset_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(6.72416, 10.4636)
+texture = ExtResource("17_f6djx")
+expand_mode = 1
+
+[node name="GoldFrame" type="TextureRect" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 346.0
+offset_top = 70.0
+offset_right = 5346.0
+offset_bottom = 5070.0
+scale = Vector2(0.095, 0.145)
+texture = ExtResource("17_sljma")
+
 [node name="Play" type="Button" parent="ButtonManager"]
 unique_name_in_owner = true
-offset_left = 527.0
-offset_top = 203.0
-offset_right = 711.0
-offset_bottom = 234.0
-text = "UNDER CONTRUCTION"
+layout_mode = 0
+offset_left = 491.0
+offset_top = 276.0
+offset_right = 675.0
+offset_bottom = 307.0
+text = "Play"
 
-[node name="Credits" type="Button" parent="ButtonManager"]
+[node name="Button" type="Button" parent="ButtonManager"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 513.0
-offset_top = 246.0
-offset_right = 521.0
-offset_bottom = 254.0
-scale = Vector2(5, 5)
-text = "Play"
+offset_left = 490.0
+offset_top = 330.0
+offset_right = 679.945
+offset_bottom = 361.0
+text = "Credits"
 
 [node name="MoreInfo" type="Button" parent="ButtonManager"]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 495.0
+offset_top = 383.0
+offset_right = 684.945
+offset_bottom = 414.0
+text = "More Info
+"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="timeout" from="chineaseSpyBallon/StartTurning" to="chineaseSpyBallon" method="_on_start_turning_timeout"]
-[connection signal="pressed" from="ButtonManager/Play" to="ButtonManager/Play" method="_on_pressed"]
+[connection signal="pressed" from="ButtonManager/Play" to="ButtonManager" method="_on_play_pressed"]

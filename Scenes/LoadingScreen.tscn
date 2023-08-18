@@ -1,0 +1,170 @@
+[gd_scene load_steps=18 format=3 uid="uid://cnjnlyybrg8f6"]
+
+[ext_resource type="Script" path="res://Scenes/LoadingScreenManager.gd" id="1_578jb"]
+[ext_resource type="Shader" path="res://Shader/buildingMenu.gdshader" id="1_weu7p"]
+[ext_resource type="Texture2D" uid="uid://ci2osmnx163i" path="res://SpriteImages/colorBackground/NWQ4.jpg" id="2_36alk"]
+[ext_resource type="Texture2D" uid="uid://d05m3cke4dlwi" path="res://SpriteImages/red-chinese-pattern-background-with-golden-borders/SL-101321-46120-54.jpg" id="3_7uloj"]
+[ext_resource type="FontFile" uid="uid://b00urqx5bpvto" path="res://Fonts/Shanghi Font/shanghai.ttf" id="5_f2b8i"]
+[ext_resource type="AudioStream" uid="uid://4cn10n6ck1o5" path="res://Sounds/LoadingMusic.mp3" id="6_jo056"]
+[ext_resource type="Texture2D" uid="uid://12hbgrvkuavx" path="res://SpriteImages/139Z_chinese_frame_6.png" id="8_b50at"]
+[ext_resource type="Texture2D" uid="uid://ddy4tm3tyfk3x" path="res://SpriteImages/yinyangSymbol.png" id="9_nj100"]
+[ext_resource type="Script" path="res://Scripts/YinyangSymbol.gd" id="10_2ybvc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_po4ok"]
+shader = ExtResource("1_weu7p")
+shader_parameter/noiseTexture = ExtResource("2_36alk")
+
+[sub_resource type="Animation" id="Animation_q5ow1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scrolling:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gvy60"]
+resource_name = "ScrollImage"
+length = 32.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scrolling:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 32),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1500, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eykrt"]
+_data = {
+"RESET": SubResource("Animation_q5ow1"),
+"ScrollImage": SubResource("Animation_gvy60")
+}
+
+[sub_resource type="Theme" id="Theme_qllpy"]
+default_font = ExtResource("5_f2b8i")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shwkd"]
+bg_color = Color(1, 0.435294, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0uac"]
+bg_color = Color(1, 0.827451, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="Theme" id="Theme_iekph"]
+default_font = ExtResource("5_f2b8i")
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_578jb")
+
+[node name="HeadquaterMenu" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_po4ok")
+position = Vector2(580, 321)
+scale = Vector2(0.195, 0.165)
+texture = ExtResource("3_7uloj")
+
+[node name="LoadingMusic" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_jo056")
+volume_db = -23.521
+autoplay = true
+
+[node name="ScrollingAnimation" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_eykrt")
+}
+
+[node name="Scrolling" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SideScrollingImage" type="TextureRect" parent="Scrolling"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1175.44
+offset_top = 93.0
+offset_right = 1215.44
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(6.72416, 10.4636)
+expand_mode = 1
+
+[node name="ScrollingBorder" type="TextureRect" parent="Scrolling"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GoldFrame" type="TextureRect" parent="Scrolling"]
+layout_mode = 0
+offset_left = 1092.0
+offset_top = -39.0
+offset_right = 6092.0
+offset_bottom = 4961.0
+scale = Vector2(0.095, 0.145)
+texture = ExtResource("8_b50at")
+
+[node name="LoadingBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 312.0
+offset_top = 495.0
+offset_right = 571.76
+offset_bottom = 522.0
+scale = Vector2(2.5, 2.5)
+theme = SubResource("Theme_qllpy")
+theme_override_colors/font_color = Color(0.0117647, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_shwkd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_h0uac")
+value = 50.0
+
+[node name="Tips" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 5.0
+offset_top = 536.0
+offset_right = 1145.7
+offset_bottom = 605.82
+theme = SubResource("Theme_iekph")
+theme_override_font_sizes/normal_font_size = 36
+text = "ff"
+
+[node name="YinyangSymbol" type="Sprite2D" parent="."]
+position = Vector2(1123, 607)
+rotation = 0.927881
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("9_nj100")
+script = ExtResource("10_2ybvc")
+
+[connection signal="animation_finished" from="ScrollingAnimation" to="." method="_on_scrolling_animation_animation_finished"]

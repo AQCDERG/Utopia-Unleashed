@@ -11,6 +11,8 @@ signal doCameraShake(amount: float) # not ideal, but it works.
 @onready var waterColor: MeshInstance3D = %Water
 @onready var music1: AudioStreamPlayer = %Music1
 @onready var music2: AudioStreamPlayer = %Music2
+@onready var music3: AudioStreamPlayer = %Music3
+@onready var allMusic = [music1, music2, music3]
 
 @onready var animalFactory: AnimalFactory = %AnimalFactory
 @onready var buildingFactory: BuildingFactory = %BuildingFactory
@@ -47,10 +49,7 @@ func _ready() -> void:
 
 
 func _playRandomMusic() -> void:
-	if bool(randi_range(0, 1)):
-		music1.playing = true
-	else:
-		music2.playing = true
+	allMusic[randi_range(0, allMusic.size() - 1)].playing = true
 
 func _updateCurrencyMaterialsOnChanged() -> void:
 	honor.onCurrencyChanged.connect(func(amount: int) -> void:
@@ -96,13 +95,13 @@ func _spawnBuildingOnRequested() -> void:
 func _spawnDeerRandomly() -> void:
 	var deer = animalFactory.createAnimal(Animal.Type.LAVA_DEER)
 	add_child(deer)
-	deer.global_position = Vector3(randi_range(-40, 40), 40, randi_range(-40, 40))
+	deer.global_position = Vector3(randi_range(90, 100), 40, randi_range(90, 100))
 	onAnimalAdded.emit(deer)
 
 func _spawnWolfRandomly() -> void:
 	var wolf = animalFactory.createAnimal(Animal.Type.HELL_HOUND)
 	add_child(wolf)
-	wolf.global_position = Vector3(randi_range(-40, 40), 40, randi_range(-40, 40))
+	wolf.global_position = Vector3(randi_range(-100, 100), 40, randi_range(0, 200))
 	onAnimalAdded.emit(wolf)
 	
 func spawnBuilding(type: Building.Type, position: Vector3) -> Building:

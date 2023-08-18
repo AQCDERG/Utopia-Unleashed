@@ -59,6 +59,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	# if (!is_multiplayer_authority()):
 	# 	return
+	rotateMoveDirection()
 
 	_handleGravity(delta)
 	move_and_slide()
@@ -72,5 +73,12 @@ func ClientRPC_spawnHurtParticles(amount: int) -> void:
 	hurtParticles.amount = amount
 	hurtParticles.emitting = true
 
-
-
+func rotateMoveDirection() -> void:
+	const LOOK_IN_CORRECT_DIRECTION: bool = true
+	if(velocity != Vector3.ZERO):
+		look_at(position + velocity, Vector3(0,0.1,0), LOOK_IN_CORRECT_DIRECTION)
+	#elif(self.rotation.x < 180):
+	#	look_at(velocity + Vector3(90,0,0))
+	#elif(self.rotation.x < 180):
+	#	look_at(velocity +  Vector3(180,0,0))
+		

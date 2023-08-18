@@ -1,9 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://0n5ky1fkeblx"]
+[gd_scene load_steps=19 format=3 uid="uid://0n5ky1fkeblx"]
 
 [ext_resource type="PackedScene" uid="uid://bu88417t0mqr0" path="res://Templates/Animal.tscn" id="1_jma5k"]
 [ext_resource type="Script" path="res://Prefabs/Animals/Hellhound/Hellhound.gd" id="2_4xvey"]
 [ext_resource type="AudioStream" uid="uid://bkqoyvjplnsva" path="res://Sounds/wolf-howl-6310.mp3" id="3_2mw02"]
 [ext_resource type="Texture2D" uid="uid://bk44td7l7hu16" path="res://SpriteImages/BakedGoods/Diffuse.png" id="3_i7exm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wlf4i"]
 
 [sub_resource type="Animation" id="Animation_a641x"]
 resource_name = "Attack"
@@ -1426,6 +1428,10 @@ _data = {
 script = ExtResource("2_4xvey")
 type = 2
 
+[node name="CollisionShape3D" parent="AnimalActionManager/AttackAction/AttackArea" index="0"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 40, 0, 3.30052, 11.856)
+shape = SubResource("SphereShape3D_wlf4i")
+
 [node name="Howling" type="AnimationPlayer" parent="Animations" index="3"]
 libraries = {
 "": SubResource("AnimationLibrary_gskif")
@@ -1687,3 +1693,5 @@ skin = SubResource("Skin_f28fq")
 libraries = {
 "": SubResource("AnimationLibrary_hlets")
 }
+
+[connection signal="body_entered" from="AnimalActionManager/AttackAction/AttackArea" to="." method="_on_attack_area_body_entered"]
