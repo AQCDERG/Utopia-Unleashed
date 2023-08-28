@@ -46,7 +46,7 @@ func _process(_delta: float) -> void:
   # Sinewave scale.
   incrementalMesh.scale = Vector3(1, 1, 1) * (1.4 + sin(Time.get_ticks_msec() / 100.0)) * 0.4
 
-  incrementalMesh.global_position = pathIncrementPosition
+  incrementalMesh.global_position = pathIncrementPosition - Vector3(0,1,0)
 
   # Final mesh.
   finalMesh.global_position = pathFinderComponent.target_position

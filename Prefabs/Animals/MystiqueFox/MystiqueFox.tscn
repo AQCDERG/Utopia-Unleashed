@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf52s5ok4qgax"]
+
+[ext_resource type="Script" path="res://Templates/Animal/Animal.gd" id="1_pbtph"]
+
+[node name="MystiqueFox" type="CharacterBody3D"]
+script = ExtResource("1_pbtph")

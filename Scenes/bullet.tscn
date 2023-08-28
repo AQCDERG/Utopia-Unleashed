@@ -1,0 +1,137 @@
+[gd_scene load_steps=19 format=3 uid="uid://yga3dm17we5m"]
+
+[ext_resource type="Script" path="res://Scenes/bullet.gd" id="1_je0ug"]
+[ext_resource type="PackedScene" uid="uid://bboh8rbmfuo05" path="res://FinishedBlednerGoods/Bullets/FireBall.glb" id="2_5tsda"]
+[ext_resource type="Texture2D" uid="uid://b7qck1vwqc3hg" path="res://ParticleProject/Assets/Particle/Particles (1)/Particles/Color/fire/magic particles/magic_particles_12.png" id="3_jnqca"]
+[ext_resource type="Texture2D" uid="uid://trqf5qduafnb" path="res://ParticleProject/Assets/Particle/Particles (1)/Particles/Color/fire/magic particles/magic_particles_5.png" id="4_a18ey"]
+[ext_resource type="AudioStream" uid="uid://io0xoe46i8oc" path="res://Sounds/MagicSpawnSound.mp3" id="5_odtuf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_j36mg"]
+radius = 1.31313
+
+[sub_resource type="Gradient" id="Gradient_l6qyt"]
+offsets = PackedFloat32Array(0, 0.106557, 0.479508, 0.610656, 1)
+colors = PackedColorArray(1, 0.498039, 0, 0.0745098, 1, 0, 0, 1, 1, 0.231214, 0, 1, 1, 0.321569, 0, 1, 1, 0.847059, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4803b"]
+gradient = SubResource("Gradient_l6qyt")
+
+[sub_resource type="Curve" id="Curve_02wty"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.592727, 0.736842), 0.0, 0.0, 0, 0, Vector2(1, 0.178947), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bm53s"]
+curve = SubResource("Curve_02wty")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t2ji5"]
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0.5, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 0.2
+tangential_accel_min = -1.0
+tangential_accel_max = 1.0
+scale_curve = SubResource("CurveTexture_bm53s")
+color_ramp = SubResource("GradientTexture1D_4803b")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7i5rd"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("3_jnqca")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ahll5"]
+material = SubResource("StandardMaterial3D_7i5rd")
+size = Vector2(3, 3)
+
+[sub_resource type="Gradient" id="Gradient_bx0fj"]
+offsets = PackedFloat32Array(0.553279, 1)
+colors = PackedColorArray(0.808998, 0.808998, 0.808998, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fqsob"]
+gradient = SubResource("Gradient_bx0fj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pdym7"]
+spread = 180.0
+gravity = Vector3(0, -0.4, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+radial_accel_min = -1.0
+radial_accel_max = 1.0
+tangential_accel_min = -1.0
+tangential_accel_max = 1.0
+color_ramp = SubResource("GradientTexture1D_fqsob")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bmvyf"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_a18ey")
+albedo_texture_force_srgb = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_brpha"]
+material = SubResource("StandardMaterial3D_bmvyf")
+size = Vector2(2.1, 2.1)
+
+[node name="Bullet" type="RigidBody3D"]
+gravity_scale = 0.0
+script = ExtResource("1_je0ug")
+
+[node name="LifeSpan" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="HitRadius" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.596037, 0, 0, 0, 0.596037, 0, 0, 0, 0.596037, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitRadius"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.127048, 0.639084, 0)
+shape = SubResource("SphereShape3D_j36mg")
+
+[node name="BulletMesh" parent="HitRadius" instance=ExtResource("2_5tsda")]
+unique_name_in_owner = true
+
+[node name="TrailParticle" type="GPUParticles3D" parent="HitRadius/BulletMesh"]
+unique_name_in_owner = true
+transform = Transform3D(1.67775, 0, 0, 0, 1.67775, 0, 0, 0, 1.67775, -0.197962, 0.914567, 0)
+amount = 40
+sub_emitter = NodePath(".")
+lifetime = 2.0
+speed_scale = 2.0
+randomness = 1.0
+trail_enabled = true
+trail_lifetime = 0.95
+process_material = SubResource("ParticleProcessMaterial_t2ji5")
+draw_pass_1 = SubResource("QuadMesh_ahll5")
+
+[node name="HitParticle" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.1, 0.5, 0)
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_pdym7")
+draw_pass_1 = SubResource("QuadMesh_brpha")
+
+[node name="MovingSound" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_odtuf")
+
+[node name="HitSound" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="LifeSpan" to="." method="_on_life_span_timeout"]
+[connection signal="body_entered" from="HitRadius" to="." method="_on_hit_radius_body_entered"]

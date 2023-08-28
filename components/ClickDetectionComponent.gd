@@ -2,6 +2,7 @@ extends Area3D
 class_name ClickDetectionComponent
 signal onMouseLeftClickedAnimal
 signal onMouseLeftClicked
+signal onBuildingClicked
 
 var _isMouseHoveredOver: bool = false
 
@@ -17,6 +18,7 @@ func _input_event(_cam: Camera3D, event: InputEvent, _pos: Vector3, _nor: Vector
     var mouseButtonEvent = event as InputEventMouseButton
     if (_is_left_clicked(mouseButtonEvent)):
       onMouseLeftClicked.emit()
+      onBuildingClicked.emit(self)
       print("CLICKED ")
 
 func _is_left_clicked(event: InputEventMouseButton) -> bool:

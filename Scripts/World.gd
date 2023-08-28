@@ -23,6 +23,7 @@ signal doCameraShake(amount: float) # not ideal, but it works.
 @onready var cameraRay: RayCast3D = %CameraRay # Be sure to rename your ray to this, with the right script.
 @onready var createBuildingMenu: CreateBuildingMenu = %CreateBuildingMenu # Same.
 
+@onready var animalCreator: AnimalCreationManager = %AnimalCreationManager
 var _log: Log
 
 var honor: CurrencyManager = CurrencyManager.new()
@@ -46,6 +47,8 @@ func _ready() -> void:
 	_createAndConfigureIncomeTimer()
 	_passiveIncome() # Give money IMMEDIATELY.
 	_spawnBuildingOnRequested()
+	animalCreator.spawnDeerRandomly()
+	animalCreator.spawnWolfRandomly()
 
 
 func _playRandomMusic() -> void:
@@ -83,8 +86,6 @@ func _passiveIncome() -> void:
 	life.add(6)
 	harmony.add(7)
 	#_log.info("Passive income added.")
-	_spawnDeerRandomly()
-	_spawnWolfRandomly()
 
 func _spawnBuildingOnRequested() -> void:
 	createBuildingMenu.on_building_creation_requested.connect(func(type: Building.Type) -> void:
@@ -92,17 +93,7 @@ func _spawnBuildingOnRequested() -> void:
 		spawnBuilding(type, creationPosition)
 	)
 
-func _spawnDeerRandomly() -> void:
-	var deer = animalFactory.createAnimal(Animal.Type.LAVA_DEER)
-	add_child(deer)
-	deer.global_position = Vector3(randi_range(90, 100), 40, randi_range(90, 100))
-	onAnimalAdded.emit(deer)
 
-func _spawnWolfRandomly() -> void:
-	var wolf = animalFactory.createAnimal(Animal.Type.HELL_HOUND)
-	add_child(wolf)
-	wolf.global_position = Vector3(randi_range(-100, 100), 40, randi_range(0, 200))
-	onAnimalAdded.emit(wolf)
 	
 func spawnBuilding(type: Building.Type, position: Vector3) -> Building:
 	#if !(buildingFactory.canCreateBuilding(type)): # TODO: Implement poor logic. 	#Building.GetCurrencyCost()

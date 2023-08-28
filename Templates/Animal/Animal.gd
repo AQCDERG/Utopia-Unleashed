@@ -37,7 +37,7 @@ const AnimalName := preload("res://Scripts/AnimalName.gd")
 @onready var gamerTag: AnimalName = %Name
 
 var currentAction: AnimalAction
-var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity") * 2
 var world: World
 
 
@@ -74,9 +74,16 @@ func ClientRPC_spawnHurtParticles(amount: int) -> void:
 	hurtParticles.emitting = true
 
 func rotateMoveDirection() -> void:
+	var target: Vector3 = position + velocity
+	if(velocity.length() < 0.1):
+		return
+	if(Vector3.UP.cross(target - global_position).is_zero_approx()):
+		return
 	const LOOK_IN_CORRECT_DIRECTION: bool = true
 	if(velocity != Vector3.ZERO):
-		look_at(position + velocity, Vector3(0,0.1,0), LOOK_IN_CORRECT_DIRECTION)
+		#self.rotation.y = position.y + velocity.y
+		#self.rotation.z = position.z + velocity.z
+		look_at(target, Vector3(0,1,0), LOOK_IN_CORRECT_DIRECTION)
 	#elif(self.rotation.x < 180):
 	#	look_at(velocity + Vector3(90,0,0))
 	#elif(self.rotation.x < 180):

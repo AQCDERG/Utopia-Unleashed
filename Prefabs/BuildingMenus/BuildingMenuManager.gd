@@ -6,7 +6,7 @@ const honorGeneratorMenu := preload("res://Prefabs/BuildingMenus/HonorGenerator/
 const headqaurterMenu := preload("res://Prefabs/BuildingMenus/Headquarter/HeadquarterMenu.tscn")
 const evilCastleMenu := preload("res://Prefabs/BuildingMenus/EvilCastle/EvilCastleMenu.tscn")
 const logCabinMenu := preload("res://Prefabs/BuildingMenus/LogCabin/LogCabinMenu.tscn")
-
+var buildingCreated: Building
 var world: World
 var _log: Log
 
@@ -17,12 +17,16 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	world.onBuildingAdded.connect(_on_building_created)
 	
+
 func _on_building_created(building: Building) -> void:
 	building.clickDetection.onMouseLeftClicked.connect(_on_specific_building_clicked.bind(building))
+	buildingCreated = building
 
 func _on_specific_building_clicked(building: Building) -> void:
 	_remove_existing_menus()
 	_show_status_menu_for_building(building)
+	print(buildingCreated)
+	print("WHATT")
 
 func _remove_existing_menus() -> void:
 	# Assuming they are children of this node

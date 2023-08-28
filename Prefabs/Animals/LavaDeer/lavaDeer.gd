@@ -8,7 +8,7 @@ static func GetScene() -> PackedScene:
 	return _scene
 
 
-@export var movingAnimation: AnimationPlayer
+@onready var movingAnimation: AnimationPlayer = %Wandering
 @export var twirlingMustache: AnimationPlayer
 
 @export var attaking: AnimationPlayer
@@ -25,8 +25,8 @@ func _playMustacheTwirlAnimation() -> void:
 
 func _ready() -> void:
 	super()
-	actionManager.changeActionTo(wanderingAction)
 	actionManager.onActionChanged.connect(func(_previousAction: AnimalAction, newAction: AnimalAction):
 		if newAction is WanderingAction:
 			_playMovingAnimation()
 	)
+	actionManager.changeActionTo(wanderingAction)

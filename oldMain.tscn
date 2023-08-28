@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://cxtf4ckw87i7k"]
+[gd_scene load_steps=91 format=3 uid="uid://cxtf4ckw87i7k"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_b3r3f"]
 [ext_resource type="Script" path="res://Scripts/MainCameraMove.gd" id="3_lbsnc"]
@@ -55,10 +55,12 @@
 [ext_resource type="Script" path="res://Scripts/LabelScripts/HarmonyLabel.gd" id="46_djpet"]
 [ext_resource type="AudioStream" uid="uid://n6kjj381721" path="res://Sounds/chinese-music-traditional-new-year-celebration-115500.mp3" id="52_h1wf8"]
 [ext_resource type="Script" path="res://managers/BuildingFactory.gd" id="56_cbi5d"]
+[ext_resource type="Texture2D" uid="uid://c8gw3ds38rx3k" path="res://ParticleProject/Images/brightGlowParticle.png" id="58_dut0g"]
 [ext_resource type="PackedScene" uid="uid://c5wxqy3kel0v4" path="res://Prefabs/Buildings/DefenderBuildings/LavaTower/LavaTower.tscn" id="60_ljpxv"]
 [ext_resource type="PackedScene" uid="uid://cc13ydrtwfu2x" path="res://Prefabs/BuildingMenus/CreateBuildingMenu/CreateBuilidingMenu.tscn" id="60_sq3v5"]
 [ext_resource type="ArrayOccluder3D" uid="uid://dsewlunvhxvor" path="res://oldMain.occ" id="60_xibtd"]
 [ext_resource type="Script" path="res://managers/AnimalFactory.gd" id="61_fx1g6"]
+[ext_resource type="Script" path="res://Scripts/AnimalCreationManager.gd" id="62_4uns5"]
 [ext_resource type="Script" path="res://Scripts/LabelScripts/AnimalMenuManager.gd" id="62_hxnab"]
 [ext_resource type="Script" path="res://Prefabs/BuildingMenus/BuildingMenuManager.gd" id="62_k401m"]
 
@@ -2555,6 +2557,42 @@ shader_parameter/soldier_value = null
 [sub_resource type="Theme" id="Theme_y51ek"]
 default_font = ExtResource("10_yc4np")
 
+[sub_resource type="Gradient" id="Gradient_y3ydo"]
+offsets = PackedFloat32Array(0, 0.280612, 0.510204, 0.688776, 1)
+colors = PackedColorArray(1, 0.462745, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lyvu2"]
+gradient = SubResource("Gradient_y3ydo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_27rcc"]
+emission_shape = 1
+emission_sphere_radius = 0.05
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.01
+initial_velocity_max = 0.01
+scale_min = 0.3
+color_ramp = SubResource("GradientTexture1D_lyvu2")
+turbulence_enabled = true
+turbulence_noise_scale = 5.0
+turbulence_influence_min = 0.01
+turbulence_influence_max = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o26nt"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("58_dut0g")
+albedo_texture_msdf = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_0xajw"]
+material = SubResource("StandardMaterial3D_o26nt")
+size = Vector2(0.01, 0.01)
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ywpok"]
 fractal_octaves = 10
 
@@ -2574,9 +2612,6 @@ material = SubResource("ShaderMaterial_v6iq5")
 size = Vector2(1.4, 1.4)
 subdivide_width = 300
 subdivide_depth = 300
-
-[sub_resource type="Theme" id="Theme_guea4"]
-default_font = ExtResource("10_yc4np")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rfvwl"]
 sky_top_color = Color(0.752941, 0.752941, 0.752941, 1)
@@ -2622,42 +2657,38 @@ size = Vector3(0.0130914, 0.0905176, 1)
 script = ExtResource("1_b3r3f")
 passiveIncomeIntervalSeconds = 1.0
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="Player" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4007, -1.31781, -14.1167)
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="Node3D"]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14157, 2)
 script = ExtResource("3_o7aj4")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="Node3D/CharacterBody3D" node_paths=PackedStringArray("camera")]
+[node name="SpringArm3D" type="SpringArm3D" parent="Player/CharacterBody3D" node_paths=PackedStringArray("camera")]
 transform = Transform3D(1, 0, 0, 0, 0.851727, 0.523986, 0, -0.523986, 0.851727, 0, 3, 0)
 shape = SubResource("SphereShape3D_a3n3s")
 spring_length = 10.0
 script = ExtResource("5_ery2r")
 camera = NodePath("Gimbal/Camera3D")
 
-[node name="Gimbal" type="Node3D" parent="Node3D/CharacterBody3D/SpringArm3D"]
+[node name="Gimbal" type="Node3D" parent="Player/CharacterBody3D/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27372, -11.5035, 5.25525)
 
-[node name="Camera3D" type="Camera3D" parent="Node3D/CharacterBody3D/SpringArm3D/Gimbal"]
+[node name="Camera3D" type="Camera3D" parent="Player/CharacterBody3D/SpringArm3D/Gimbal"]
 fov = 70.0
 script = ExtResource("3_lbsnc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/CharacterBody3D/SpringArm3D/Gimbal/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0)
 mesh = SubResource("BoxMesh_5ffk6")
 skeleton = NodePath("../../../..")
 
-[node name="CameraRay" type="RayCast3D" parent="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D"]
+[node name="CameraRay" type="RayCast3D" parent="Player/CharacterBody3D/SpringArm3D/Gimbal/Camera3D"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40635, 0.685088, 2.2331)
 target_position = Vector3(0, 0, -40)
 
 [node name="newBuildings" type="Node3D" parent="."]
-
-[node name="BuildingTimer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -3510,13 +3541,37 @@ text = "0
 fit_content = true
 script = ExtResource("46_djpet")
 
-[node name="Water" type="MeshInstance3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 200, 13.0625, -4.40519, 121.16)
-mesh = SubResource("PlaneMesh_41niq")
+[node name="TextEdit" type="TextEdit" parent="UI"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+mouse_filter = 1
+script = ExtResource("40_21nhs")
 
-[node name="decimatedDwarfs" parent="." instance=ExtResource("23_1t85d")]
-transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 18.5013, 2.4034, 129.152)
+[node name="CreateBuildingMenu" parent="UI" instance=ExtResource("60_sq3v5")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="BuildingMenuManager" type="Control" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("62_k401m")
+
+[node name="AnimalMenuManager" type="Control" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("62_hxnab")
 
 [node name="Music" type="Node3D" parent="."]
 
@@ -3552,50 +3607,6 @@ unique_name_in_owner = true
 stream = ExtResource("52_h1wf8")
 volume_db = -18.749
 
-[node name="TextEdit" type="TextEdit" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
-mouse_filter = 1
-script = ExtResource("40_21nhs")
-
-[node name="LineEdit" type="LineEdit" parent="."]
-offset_left = -1.0
-offset_top = 611.0
-offset_right = 599.0
-offset_bottom = 640.0
-rotation = 6.28318
-scale = Vector2(0.845227, 1.29866)
-mouse_filter = 1
-theme = SubResource("Theme_guea4")
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 0
-
-[node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_7pptn")
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.017276, 0.794387, 0.607167, -0.792203, -0.359615, 0.493043, 0.610013, -0.489517, 0.623103, 99.1179, 107.339, -124.878)
-light_energy = 0.993
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 21.4728, 0.87784, 115.846)
-navigation_mesh = SubResource("NavigationMesh_8emcf")
-
-[node name="rampTerrian" parent="NavigationRegion3D" instance=ExtResource("22_s4t82")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22466, -0.594472, 2.15572)
-
-[node name="Border" type="StaticBody3D" parent="NavigationRegion3D"]
-transform = Transform3D(7596.08, 0, 0, 0, 358.493, 0, 0, 0, 0.273816, -1.0474, 0.703708, -35.3262)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Border"]
-transform = Transform3D(0.755832, 0, 0, 0, 0.0968899, 0, 0, 0, 0.0760854, 0, 0, 0)
-shape = SubResource("BoxShape3D_ysjqk")
-
-[node name="FinishedlavaTowwer" parent="." instance=ExtResource("60_ljpxv")]
-transform = Transform3D(-0.144935, 0, 0.989441, 0, 1, 0, -0.989441, 0, -0.144935, -107.582, 1.36253, -8.04757)
-
 [node name="Factories" type="Node" parent="."]
 
 [node name="AnimalFactory" type="Node" parent="Factories"]
@@ -3606,44 +3617,72 @@ script = ExtResource("61_fx1g6")
 unique_name_in_owner = true
 script = ExtResource("56_cbi5d")
 
-[node name="AnimalManager" type="Node3D" parent="."]
+[node name="Managers" type="Node" parent="."]
 
-[node name="Node3D2" type="OccluderInstance3D" parent="."]
+[node name="AnimalCreationManager" type="Node" parent="Managers"]
+unique_name_in_owner = true
+script = ExtResource("62_4uns5")
+
+[node name="Enviroment" type="Node3D" parent="."]
+
+[node name="Prefabs" type="Node3D" parent="Enviroment"]
+
+[node name="Lava particle" type="GPUParticles3D" parent="Enviroment/Prefabs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -103.35, 3.76968, 0)
+amount = 50
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_27rcc")
+draw_pass_1 = SubResource("QuadMesh_0xajw")
+
+[node name="FinishedlavaTowwer" parent="Enviroment/Prefabs" instance=ExtResource("60_ljpxv")]
+transform = Transform3D(-0.144935, 0, 0.989441, 0, 1, 0, -0.989441, 0, -0.144935, -107.582, 1.36253, -8.04757)
+
+[node name="decimatedDwarfs" parent="Enviroment/Prefabs" instance=ExtResource("23_1t85d")]
+transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 18.5013, 2.4034, 129.152)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Enviroment"]
+transform = Transform3D(0.017276, 0.794387, 0.607167, -0.792203, -0.359615, 0.493043, 0.610013, -0.489517, 0.623103, 99.1179, 107.339, -124.878)
+light_energy = 0.993
+
+[node name="Water" type="MeshInstance3D" parent="Enviroment"]
+unique_name_in_owner = true
+transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 200, 13.0625, -4.40519, 121.16)
+mesh = SubResource("PlaneMesh_41niq")
+skeleton = NodePath("../..")
+
+[node name="Terrain" type="Node3D" parent="Enviroment"]
+
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="Enviroment/Terrain"]
+environment = SubResource("Environment_7pptn")
+
+[node name="Occulder" type="OccluderInstance3D" parent="Enviroment/Terrain"]
 occluder = ExtResource("60_xibtd")
 bake_simplification_distance = 0.5
 
-[node name="AnimalMenuManager" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-script = ExtResource("62_hxnab")
-metadata/_edit_lock_ = true
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Enviroment/Terrain"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 21.4728, 0.87784, 115.846)
+navigation_mesh = SubResource("NavigationMesh_8emcf")
 
-[node name="BuildingMenuManager" type="Control" parent="."]
-unique_name_in_owner = true
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-script = ExtResource("62_k401m")
-metadata/_edit_lock_ = true
+[node name="rampTerrian" parent="Enviroment/Terrain/NavigationRegion3D" instance=ExtResource("22_s4t82")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22466, -0.594472, 2.15572)
 
-[node name="Node" type="Node" parent="."]
+[node name="Border" type="StaticBody3D" parent="Enviroment/Terrain/NavigationRegion3D"]
+transform = Transform3D(7596.08, 0, 0, 0, 358.493, 0, 0, 0, 0.273816, -1.0474, 0.703708, -35.3262)
 
-[node name="CreateBuildingMenu" parent="." instance=ExtResource("60_sq3v5")]
-unique_name_in_owner = true
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Terrain/NavigationRegion3D/Border"]
+transform = Transform3D(0.755832, 0, 0, 0, 0.0968899, 0, 0, 0, 0.0760854, 0, 0, 0)
+shape = SubResource("BoxShape3D_ysjqk")
 
-[connection signal="pressed" from="UI/Menus/BuildingMenu/HeadquarterLabel/Headquarter" to="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/CameraRay" method="_on_headquarter_pressed"]
-[connection signal="pressed" from="UI/Menus/BuildingMenu/MineLabel/Mine" to="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/CameraRay" method="_on_mine_pressed"]
-[connection signal="pressed" from="UI/Menus/BuildingMenu/HunterCabinLabel/HunterCabin" to="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/CameraRay" method="_on_hunter_cabin_pressed"]
-[connection signal="pressed" from="UI/Menus/BuildingMenu/ResearchFacilityLabel/ManaDogButton" to="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/CameraRay" method="_on_mana_dog_button_pressed"]
-[connection signal="pressed" from="UI/Menus/BuildingMenu/EvilCastleLabel/EvilCastleButton" to="Node3D/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/CameraRay" method="_on_evil_castle_button_pressed"]
+[node name="Timers" type="Node3D" parent="."]
 
-[editable path="NavigationRegion3D/rampTerrian"]
+[node name="BuildingTimer" type="Timer" parent="Timers"]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="pressed" from="UI/Menus/BuildingMenu/HeadquarterLabel/Headquarter" to="Player/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/CameraRay" method="_on_headquarter_pressed"]
+[connection signal="pressed" from="UI/Menus/BuildingMenu/MineLabel/Mine" to="Player/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/CameraRay" method="_on_mine_pressed"]
+[connection signal="pressed" from="UI/Menus/BuildingMenu/HunterCabinLabel/HunterCabin" to="Player/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/CameraRay" method="_on_hunter_cabin_pressed"]
+[connection signal="pressed" from="UI/Menus/BuildingMenu/ResearchFacilityLabel/ManaDogButton" to="Player/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/CameraRay" method="_on_mana_dog_button_pressed"]
+[connection signal="pressed" from="UI/Menus/BuildingMenu/EvilCastleLabel/EvilCastleButton" to="Player/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/CameraRay" method="_on_evil_castle_button_pressed"]
+
+[editable path="Enviroment/Terrain/NavigationRegion3D/rampTerrian"]

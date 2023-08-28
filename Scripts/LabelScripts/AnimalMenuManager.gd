@@ -33,7 +33,9 @@ func _on_animal_created(animal: Animal):
 	animal.clickDetection.onMouseLeftClicked.connect(_on_specific_animal_clicked.bind(animal))
 
 func _on_specific_animal_clicked(animal: Animal) -> void:
+	print("YESS")
 	await _deleteExistingAnimalMenuAsync()
+	print("NOO")
 	createAnimalMenu(animal)
 	
 func _deleteExistingAnimalMenuAsync() -> void:
