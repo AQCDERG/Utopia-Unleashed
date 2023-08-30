@@ -2,7 +2,6 @@ class_name World
 extends Node
 
 signal onBuildingAdded(building: Building)
-signal onAnimalAdded(animal: Animal)
 signal doCameraShake(amount: float) # not ideal, but it works.
 
 @export var passiveIncomeIntervalSeconds: float = 5.0
@@ -16,6 +15,7 @@ signal doCameraShake(amount: float) # not ideal, but it works.
 
 @onready var animalFactory: AnimalFactory = %AnimalFactory
 @onready var buildingFactory: BuildingFactory = %BuildingFactory
+
 
 @onready var cashLabel: RichTextLabel = %CashLabel
 @onready var poorSound: AudioStreamPlayer = %Poor
@@ -103,9 +103,27 @@ func spawnBuilding(type: Building.Type, position: Vector3) -> Building:
 	var building: Building = buildingFactory.createBuilding(type)
 	building.position = position
 	add_child(building)
+	applyBuildingCost(type)
 	
-
 	# todo: Remove monies.
 	doCameraShake.emit(0.3)
 	onBuildingAdded.emit(building)
 	return building
+
+func applyBuildingCost(type: Building.Type):
+	match type:
+		Building.Type.HONOR_GENERATOR:
+			HonorGenerator.getCost(honor)
+		Building.Type.MANA_DOG:
+			ManaDog.getCost(mana, harmony)
+		Building.Type.HEADQUARTER:
+			HeadQuarters.getCost(honor, mana, harmony, life)
+		Building.Type.EVIL_CASTLE:
+			EvilCastle.getCost(death, passion)
+		Building.Type.LOG_CABIN:
+			LogCabin.getCost(honor, passion)
+		Building.Type.WATCH_TOWER:
+			WatchTower.getCost(honor, passion, death)
+		_:
+			push_error("Invalid building type")
+			return null

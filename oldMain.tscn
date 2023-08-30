@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://cxtf4ckw87i7k"]
+[gd_scene load_steps=96 format=3 uid="uid://cxtf4ckw87i7k"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_b3r3f"]
 [ext_resource type="Script" path="res://Scripts/MainCameraMove.gd" id="3_lbsnc"]
@@ -24,7 +24,6 @@
 [ext_resource type="AudioStream" uid="uid://cnc3xu3n33d2o" path="res://Sounds/AmbientChinesseMusic.mp3" id="21_j3eil"]
 [ext_resource type="Shader" path="res://Shader/buildingMenu.gdshader" id="22_2xpc1"]
 [ext_resource type="PackedScene" uid="uid://b8e0iomhi52ui" path="res://Scenes/ramp_terrian.tscn" id="22_s4t82"]
-[ext_resource type="PackedScene" uid="uid://ciwjf2bl68ex7" path="res://FinishedBlednerGoods/decimatedDwarfs.glb" id="23_1t85d"]
 [ext_resource type="Shader" path="res://Water.gdshader" id="23_3c6yl"]
 [ext_resource type="Texture2D" uid="uid://d05m3cke4dlwi" path="res://SpriteImages/red-chinese-pattern-background-with-golden-borders/SL-101321-46120-54.jpg" id="23_6gmiw"]
 [ext_resource type="Texture2D" uid="uid://ci2osmnx163i" path="res://SpriteImages/colorBackground/NWQ4.jpg" id="23_ctbnm"]
@@ -60,9 +59,11 @@
 [ext_resource type="PackedScene" uid="uid://cc13ydrtwfu2x" path="res://Prefabs/BuildingMenus/CreateBuildingMenu/CreateBuilidingMenu.tscn" id="60_sq3v5"]
 [ext_resource type="ArrayOccluder3D" uid="uid://dsewlunvhxvor" path="res://oldMain.occ" id="60_xibtd"]
 [ext_resource type="Script" path="res://managers/AnimalFactory.gd" id="61_fx1g6"]
+[ext_resource type="PackedScene" uid="uid://kq2fmk4n2rn2" path="res://Prefabs/Buildings/DwarfHall/DwarfHall.tscn" id="61_twu0g"]
 [ext_resource type="Script" path="res://Scripts/AnimalCreationManager.gd" id="62_4uns5"]
 [ext_resource type="Script" path="res://Scripts/LabelScripts/AnimalMenuManager.gd" id="62_hxnab"]
 [ext_resource type="Script" path="res://Prefabs/BuildingMenus/BuildingMenuManager.gd" id="62_k401m"]
+[ext_resource type="Script" path="res://Scripts/MovementManager.gd" id="64_oakoc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a3n3s"]
 
@@ -2653,6 +2654,17 @@ agent_max_climb = 0.4
 [sub_resource type="BoxShape3D" id="BoxShape3D_ysjqk"]
 size = Vector3(0.0130914, 0.0905176, 1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_k2fhs"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_elpt2"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r3p0s"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_60t64"]
+
 [node name="world" type="Node"]
 script = ExtResource("1_b3r3f")
 passiveIncomeIntervalSeconds = 1.0
@@ -2661,6 +2673,7 @@ passiveIncomeIntervalSeconds = 1.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4007, -1.31781, -14.1167)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="Player"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14157, 2)
 script = ExtResource("3_o7aj4")
 
@@ -2675,6 +2688,7 @@ camera = NodePath("Gimbal/Camera3D")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27372, -11.5035, 5.25525)
 
 [node name="Camera3D" type="Camera3D" parent="Player/CharacterBody3D/SpringArm3D/Gimbal"]
+unique_name_in_owner = true
 fov = 70.0
 script = ExtResource("3_lbsnc")
 
@@ -2697,9 +2711,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
 
 [node name="DAssetscom" type="Control" parent="UI"]
 visible = false
@@ -3637,8 +3650,8 @@ draw_pass_1 = SubResource("QuadMesh_0xajw")
 [node name="FinishedlavaTowwer" parent="Enviroment/Prefabs" instance=ExtResource("60_ljpxv")]
 transform = Transform3D(-0.144935, 0, 0.989441, 0, 1, 0, -0.989441, 0, -0.144935, -107.582, 1.36253, -8.04757)
 
-[node name="decimatedDwarfs" parent="Enviroment/Prefabs" instance=ExtResource("23_1t85d")]
-transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 18.5013, 2.4034, 129.152)
+[node name="DwarfHall" parent="Enviroment/Prefabs" instance=ExtResource("61_twu0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5013, 0, 129.152)
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Enviroment"]
 transform = Transform3D(0.017276, 0.794387, 0.607167, -0.792203, -0.359615, 0.493043, 0.610013, -0.489517, 0.623103, 99.1179, 107.339, -124.878)
@@ -3678,6 +3691,42 @@ shape = SubResource("BoxShape3D_ysjqk")
 [node name="BuildingTimer" type="Timer" parent="Timers"]
 wait_time = 0.5
 one_shot = true
+
+[node name="MovementManager" type="Node3D" parent="."]
+script = ExtResource("64_oakoc")
+
+[node name="Position" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 3, 3, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Position"]
+unique_name_in_owner = true
+transform = Transform3D(0.102, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_k2fhs")
+
+[node name="RayPosition" type="RayCast3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0, 0)
+target_position = Vector3(0, -100, 0)
+hit_from_inside = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RayPosition"]
+unique_name_in_owner = true
+
+[node name="ChildRayPosition" type="MeshInstance3D" parent="RayPosition/StaticBody3D"]
+unique_name_in_owner = true
+mesh = SubResource("CylinderMesh_elpt2")
+skeleton = NodePath("../..")
+
+[node name="Area3D" type="Area3D" parent="RayPosition/StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RayPosition/StaticBody3D/Area3D"]
+shape = SubResource("BoxShape3D_r3p0s")
+
+[node name="Visual" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(5.6, 0, 0, 0, 8.41, 0, 0, 0, 5.4, 26, 0, 0)
+mesh = SubResource("TorusMesh_60t64")
 
 [connection signal="pressed" from="UI/Menus/BuildingMenu/HeadquarterLabel/Headquarter" to="Player/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/CameraRay" method="_on_headquarter_pressed"]
 [connection signal="pressed" from="UI/Menus/BuildingMenu/MineLabel/Mine" to="Player/CharacterBody3D/SpringArm3D/Gimbal/Camera3D/CameraRay" method="_on_mine_pressed"]

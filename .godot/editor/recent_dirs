@@ -1,9 +1,12 @@
+res://components
+res://Prefabs/Buildings
+res://Prefabs/BuildingMenus/WatchTower
+res://Scripts
+res://Prefabs/BuildingMenus
 res://FinishedBlednerGoods/Terrain
 res://Shader
 res://Scenes
 res://Prefabs/Buildings/DefenderBuildings/LavaTower
-res://Prefabs/BuildingMenus
-res://Scripts
 res://Animations/HellHound
 res://Fonts/Shanghi Font
 res://Scripts/LabelScripts

@@ -19,8 +19,7 @@ func _input_event(_cam: Camera3D, event: InputEvent, _pos: Vector3, _nor: Vector
     if (_is_left_clicked(mouseButtonEvent)):
       onMouseLeftClicked.emit()
       onBuildingClicked.emit(self)
-      print("CLICKED ")
-
+      
 func _is_left_clicked(event: InputEventMouseButton) -> bool:
   return event.pressed && event.button_index == MouseButton.MOUSE_BUTTON_LEFT
 

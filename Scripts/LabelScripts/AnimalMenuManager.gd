@@ -4,6 +4,7 @@ extends Control
 @onready var animalGamerTag: RichTextLabel = %AnimalGamerTag
 @onready var animalHealth: RichTextLabel = %AnimalHealth
 @onready var animalAction: RichTextLabel = %AnimalAction
+@onready var animalCreationManager: AnimalCreationManager = %AnimalCreationManager
 
 const lavaDeerMenu := preload("res://Prefabs/AnimalMenus/LavaDeer/LavaDeerMenu.tscn")
 const hellHoundMenu := preload("res://Prefabs/AnimalMenus/Hellhound/HellhoundMenu.tscn")
@@ -27,15 +28,13 @@ func _enter_tree() -> void:
 	world = Game.world
 
 func _ready() -> void:
-	world.onAnimalAdded.connect(_on_animal_created)
+	animalCreationManager.onAnimalAdded.connect(_on_animal_created)
 
 func _on_animal_created(animal: Animal):
 	animal.clickDetection.onMouseLeftClicked.connect(_on_specific_animal_clicked.bind(animal))
 
 func _on_specific_animal_clicked(animal: Animal) -> void:
-	print("YESS")
 	await _deleteExistingAnimalMenuAsync()
-	print("NOO")
 	createAnimalMenu(animal)
 	
 func _deleteExistingAnimalMenuAsync() -> void:

@@ -148,7 +148,7 @@ offset_right = 513.0
 offset_bottom = 117.0
 flat = true
 
-[node name="AtvexTwwLabel" type="RichTextLabel" parent="BuildingMenu"]
+[node name="WatchTowerLabel" type="RichTextLabel" parent="BuildingMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.146
@@ -161,4 +161,11 @@ offset_right = 583.085
 offset_bottom = 2399.13
 mouse_filter = 1
 theme = SubResource("Theme_0ijm4")
-text = "@Atvex Tww"
+text = "Watch Tower"
+
+[node name="WatchTowerButton" type="Button" parent="BuildingMenu/WatchTowerLabel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 513.0
+offset_bottom = 117.0
+flat = true

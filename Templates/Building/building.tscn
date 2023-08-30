@@ -169,3 +169,6 @@ stream = ExtResource("5_msk2t")
 volume_db = -10.0
 max_db = 0.732
 pitch_scale = 0.8
+
+[node name="ClickDetectionComponent" type="Area3D" parent="."]
+script = ExtResource("3_8yfd6")

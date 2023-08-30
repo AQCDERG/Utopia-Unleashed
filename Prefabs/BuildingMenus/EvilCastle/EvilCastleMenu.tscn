@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://58mh5u7btynd"]
+[gd_scene load_steps=3 format=3 uid="uid://58mh5u7btynd"]
 
+[ext_resource type="Script" path="res://Prefabs/BuildingMenus/EvilCastle/EvilCastleMenu.gd" id="1_hc2t3"]
 [ext_resource type="Texture2D" uid="uid://cefgkf83x2rsw" path="res://SpriteImages/decorative-chinese-pattern-red-background/download (4).png" id="1_rklxi"]
 
 [node name="EvilCastleMenu" type="Control"]
@@ -10,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("1_hc2t3")
 
 [node name="EvilMenu" type="TextureRect" parent="."]
 layout_mode = 0

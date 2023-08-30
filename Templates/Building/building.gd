@@ -15,7 +15,8 @@ enum Type {
   EVIL_CASTLE = 2,
   HEADQUARTER = 3,
   MANA_DOG = 4,
-  LAVA_TOWER = 5
+  LAVA_TOWER = 5,
+	WATCH_TOWER = 6
 }
 
 enum Level { # unimplemented

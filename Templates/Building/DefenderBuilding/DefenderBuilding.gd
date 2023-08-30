@@ -34,11 +34,11 @@ func _attackTarget() -> void:
 
 func createBullet() -> void:
 	if(bullet == null):
+		print(self.name)
 		return
 	var bulletInstance = bullet.instantiate()
 	add_child(bulletInstance)
-	shootSound.playing = true
-	print("PLAY")
+	shootSound.play(0.5)
 	bulletInstance.launch(_currentTarget)
 
 

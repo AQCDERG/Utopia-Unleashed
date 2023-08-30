@@ -9,6 +9,7 @@ extends Control
 @onready var _createHonorGeneratorButton: Button = %Mine
 @onready var _createEvilCastleButton: Button = %EvilCastleButton
 @onready var _createManaDogButton: Button = %ManaDogButton
+@onready var _createWatchTowerButton: Button = %WatchTowerButton
 
 signal on_building_creation_requested(type: Building.Type)
 
@@ -20,6 +21,7 @@ func _ready() -> void:
   _createHonorGeneratorButton.pressed.connect(_request_building_creation.bind(Building.Type.HONOR_GENERATOR))
   _createEvilCastleButton.pressed.connect(_request_building_creation.bind(Building.Type.EVIL_CASTLE))
   _createManaDogButton.pressed.connect(_request_building_creation.bind(Building.Type.MANA_DOG)) 
+  _createWatchTowerButton.pressed.connect(_request_building_creation.bind(Building.Type.WATCH_TOWER)) 
 
   # # 2
   # var _request_building_creation_of_headquarter: Callable = _request_building_creation.bind(Building.Type.HEADQUARTER)

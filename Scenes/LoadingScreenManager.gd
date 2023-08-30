@@ -88,7 +88,6 @@ func GetGameScene() -> PackedScene:
 func replayScrolling() -> void:
 	uiBackground.texture = load(allUi[randi_range(0, allUi.size() - 1)])
 	scrollingAnimation.play("ScrollImage")
-	print("PLAYED")
 	
 
 func _on_scrolling_animation_animation_finished(anim_name: StringName) -> void:

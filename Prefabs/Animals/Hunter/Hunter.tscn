@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ccc8odpak6lgc"]
+[gd_scene load_steps=26 format=3 uid="uid://ccc8odpak6lgc"]
 
 [ext_resource type="PackedScene" uid="uid://bu88417t0mqr0" path="res://Templates/Animal.tscn" id="1_r7frv"]
 [ext_resource type="Texture2D" uid="uid://ckcjyu0ufxuo3" path="res://FinishedBlednerGoods/Creatures/RiggedHunter/riggedhunter2_Default_OBJ_baseColor.png" id="2_7beoa"]
@@ -7,6 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://dahimw03wprm" path="res://FinishedBlednerGoods/Creatures/RiggedHunter/riggedhunter2_material_normal.png" id="5_tt7u6"]
 [ext_resource type="Texture2D" uid="uid://ctlk5yk0tu8xh" path="res://FinishedBlednerGoods/Creatures/RiggedHunter/riggedhunter2_Default_OBJ.png" id="6_bvkp5"]
 [ext_resource type="Texture2D" uid="uid://ckf117h4l37aw" path="res://FinishedBlednerGoods/Creatures/RiggedHunter/riggedhunter2_material_0.png" id="7_bxe1u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v1pfu"]
+size = Vector3(1, 1.92829, 0.437604)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4c47s"]
+size = Vector3(1, 2.43039, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h83te"]
 
 [sub_resource type="Animation" id="Animation_dhdgv"]
 length = 2.0
@@ -733,7 +741,20 @@ _data = {
 }
 
 [node name="Hunter" instance=ExtResource("1_r7frv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13661, -0.0114906, 0.086056)
 type = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Components/AnimalDetectionComponent" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.960382, 0.103067)
+shape = SubResource("BoxShape3D_v1pfu")
+
+[node name="CollisionShape3D" parent="Components/ClickDetectionComponent" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_4c47s")
+
+[node name="CollisionBody" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_h83te")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
 libraries = {

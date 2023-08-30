@@ -35,11 +35,11 @@ func createBuilding(type: Building.Type) -> Building:
     Building.Type.LOG_CABIN:
       return LogCabin.GetScene().instantiate()
     Building.Type.EVIL_CASTLE:
-      print("DO")
       return EvilCastle.GetScene().instantiate()
     Building.Type.MANA_DOG:
-      print("BO")
       return ManaDog.GetScene().instantiate()
+    Building.Type.WATCH_TOWER:
+      return WatchTower.GetScene().instantiate()
     _:
       push_error("Unknown building type: " + Building.Type.find_key(type))
   return null

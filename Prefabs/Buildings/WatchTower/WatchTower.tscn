@@ -1,0 +1,212 @@
+[gd_scene load_steps=29 format=3 uid="uid://dk62r6f55yaim"]
+
+[ext_resource type="Script" path="res://Prefabs/Buildings/WatchTower/WatchTower.gd" id="1_qc7ad"]
+[ext_resource type="Texture2D" uid="uid://c8gw3ds38rx3k" path="res://ParticleProject/Images/brightGlowParticle.png" id="2_ddoqm"]
+[ext_resource type="Texture2D" uid="uid://cnckwdw8gjqss" path="res://ParticleProject/Images/SuperSmokeCCO.png" id="3_x1x63"]
+[ext_resource type="Script" path="res://components/ClickDetectionComponent.gd" id="4_nkswa"]
+[ext_resource type="Script" path="res://components/HealthComponent.gd" id="5_8j3jx"]
+[ext_resource type="AudioStream" uid="uid://clq0p801xbhka" path="res://Sounds/building.wav" id="6_7levw"]
+[ext_resource type="AudioStream" uid="uid://bxbc3bqi52pju" path="res://Sounds/magic-smite-6012.mp3" id="7_02g3p"]
+[ext_resource type="PackedScene" uid="uid://tpplsc66ewg" path="res://FinishedBlednerGoods/WatchTower.glb" id="8_n0uu4"]
+[ext_resource type="Texture2D" uid="uid://cl3srf8v07k3l" path="res://SpriteImages/defaultobject_albedo.tga.png" id="9_yiudr"]
+
+[sub_resource type="Gradient" id="Gradient_i7ngd"]
+offsets = PackedFloat32Array(0, 0.348993, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p8x74"]
+gradient = SubResource("Gradient_i7ngd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ys57g"]
+spread = 180.0
+gravity = Vector3(0, 1, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+scale_min = 0.5
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_p8x74")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dis22"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 0.709804, 1)
+albedo_texture = ExtResource("2_ddoqm")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_8pwxt"]
+material = SubResource("StandardMaterial3D_dis22")
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_4f0qr"]
+offsets = PackedFloat32Array(0, 0.270408, 0.632653, 0.806122, 0.913265, 1)
+colors = PackedColorArray(0.752941, 0.752941, 0.752941, 0.54902, 0.482353, 0.482353, 0.482353, 0.403922, 0.486275, 0.486275, 0.486275, 0.329412, 0.407843, 0.407843, 0.407843, 0.231373, 0.407843, 0.407843, 0.407843, 0.14902, 0.407843, 0.407843, 0.407843, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d7tj0"]
+gradient = SubResource("Gradient_4f0qr")
+
+[sub_resource type="Curve" id="Curve_ghud3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.118943, 0.127273), 0.0, 0.0, 0, 0, Vector2(1, 0.0727272), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ngf4v"]
+curve = SubResource("Curve_ghud3")
+
+[sub_resource type="Curve" id="Curve_phwva"]
+max_value = 10.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.343612, 1.90909), 0.0, 0.0, 0, 0, Vector2(0.9163, 4.45455), 0.0, 0.0, 0, 0, Vector2(1, 5.45455), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_3p8yy"]
+curve = SubResource("Curve_phwva")
+
+[sub_resource type="Curve" id="Curve_xgp0d"]
+min_value = -30.0
+max_value = 30.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.577092, 4.36364), 0.0, 0.0, 0, 0, Vector2(0.806167, 7.09091), 0.0, 0.0, 0, 0, Vector2(1, 7.63636), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_14sng"]
+curve = SubResource("Curve_xgp0d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k5k46"]
+spread = 90.0
+flatness = 0.2
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = -0.2
+initial_velocity_max = 0.4
+angular_velocity_max = 40.0
+linear_accel_min = 0.01
+linear_accel_max = 0.01
+linear_accel_curve = SubResource("CurveTexture_ngf4v")
+tangential_accel_min = 0.04
+tangential_accel_max = 0.04
+tangential_accel_curve = SubResource("CurveTexture_14sng")
+angle_max = 360.0
+scale_min = 0.2
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_3p8yy")
+color = Color(0.560784, 0.560784, 0.560784, 1)
+color_ramp = SubResource("GradientTexture1D_d7tj0")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+anim_offset_max = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bmlgb"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.803922, 0.803922, 0.803922, 1)
+albedo_texture = ExtResource("3_x1x63")
+albedo_texture_msdf = true
+billboard_mode = 3
+particles_anim_h_frames = 6
+particles_anim_v_frames = 5
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ahok8"]
+material = SubResource("StandardMaterial3D_bmlgb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lprt7"]
+size = Vector3(2.36991, 3.33599, 2.37758)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ugd0u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g43ro"]
+albedo_texture = ExtResource("9_yiudr")
+
+[node name="WatchTower" type="StaticBody3D"]
+script = ExtResource("1_qc7ad")
+_attackIntervalSeconds = 1.0
+damage = 5
+price = 10
+buildingType = 6
+_creationTimeSeconds = 4.0
+
+[node name="Effects" type="Node3D" parent="."]
+
+[node name="CreationFinishedParticle" type="GPUParticles3D" parent="Effects"]
+unique_name_in_owner = true
+emitting = false
+amount = 40
+sub_emitter = NodePath(".")
+lifetime = 1.5
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.68
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ys57g")
+draw_pass_1 = SubResource("QuadMesh_8pwxt")
+
+[node name="CreationParticle" type="GPUParticles3D" parent="Effects"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.221888, 0.0359768, -0.0570499)
+emitting = false
+amount = 100
+lifetime = 6.0
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_k5k46")
+draw_pass_1 = SubResource("QuadMesh_ahok8")
+
+[node name="Animations" type="Node3D" parent="."]
+
+[node name="CreationAnimationPlayer" type="AnimationPlayer" parent="Animations"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+
+[node name="DestructionAnimationPlayer" type="AnimationPlayer" parent="Animations"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+
+[node name="AttackAnimation" type="AnimationPlayer" parent="Animations"]
+unique_name_in_owner = true
+
+[node name="Componenets" type="Node3D" parent="."]
+
+[node name="ClickDetectionComponent" type="Area3D" parent="Componenets"]
+unique_name_in_owner = true
+script = ExtResource("4_nkswa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Componenets/ClickDetectionComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011264, 1.51388, -0.0466928)
+shape = SubResource("BoxShape3D_lprt7")
+
+[node name="HealthComponent" type="Node" parent="Componenets"]
+unique_name_in_owner = true
+script = ExtResource("5_8j3jx")
+
+[node name="AttackArea" type="Area3D" parent="."]
+unique_name_in_owner = true
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+shape = SubResource("SphereShape3D_ugd0u")
+
+[node name="Audios" type="Node3D" parent="."]
+
+[node name="CreationAudio" type="AudioStreamPlayer3D" parent="Audios"]
+unique_name_in_owner = true
+stream = ExtResource("6_7levw")
+volume_db = -10.0
+max_db = 0.732
+pitch_scale = 0.8
+
+[node name="AttackSound" type="AudioStreamPlayer3D" parent="Audios"]
+unique_name_in_owner = true
+stream = ExtResource("7_02g3p")
+
+[node name="WatchTower" parent="." instance=ExtResource("8_n0uu4")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Lowpoly" parent="WatchTower" index="0"]
+material_override = SubResource("StandardMaterial3D_g43ro")
+
+[editable path="WatchTower"]

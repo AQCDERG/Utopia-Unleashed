@@ -19,6 +19,13 @@ enum Type {
 	LAVA_DEER,
 	HELL_HOUND,
 	HUNTER,
+	DWARF
+}
+
+enum Team{
+	NOT_CONTROLABLE,
+	CONTROLABLE,
+
 }
 const hunterMenu := preload("res://Prefabs/AnimalMenus/Hunter/HunterMenu.tscn")
 const AnimalName := preload("res://Scripts/AnimalName.gd")

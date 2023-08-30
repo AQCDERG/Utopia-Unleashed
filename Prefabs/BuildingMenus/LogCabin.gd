@@ -1,13 +1,10 @@
 extends Control
 @onready var spawnHunterButton: Button = %Hunter
-@onready var animalSpawnerManager: AnimalCreationManager = %AnimalCreationManager
-@onready var buildingMenuManager: BuildingMenuManager = %BuildingMenuManager
+
+@onready var world: World = Game.world
+
 var building: Building
 func _ready() -> void: 
 	spawnHunterButton.pressed.connect(spawnHunter)
-
 func spawnHunter():
-	if(buildingMenuManager.buildingCreated == null):
-		return
-	building = buildingMenuManager.buildingCreated
-	animalSpawnerManager.spawnHunter(building)
+	world.animalCreator.spawnHunter(building)

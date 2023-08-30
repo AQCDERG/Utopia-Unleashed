@@ -6,6 +6,8 @@ const honorGeneratorMenu := preload("res://Prefabs/BuildingMenus/HonorGenerator/
 const headqaurterMenu := preload("res://Prefabs/BuildingMenus/Headquarter/HeadquarterMenu.tscn")
 const evilCastleMenu := preload("res://Prefabs/BuildingMenus/EvilCastle/EvilCastleMenu.tscn")
 const logCabinMenu := preload("res://Prefabs/BuildingMenus/LogCabin/LogCabinMenu.tscn")
+const lavaTowerMenu := preload("res://Prefabs/BuildingMenus/LogCabin/LogCabinMenu.tscn")
+const watchTowerMenu := preload("res://Prefabs/BuildingMenus/WatchTower/WatchTowerMenu.tscn")
 var buildingCreated: Building
 var world: World
 var _log: Log
@@ -25,8 +27,6 @@ func _on_building_created(building: Building) -> void:
 func _on_specific_building_clicked(building: Building) -> void:
 	_remove_existing_menus()
 	_show_status_menu_for_building(building)
-	print(buildingCreated)
-	print("WHATT")
 
 func _remove_existing_menus() -> void:
 	# Assuming they are children of this node
@@ -36,6 +36,8 @@ func _remove_existing_menus() -> void:
 func _show_status_menu_for_building(building: Building) -> void:
 	var menuScene: PackedScene = _get_menu_scene(building.buildingType)
 	var menu := menuScene.instantiate()
+	print(building.name)
+	menu.building = building
 	add_child(menu)
 
 func _get_menu_scene(type: Building.Type) -> PackedScene:
@@ -50,6 +52,10 @@ func _get_menu_scene(type: Building.Type) -> PackedScene:
 			return evilCastleMenu
 		Building.Type.LOG_CABIN:
 			return logCabinMenu
+		Building.Type.LAVA_TOWER:
+			return lavaTowerMenu
+		Building.Type.WATCH_TOWER:
+			return watchTowerMenu
 		_:
 			push_error("Invalid building type")
 			return null

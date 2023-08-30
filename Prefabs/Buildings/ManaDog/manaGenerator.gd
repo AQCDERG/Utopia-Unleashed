@@ -7,14 +7,10 @@ static func GetScene() -> PackedScene:
 		_scene = load("res://Prefabs/Buildings/ManaDog/manaGenerator.tscn")
 	return _scene
 
-static var _currencyCost: Array[Currency]
-static func GetCurrencyCost() -> Array[Currency]:
-	if _currencyCost == null:
-		_currencyCost = [
-      Currency.new(Currency.Type.MANA, 10),
-      Currency.new(Currency.Type.HARMONY, 10),
-    ]
-	return _currencyCost 
+static func getCost(mana: CurrencyManager, harmony: CurrencyManager) -> void:
+	mana.remove(5)
+	harmony.remove(5)
+	
 
 @export var mana_generation_amount: int
 @export var mana_generation_time: float

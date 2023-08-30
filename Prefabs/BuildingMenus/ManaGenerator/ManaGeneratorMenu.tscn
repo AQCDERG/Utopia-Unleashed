@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://c28rlgqg50r8k"]
+[gd_scene load_steps=3 format=3 uid="uid://c28rlgqg50r8k"]
 
+[ext_resource type="Script" path="res://Prefabs/BuildingMenus/ManaGenerator/ManaGeneratorMenu.gd" id="1_e514l"]
 [ext_resource type="Texture2D" uid="uid://csve40mhq1ji5" path="res://SpriteImages/decorative-chinese-pattern-red-background/ManaBuilding.jpg" id="1_nresn"]
 
 [node name="ManaGeneratorMenu" type="Control"]
@@ -10,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("1_e514l")
 
 [node name="ManaMenu" type="TextureRect" parent="."]
 layout_mode = 0

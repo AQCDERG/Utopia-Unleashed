@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://c5wxqy3kel0v4"]
+[gd_scene load_steps=32 format=3 uid="uid://c5wxqy3kel0v4"]
 
 [ext_resource type="Script" path="res://Prefabs/Buildings/DefenderBuildings/LavaTower/finishedlava_towwer.gd" id="2_3xmph"]
 [ext_resource type="Texture2D" uid="uid://c8gw3ds38rx3k" path="res://ParticleProject/Images/brightGlowParticle.png" id="2_8gc2q"]
@@ -16,7 +16,7 @@
 offsets = PackedFloat32Array(0, 0.348993, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_p8x74"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vleop"]
 gradient = SubResource("Gradient_mp06n")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vxi67"]
@@ -26,9 +26,9 @@ initial_velocity_min = 0.5
 initial_velocity_max = 1.0
 scale_min = 0.5
 scale_max = 2.0
-color_ramp = SubResource("GradientTexture1D_p8x74")
+color_ramp = SubResource("GradientTexture1D_vleop")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dis22"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w225i"]
 transparency = 1
 blend_mode = 1
 shading_mode = 0
@@ -41,21 +41,21 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_1xdrf"]
-material = SubResource("StandardMaterial3D_dis22")
+material = SubResource("StandardMaterial3D_w225i")
 size = Vector2(0.5, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_a0bmm"]
 offsets = PackedFloat32Array(0, 0.270408, 0.632653, 0.806122, 0.913265, 1)
 colors = PackedColorArray(0.752941, 0.752941, 0.752941, 0.54902, 0.482353, 0.482353, 0.482353, 0.403922, 0.486275, 0.486275, 0.486275, 0.329412, 0.407843, 0.407843, 0.407843, 0.231373, 0.407843, 0.407843, 0.407843, 0.14902, 0.407843, 0.407843, 0.407843, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_d7tj0"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t5e8d"]
 gradient = SubResource("Gradient_a0bmm")
 
 [sub_resource type="Curve" id="Curve_n4xjj"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.118943, 0.127273), 0.0, 0.0, 0, 0, Vector2(1, 0.0727272), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_ngf4v"]
+[sub_resource type="CurveTexture" id="CurveTexture_hbrby"]
 curve = SubResource("Curve_n4xjj")
 
 [sub_resource type="Curve" id="Curve_v0exd"]
@@ -63,7 +63,7 @@ max_value = 10.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.343612, 1.90909), 0.0, 0.0, 0, 0, Vector2(0.9163, 4.45455), 0.0, 0.0, 0, 0, Vector2(1, 5.45455), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_3p8yy"]
+[sub_resource type="CurveTexture" id="CurveTexture_puf63"]
 curve = SubResource("Curve_v0exd")
 
 [sub_resource type="Curve" id="Curve_v2ldn"]
@@ -72,7 +72,7 @@ max_value = 30.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.577092, 4.36364), 0.0, 0.0, 0, 0, Vector2(0.806167, 7.09091), 0.0, 0.0, 0, 0, Vector2(1, 7.63636), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_14sng"]
+[sub_resource type="CurveTexture" id="CurveTexture_nmnmg"]
 curve = SubResource("Curve_v2ldn")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7kwhw"]
@@ -84,21 +84,21 @@ initial_velocity_max = 0.4
 angular_velocity_max = 40.0
 linear_accel_min = 0.01
 linear_accel_max = 0.01
-linear_accel_curve = SubResource("CurveTexture_ngf4v")
+linear_accel_curve = SubResource("CurveTexture_hbrby")
 tangential_accel_min = 0.04
 tangential_accel_max = 0.04
-tangential_accel_curve = SubResource("CurveTexture_14sng")
+tangential_accel_curve = SubResource("CurveTexture_nmnmg")
 angle_max = 360.0
 scale_min = 0.2
 scale_max = 0.4
-scale_curve = SubResource("CurveTexture_3p8yy")
+scale_curve = SubResource("CurveTexture_puf63")
 color = Color(0.560784, 0.560784, 0.560784, 1)
-color_ramp = SubResource("GradientTexture1D_d7tj0")
+color_ramp = SubResource("GradientTexture1D_t5e8d")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 anim_offset_max = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bmlgb"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_88q3g"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
@@ -111,110 +111,12 @@ particles_anim_v_frames = 5
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_xrx6h"]
-material = SubResource("StandardMaterial3D_bmlgb")
+material = SubResource("StandardMaterial3D_88q3g")
 
-[sub_resource type="Gradient" id="Gradient_2mmtk"]
-offsets = PackedFloat32Array(0, 0.348993, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ojb03"]
+size = Vector3(11.6629, 9.61858, 13.8382)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_4joqy"]
-gradient = SubResource("Gradient_2mmtk")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_htkin"]
-spread = 180.0
-gravity = Vector3(0, 1, 0)
-initial_velocity_min = 0.5
-initial_velocity_max = 1.0
-scale_min = 0.5
-scale_max = 2.0
-color_ramp = SubResource("GradientTexture1D_4joqy")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xcjmt"]
-transparency = 1
-blend_mode = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 0.709804, 1)
-albedo_texture = ExtResource("2_8gc2q")
-billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="QuadMesh" id="QuadMesh_kbjpm"]
-material = SubResource("StandardMaterial3D_xcjmt")
-size = Vector2(0.5, 0.5)
-
-[sub_resource type="Gradient" id="Gradient_my12f"]
-offsets = PackedFloat32Array(0, 0.270408, 0.632653, 0.806122, 0.913265, 1)
-colors = PackedColorArray(0.752941, 0.752941, 0.752941, 0.54902, 0.482353, 0.482353, 0.482353, 0.403922, 0.486275, 0.486275, 0.486275, 0.329412, 0.407843, 0.407843, 0.407843, 0.231373, 0.407843, 0.407843, 0.407843, 0.14902, 0.407843, 0.407843, 0.407843, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_qu5wg"]
-gradient = SubResource("Gradient_my12f")
-
-[sub_resource type="Curve" id="Curve_cqbxr"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.118943, 0.127273), 0.0, 0.0, 0, 0, Vector2(1, 0.0727272), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_yyiia"]
-curve = SubResource("Curve_cqbxr")
-
-[sub_resource type="Curve" id="Curve_xwwaj"]
-max_value = 10.0
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.343612, 1.90909), 0.0, 0.0, 0, 0, Vector2(0.9163, 4.45455), 0.0, 0.0, 0, 0, Vector2(1, 5.45455), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_4gqud"]
-curve = SubResource("Curve_xwwaj")
-
-[sub_resource type="Curve" id="Curve_2r6qx"]
-min_value = -30.0
-max_value = 30.0
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.577092, 4.36364), 0.0, 0.0, 0, 0, Vector2(0.806167, 7.09091), 0.0, 0.0, 0, 0, Vector2(1, 7.63636), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_jfe13"]
-curve = SubResource("Curve_2r6qx")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5fpb3"]
-spread = 90.0
-flatness = 0.2
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = -0.2
-initial_velocity_max = 0.4
-angular_velocity_max = 40.0
-linear_accel_min = 0.01
-linear_accel_max = 0.01
-linear_accel_curve = SubResource("CurveTexture_yyiia")
-tangential_accel_min = 0.04
-tangential_accel_max = 0.04
-tangential_accel_curve = SubResource("CurveTexture_jfe13")
-angle_max = 360.0
-scale_min = 0.2
-scale_max = 0.4
-scale_curve = SubResource("CurveTexture_4gqud")
-color = Color(0.560784, 0.560784, 0.560784, 1)
-color_ramp = SubResource("GradientTexture1D_qu5wg")
-anim_speed_min = 1.0
-anim_speed_max = 1.0
-anim_offset_max = 1.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lyogx"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.803922, 0.803922, 0.803922, 1)
-albedo_texture = ExtResource("3_jtvx6")
-albedo_texture_msdf = true
-billboard_mode = 3
-particles_anim_h_frames = 6
-particles_anim_v_frames = 5
-particles_anim_loop = false
-
-[sub_resource type="QuadMesh" id="QuadMesh_7ig5l"]
-material = SubResource("StandardMaterial3D_lyogx")
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_42ril"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_03ocv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ofk6m"]
 albedo_texture = ExtResource("2_vy2jo")
@@ -258,32 +160,6 @@ randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_7kwhw")
 draw_pass_1 = SubResource("QuadMesh_xrx6h")
 
-[node name="CreationFinishedParticle2" type="GPUParticles3D" parent="Effects"]
-unique_name_in_owner = true
-emitting = false
-amount = 40
-sub_emitter = NodePath(".")
-lifetime = 1.5
-one_shot = true
-speed_scale = 2.0
-explosiveness = 0.68
-randomness = 1.0
-process_material = SubResource("ParticleProcessMaterial_htkin")
-draw_pass_1 = SubResource("QuadMesh_kbjpm")
-
-[node name="CreationParticle2" type="GPUParticles3D" parent="Effects"]
-unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.221888, 0.0359768, -0.0570499)
-emitting = false
-amount = 100
-lifetime = 6.0
-one_shot = true
-speed_scale = 3.0
-explosiveness = 1.0
-randomness = 1.0
-process_material = SubResource("ParticleProcessMaterial_5fpb3")
-draw_pass_1 = SubResource("QuadMesh_7ig5l")
-
 [node name="Animations" type="Node3D" parent="."]
 
 [node name="CreationAnimationPlayer" type="AnimationPlayer" parent="Animations"]
@@ -297,17 +173,6 @@ root_node = NodePath("../..")
 [node name="AttackAnimation" type="AnimationPlayer" parent="Animations"]
 unique_name_in_owner = true
 
-[node name="CreationAnimationPlayer2" type="AnimationPlayer" parent="Animations"]
-unique_name_in_owner = true
-root_node = NodePath("../..")
-
-[node name="DestructionAnimationPlayer2" type="AnimationPlayer" parent="Animations"]
-unique_name_in_owner = true
-root_node = NodePath("../..")
-
-[node name="AttackAnimation2" type="AnimationPlayer" parent="Animations"]
-unique_name_in_owner = true
-
 [node name="Componenets" type="Node3D" parent="."]
 
 [node name="ClickDetectionComponent" type="Area3D" parent="Componenets"]
@@ -315,29 +180,20 @@ unique_name_in_owner = true
 script = ExtResource("4_4did7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Componenets/ClickDetectionComponent"]
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Componenets/ClickDetectionComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164446, 3.83386, 0)
+shape = SubResource("BoxShape3D_ojb03")
 
 [node name="HealthComponent" type="Node" parent="Componenets"]
 unique_name_in_owner = true
 script = ExtResource("5_7vkbq")
 
-[node name="ClickDetectionComponent2" type="Area3D" parent="Componenets"]
-unique_name_in_owner = true
-script = ExtResource("4_4did7")
-
-[node name="HealthComponent2" type="Node" parent="Componenets"]
-unique_name_in_owner = true
-script = ExtResource("5_7vkbq")
-
 [node name="AttackArea" type="Area3D" parent="."]
 unique_name_in_owner = true
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="AttackArea"]
-transform = Transform3D(70, 0, 0, 0, 30, 0, 0, 0, 70, 0, 0, 0)
-shape = SubResource("SphereShape3D_42ril")
+transform = Transform3D(40, 0, 0, 0, 20, 0, 0, 0, 40, 0, 0, 0)
+shape = SubResource("SphereShape3D_03ocv")
 
 [node name="Audios" type="Node3D" parent="."]
 
@@ -352,36 +208,10 @@ pitch_scale = 0.8
 unique_name_in_owner = true
 stream = ExtResource("7_pa5j1")
 
-[node name="CreationAudio2" type="AudioStreamPlayer3D" parent="Audios"]
-unique_name_in_owner = true
-stream = ExtResource("6_fwuag")
-volume_db = -10.0
-max_db = 0.732
-pitch_scale = 0.8
-
-[node name="Effects2" type="Node3D" parent="."]
-
-[node name="Animations2" type="Node3D" parent="."]
-
-[node name="Componenets2" type="Node3D" parent="."]
-
-[node name="AttackArea2" type="Area3D" parent="."]
-unique_name_in_owner = true
-
-[node name="Audios2" type="Node3D" parent="."]
-
 [node name="CoarseBristles_geo_CoarseBristles_0" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_ofk6m")
 mesh = ExtResource("8_fhrha")
 skeleton = NodePath("")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -3.14315e-06, 1, 0, -1, -3.14315e-06, 0, 3.85455, 0)
-light_color = Color(0.972549, 0.160784, 0, 1)
-light_energy = 16.0
-spot_range = 22.081
-spot_angle = 58.97
-spot_angle_attenuation = 0.0346741
 
 [node name="village" parent="." instance=ExtResource("3_8wtdi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6377, 0, -1.36238)

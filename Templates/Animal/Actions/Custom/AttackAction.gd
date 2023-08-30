@@ -2,7 +2,7 @@ class_name AttackAction
 extends AnimalAction
 
 var _randomPosition: Vector3
-var targetFinder: TargetedPathFinderComponent
+@onready var targetFinder: TargetedPathFinderComponent = %TargetedPathFinderComponent
 
 @onready var attackArea: Area3D = %AttackArea
 

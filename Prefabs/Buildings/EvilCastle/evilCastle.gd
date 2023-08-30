@@ -7,12 +7,6 @@ static func GetScene() -> PackedScene:
 		_scene = load("res://Prefabs/Buildings/EvilCastle/evilCastle.tscn")
 	return _scene
 
-static var _currencyCost: Array[Currency]
-static func GetCurrencyCost() -> Array[Currency]:
-	if _currencyCost == null:
-		_currencyCost = [
-      Currency.new(Currency.Type.DEATH, 10),
-      Currency.new(Currency.Type.PASSION, 5),
-    ]
-	print("FLFOFLOF")
-	return _currencyCost
+static func getCost(death: CurrencyManager, passion: CurrencyManager) -> void:
+	death.remove(10)
+	passion.remove(5)

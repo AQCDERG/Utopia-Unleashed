@@ -15,6 +15,8 @@ func createAnimal(type: Animal.Type) -> Animal:
 			animal = Hellhound.GetScene().instantiate()
 		Animal.Type.HUNTER:
 			animal = Hunter.GetScene().instantiate()
+		Animal.Type.DWARF:
+			animal = Dwarf.GetScene().instantiate()
 		_:
 			_log.error("Unknown animal type: " + Animal.Type.find_key(type))
 	return animal

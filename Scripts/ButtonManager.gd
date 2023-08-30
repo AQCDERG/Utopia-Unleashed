@@ -12,7 +12,6 @@ func _ready() -> void:
 
 func startGame() -> void: 
   #SwtichScene.load_scene("res://FixedScene/MainMenu.tscn", "res://oldMain.tscn")
-  print("DDD")
   get_tree().change_scene_to_file("res://Scenes/LoadingScreen.tscn")
 
 func changeBackground() -> void:

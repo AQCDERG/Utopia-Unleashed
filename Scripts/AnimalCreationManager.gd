@@ -2,6 +2,7 @@ class_name AnimalCreationManager
 extends Node
 
 signal onAnimalAdded(animal: Animal)
+signal onControlableAnimalAdded(animal: Animal)
 @onready var animalFactory: AnimalFactory = %AnimalFactory
 
 func spawnDeerRandomly() -> void:
@@ -16,8 +17,19 @@ func spawnWolfRandomly() -> void:
 	wolf.global_position = Vector3(randi_range(-100, -90), 40, randi_range(-10, 10))
 	onAnimalAdded.emit(wolf)
 
+func spawnDwarf(building: Building) -> void:
+	var x: int = building.position.x
+	var y: int = building.position.y
+	var z: int = building.position.z
+	
+	var dwarf = animalFactory.createAnimal(Animal.Type.DWARF)
+	add_child(dwarf)
+	dwarf.global_position = Vector3(randi_range(x - 1, x + 1), y + 10, randi_range(z - 1, z + 1))
+	onAnimalAdded.emit(dwarf)
+
 func spawnHunter(building: Building) -> void:
 	var hunter = animalFactory.createAnimal(Animal.Type.HUNTER)
 	add_child(hunter)
-	hunter.global_position = building.position
+	hunter.global_position = building.position + Vector3(0,5,0)
 	onAnimalAdded.emit(hunter)
+	onControlableAnimalAdded.emit(hunter)

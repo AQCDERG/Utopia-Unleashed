@@ -16,6 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("1_6rqku")
 
 [node name="LogCabinMenu" type="TextureRect" parent="."]
 layout_mode = 1
@@ -25,7 +26,6 @@ offset_bottom = 3810.0
 scale = Vector2(-0.17, 0.17)
 texture = ExtResource("1_uj3x6")
 expand_mode = 1
-script = ExtResource("1_6rqku")
 
 [node name="HeadquarterLabel" type="RichTextLabel" parent="LogCabinMenu"]
 layout_mode = 1
