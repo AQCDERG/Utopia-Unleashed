@@ -3647,10 +3647,12 @@ lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_27rcc")
 draw_pass_1 = SubResource("QuadMesh_0xajw")
 
-[node name="FinishedlavaTowwer" parent="Enviroment/Prefabs" instance=ExtResource("60_ljpxv")]
+[node name="LavaTower" parent="Enviroment/Prefabs" instance=ExtResource("60_ljpxv")]
+unique_name_in_owner = true
 transform = Transform3D(-0.144935, 0, 0.989441, 0, 1, 0, -0.989441, 0, -0.144935, -107.582, 1.36253, -8.04757)
 
 [node name="DwarfHall" parent="Enviroment/Prefabs" instance=ExtResource("61_twu0g")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5013, 0, 129.152)
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Enviroment"]

@@ -1,13 +1,15 @@
 class_name BuildingMenuManager
 extends Control
 
+
 const manaGeneratorMenu := preload("res://Prefabs/BuildingMenus/ManaGenerator/ManaGeneratorMenu.tscn")
 const honorGeneratorMenu := preload("res://Prefabs/BuildingMenus/HonorGenerator/HonorGeneratorMenu.tscn")
 const headqaurterMenu := preload("res://Prefabs/BuildingMenus/Headquarter/HeadquarterMenu.tscn")
 const evilCastleMenu := preload("res://Prefabs/BuildingMenus/EvilCastle/EvilCastleMenu.tscn")
 const logCabinMenu := preload("res://Prefabs/BuildingMenus/LogCabin/LogCabinMenu.tscn")
-const lavaTowerMenu := preload("res://Prefabs/BuildingMenus/LogCabin/LogCabinMenu.tscn")
+const lavaTowerMenu := preload("res://Prefabs/BuildingMenus/LavaTower/LavaTowerMenu.tscn")
 const watchTowerMenu := preload("res://Prefabs/BuildingMenus/WatchTower/WatchTowerMenu.tscn")
+const dwarfMenu := preload("res://Prefabs/BuildingMenus/DwarfHallMenu/DwarfHallMenu.tscn")
 var buildingCreated: Building
 var world: World
 var _log: Log
@@ -18,7 +20,6 @@ func _enter_tree() -> void:
 	
 func _ready() -> void:
 	world.onBuildingAdded.connect(_on_building_created)
-	
 
 func _on_building_created(building: Building) -> void:
 	building.clickDetection.onMouseLeftClicked.connect(_on_specific_building_clicked.bind(building))
@@ -56,13 +57,20 @@ func _get_menu_scene(type: Building.Type) -> PackedScene:
 			return lavaTowerMenu
 		Building.Type.WATCH_TOWER:
 			return watchTowerMenu
+		Building.Type.DWARF_HALL:
+			return dwarfMenu
 		_:
 			push_error("Invalid building type")
 			return null
+	#if(dwarfHall != null):
+		#building.clickDetection.onMouseLeftClicked.connect(_on_specific_building_clicked.bind(building))
+	#lavaTower.clickDetection.onMouseLeftClicked.connect(_on_specific_building_clicked.bind(lavaTower))
+
 
 func _input(event): 
 	if Input.is_action_just_pressed("clearUI"):
 		_remove_existing_menus()
+
 
 # For refrence
 # func _some_function(type: String) -> PackedScene:

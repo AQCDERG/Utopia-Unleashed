@@ -9,7 +9,9 @@ extends Control
 const lavaDeerMenu := preload("res://Prefabs/AnimalMenus/LavaDeer/LavaDeerMenu.tscn")
 const hellHoundMenu := preload("res://Prefabs/AnimalMenus/Hellhound/HellhoundMenu.tscn")
 const hunterMenu := preload("res://Prefabs/AnimalMenus/Hunter/HunterMenu.tscn")
-
+const dwarfMenu := preload("res://Prefabs/AnimalMenus/Dwarf/DwarfMenu.tscn")
+const mystiqueFoxMenu := preload("res://Prefabs/AnimalMenus/MystiqueFox/MystiqueFoxMenu.tscn")
+const cannonMenu := preload("res://Prefabs/AnimalMenus/Cannon/CannonMenu.tscn")
 @onready var _animalMenuTween: Tween = create_tween()
 
 const MODULATE_VISIBLE: float = 1
@@ -95,6 +97,12 @@ func getAnimalMenuScene(type: Animal.Type) -> PackedScene:
 			return hellHoundMenu
 		Animal.Type.HUNTER:
 			return hunterMenu
+		Animal.Type.DWARF:
+			return dwarfMenu
+		Animal.Type.MYSTIQUE_FOX:
+			return mystiqueFoxMenu
+		Animal.Type.CANNON:
+			return cannonMenu
 		_:
 			return null
 

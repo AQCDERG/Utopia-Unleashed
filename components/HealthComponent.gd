@@ -39,6 +39,7 @@ func takeDamage(amount: int) -> void:
     push_error("take damage called with negative amount: " + str(amount))
     return
   currentHealth -= amount
+  _handleDeath()
 
 func heal(amount: int) -> void:
   if(amount < 0):

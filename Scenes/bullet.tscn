@@ -84,6 +84,7 @@ material = SubResource("StandardMaterial3D_bmvyf")
 size = Vector2(2.1, 2.1)
 
 [node name="Bullet" type="RigidBody3D"]
+mass = 0.01
 gravity_scale = 0.0
 script = ExtResource("1_je0ug")
 

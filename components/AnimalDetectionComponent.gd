@@ -19,7 +19,7 @@ func _ready() -> void:
 
 func registerAnimalDetectors() -> void:
   body_entered.connect(func(body) -> void:
-    if (body is Animal):
+    if (body is Animal && body != owner):
       animalsWithinRange.append(body)
       onAnimalEntered.emit(body)
   )

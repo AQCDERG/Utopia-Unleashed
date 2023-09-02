@@ -13,7 +13,6 @@ func _ready() -> void:
 func _input_event(_cam: Camera3D, event: InputEvent, _pos: Vector3, _nor: Vector3, _sidx: int) -> void:
   if (not _isMouseHoveredOver):
     return
-  
   if event is InputEventMouseButton:
     var mouseButtonEvent = event as InputEventMouseButton
     if (_is_left_clicked(mouseButtonEvent)):

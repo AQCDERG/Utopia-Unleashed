@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dk62r6f55yaim"]
+[gd_scene load_steps=31 format=3 uid="uid://dk62r6f55yaim"]
 
 [ext_resource type="Script" path="res://Prefabs/Buildings/WatchTower/WatchTower.gd" id="1_qc7ad"]
 [ext_resource type="Texture2D" uid="uid://c8gw3ds38rx3k" path="res://ParticleProject/Images/brightGlowParticle.png" id="2_ddoqm"]
@@ -9,6 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://bxbc3bqi52pju" path="res://Sounds/magic-smite-6012.mp3" id="7_02g3p"]
 [ext_resource type="PackedScene" uid="uid://tpplsc66ewg" path="res://FinishedBlednerGoods/WatchTower.glb" id="8_n0uu4"]
 [ext_resource type="Texture2D" uid="uid://cl3srf8v07k3l" path="res://SpriteImages/defaultobject_albedo.tga.png" id="9_yiudr"]
+[ext_resource type="Script" path="res://components/ShootingComponenet.gd" id="10_5qewr"]
+[ext_resource type="PackedScene" uid="uid://yga3dm17we5m" path="res://Scenes/bullet.tscn" id="11_slaev"]
 
 [sub_resource type="Gradient" id="Gradient_i7ngd"]
 offsets = PackedFloat32Array(0, 0.348993, 1)
@@ -121,8 +123,6 @@ albedo_texture = ExtResource("9_yiudr")
 
 [node name="WatchTower" type="StaticBody3D"]
 script = ExtResource("1_qc7ad")
-_attackIntervalSeconds = 1.0
-damage = 5
 price = 10
 buildingType = 6
 _creationTimeSeconds = 4.0
@@ -208,5 +208,11 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 
 [node name="Lowpoly" parent="WatchTower" index="0"]
 material_override = SubResource("StandardMaterial3D_g43ro")
+
+[node name="ShootingComponent" type="Node3D" parent="."]
+script = ExtResource("10_5qewr")
+_attackIntervalSeconds = 5.0
+damage = 5
+bullet = ExtResource("11_slaev")
 
 [editable path="WatchTower"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ci5jeohor7xdm"]
+[gd_scene load_steps=20 format=3 uid="uid://ci5jeohor7xdm"]
 
 [ext_resource type="PackedScene" uid="uid://bu88417t0mqr0" path="res://Templates/Animal.tscn" id="1_jma5k"]
 [ext_resource type="Script" path="res://Prefabs/Animals/Hellhound/Hellhound.gd" id="2_spyk5"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://components/PathFinderComponent.gd" id="3_7esww"]
 [ext_resource type="Texture2D" uid="uid://bk44td7l7hu16" path="res://SpriteImages/BakedGoods/Diffuse.png" id="3_i7exm"]
 [ext_resource type="Script" path="res://components/PathVisualiserComponent.gd" id="4_so3qp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gtxd0"]
+radius = 16.9306
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8o732"]
 size = Vector3(4.40985, 4.2443, 9.11859)
@@ -1005,9 +1008,13 @@ bind/31/bone = -1
 bind/31/pose = Transform3D(-8.4641e-07, -0.455114, -0.890433, 4.41504e-07, -0.890433, 0.455115, -1, -2.73349e-08, 9.81972e-07, -76.9409, 58.2994, -2.76759e-06)
 
 [node name="HellHound" instance=ExtResource("1_jma5k")]
-transform = Transform3D(1, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+transform = Transform3D(0.8, 0, 0, 0, 0.56, 0, 0, 0, 0.56, 0, 0, 0)
 script = ExtResource("2_spyk5")
 type = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Components/AnimalDetectionComponent" index="0"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+shape = SubResource("SphereShape3D_gtxd0")
 
 [node name="CollisionShape3D" parent="Components/ClickDetectionComponent" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.271226, 3.47097, 1.3866)

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://6v4bqom7qicp"]
+
+[ext_resource type="Texture2D" uid="uid://deq427k2hxqnv" path="res://SpriteImages/DwarfCity.jpg" id="1_2xly1"]
+[ext_resource type="Script" path="res://Prefabs/BuildingMenus/DwarfHallMenu/DwarfHallMenu.gd" id="1_xq1p3"]
+
+[node name="DwarfHallMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xq1p3")
+
+[node name="DwarfHallMenuImage" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1152.0
+offset_top = 228.0
+offset_right = 2582.0
+offset_bottom = 2792.0
+scale = Vector2(-0.17, 0.17)
+texture = ExtResource("1_2xly1")
+expand_mode = 1
+stretch_mode = 4

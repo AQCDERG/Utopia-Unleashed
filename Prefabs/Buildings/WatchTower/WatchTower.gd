@@ -4,8 +4,6 @@ class_name WatchTower
 static var _scene: PackedScene
 
 func _ready() -> void:
-	print("READ?")
-	GetPacked()
 	super._ready()
 
 
@@ -18,9 +16,3 @@ static func getCost(honor: CurrencyManager, passion: CurrencyManager, death: Cur
 	honor.remove(5)
 	passion.remove(10)
 	death.remove(1)
-
-func GetPacked() -> PackedScene:
-	bullet = load("res://Scenes/bullet.tscn")
-	print("LOADed")
-	return bullet
-		

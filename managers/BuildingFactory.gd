@@ -8,7 +8,6 @@ var _currentHeadquartersAmount: int = 0
 func _exampleFunctionThatDoesntServerAnyPurposeButToExplainScenes():
   var dogPacked: PackedScene = ManaDog.GetScene() # DATA
   var dogScene: ManaDog = dogPacked.instantiate() # INSTANCE/SCENE/NODE
-  print(dogScene.name)
   # > ManaDog
 
   var kids: Array[Node] = dogScene.get_node("Effects").get_children()

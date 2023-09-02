@@ -19,7 +19,9 @@ enum Type {
 	LAVA_DEER,
 	HELL_HOUND,
 	HUNTER,
-	DWARF
+	DWARF,
+	MYSTIQUE_FOX,
+	CANNON
 }
 
 enum Team{
@@ -50,7 +52,8 @@ var world: World
 
 func _ready() -> void:
 	# if (!is_multiplayer_authority()):
-	# 	return
+	# 	
+	health.onDeath.connect(death)
 
 
 	await get_tree().process_frame
@@ -60,6 +63,10 @@ func _ready() -> void:
 		ClientRPC_spawnHurtParticles(amountDecreased)
 	)
 
+func death() -> void:
+	queue_free()
+
+	
 func _process(delta: float) -> void:
 	actionManager.runCurrentAction(delta)	
 
@@ -95,4 +102,5 @@ func rotateMoveDirection() -> void:
 	#	look_at(velocity + Vector3(90,0,0))
 	#elif(self.rotation.x < 180):
 	#	look_at(velocity +  Vector3(180,0,0))
-		
+
+

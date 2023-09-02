@@ -4,7 +4,7 @@ var speed: float = 20.0
 var is_active: bool = false
 var direction: Vector3 = Vector3()
 var bulletLifeSpan: int = 10
-
+var shootingBody: Node3D
 @export var damage: int = 5
 @onready var hitRadius: Area3D = %HitRadius
 @onready var removeParticle: GPUParticles3D = %HitParticle
@@ -18,12 +18,15 @@ func _physics_process(delta):
 		
 	self.global_transform.origin += move_vector
 
-func launch(target):
+func launch(target, body):
 	direction = target.position - self.global_transform.origin
 	is_active = true
+	shootingBody = body
 
 func hitAnimal(body: Node3D):
-	if(body is Animal):
+	if(body == shootingBody):
+		return
+	if(body is Animal || body is Building):
 		body.health.takeDamage(damage)
 		removeBullet()
 

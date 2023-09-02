@@ -146,10 +146,11 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dn4hx"]
-size = Vector3(10.3449, 1.47395, 9.59138)
+size = Vector3(10.3449, 15.2944, 17.9035)
 
 [node name="DwarfHall" type="StaticBody3D"]
 script = ExtResource("1_aio4k")
+buildingType = 7
 
 [node name="decimatedDwarfs" parent="." instance=ExtResource("2_enoaa")]
 transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 0, 0, 0)
@@ -159,7 +160,8 @@ script = ExtResource("3_0ux1q")
 spawnerTime = 5
 spawnerBuilding = NodePath("..")
 type = 4
-maxSoldierAmount = 5
+type2 = 6
+maxSoldierAmount = 2
 
 [node name="Effects" type="Node3D" parent="."]
 
@@ -209,7 +211,7 @@ unique_name_in_owner = true
 script = ExtResource("6_jrlv6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Componenets/ClickDetectionComponent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0626746, 1.00226, -0.326673)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0626746, 1.00226, 0.142595)
 shape = SubResource("BoxShape3D_dn4hx")
 
 [node name="HealthComponent" type="Node" parent="Componenets"]

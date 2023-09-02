@@ -1,11 +1,12 @@
-HealthComponent
-Node3D
-Building
-Animal
 CollisionShape3D
+Timer
+Node3D
+Animal
+Control
+HealthComponent
+Building
 Area3D
 StaticBody3D
-Control
 DefenderBuilding
 MeshInstance3D
 RayCast3D
@@ -14,7 +15,6 @@ ClickDetectionComponent
 AudioStreamPlayer3D
 AudioStreamPlayer
 GPUParticles3D
-Timer
 RigidBody3D
 CharacterBody3D
 Button
@@ -30,4 +30,3 @@ AnimalActionManager
 Label
 AnimalMenu
 Label3D
-PathVisualiserComponent

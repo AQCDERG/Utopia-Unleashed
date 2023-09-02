@@ -1,4 +1,5 @@
 res://components
+res://managers
 res://Prefabs/Buildings
 res://Prefabs/BuildingMenus/WatchTower
 res://Scripts
@@ -16,4 +17,3 @@ res://Prefabs/Buildings/EvilCastle
 res://Prefabs/Animals/Hellhound
 res://Prefabs/Animals/Hunter
 res://Prefabs/Animals/LavaDeer
-res://managers

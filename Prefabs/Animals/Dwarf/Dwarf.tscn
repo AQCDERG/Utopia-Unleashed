@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dgdjkmbk6r5ih"]
+[gd_scene load_steps=42 format=3 uid="uid://dgdjkmbk6r5ih"]
 
 [ext_resource type="Script" path="res://Prefabs/Animals/Dwarf/Dwarf.gd" id="1_5evpa"]
 [ext_resource type="Script" path="res://components/HealthComponent.gd" id="2_4vgq0"]
@@ -23,10 +23,14 @@
 [ext_resource type="Texture2D" uid="uid://bt70mkxhwtjqx" path="res://FinishedBlednerGoods/Creatures/Viking/Nornal.png" id="21_78mac"]
 [ext_resource type="Texture2D" uid="uid://qjrcdehu42hy" path="res://FinishedBlednerGoods/Creatures/Viking/Roughness.png" id="22_uladv"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_7k1dl"]
+radius = 11.9891
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_hvggt"]
-size = Vector3(4.40985, 4.2443, 3)
+size = Vector3(5.12614, 4.2443, 5.49109)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3t876"]
+radius = 4.27406
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1vtuf"]
 render_priority = 0
@@ -560,6 +564,7 @@ normal_enabled = true
 normal_texture = ExtResource("21_78mac")
 
 [node name="Dwarf" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 13, 0)
 script = ExtResource("1_5evpa")
 type = 4
 
@@ -571,7 +576,11 @@ script = ExtResource("2_4vgq0")
 
 [node name="AnimalDetectionComponent" type="Area3D" parent="Components"]
 unique_name_in_owner = true
+input_ray_pickable = false
 script = ExtResource("3_yo4ge")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Components/AnimalDetectionComponent"]
+shape = SubResource("SphereShape3D_7k1dl")
 
 [node name="PathFinderComponent" type="NavigationAgent3D" parent="Components"]
 script = ExtResource("4_rxgh0")
@@ -623,6 +632,8 @@ unique_name_in_owner = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnimalActionManager/AttackAction/AttackArea"]
 shape = SubResource("SphereShape3D_3t876")
+
+[node name="AttackTimer" type="Timer" parent="AnimalActionManager/AttackAction"]
 
 [node name="HurtParticles" type="GPUParticles3D" parent="."]
 unique_name_in_owner = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c5wxqy3kel0v4"]
+[gd_scene load_steps=33 format=3 uid="uid://c5wxqy3kel0v4"]
 
 [ext_resource type="Script" path="res://Prefabs/Buildings/DefenderBuildings/LavaTower/finishedlava_towwer.gd" id="2_3xmph"]
 [ext_resource type="Texture2D" uid="uid://c8gw3ds38rx3k" path="res://ParticleProject/Images/brightGlowParticle.png" id="2_8gc2q"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://clq0p801xbhka" path="res://Sounds/building.wav" id="6_fwuag"]
 [ext_resource type="AudioStream" uid="uid://bxbc3bqi52pju" path="res://Sounds/magic-smite-6012.mp3" id="7_pa5j1"]
 [ext_resource type="ArrayMesh" uid="uid://bj0ssbvxph06a" path="res://FinishedBlednerGoods/Terrain/LavaTower.tres" id="8_fhrha"]
+[ext_resource type="Script" path="res://components/SpawningComponent.gd" id="12_edjqa"]
 
 [sub_resource type="Gradient" id="Gradient_mp06n"]
 offsets = PackedFloat32Array(0, 0.348993, 1)
@@ -126,8 +127,6 @@ albedo_texture = ExtResource("4_5htnb")
 
 [node name="LavaTower" type="StaticBody3D"]
 script = ExtResource("2_3xmph")
-_attackIntervalSeconds = 1.0
-damage = 1
 price = 1
 buildingType = 5
 _creationTimeSeconds = 1.0
@@ -219,5 +218,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6377, 0, -1.36238)
 [node name="Flag_low" parent="village" index="0"]
 transform = Transform3D(0.00212357, 0, 0, 0, -2.53149e-10, -0.00212357, 0, 0.00212357, -2.53149e-10, 0.568558, 4.64818, 1.09169)
 material_override = SubResource("StandardMaterial3D_xcmje")
+
+[node name="SpawningComponent" type="Node3D" parent="." node_paths=PackedStringArray("spawnerBuilding")]
+script = ExtResource("12_edjqa")
+spawnerTime = 8
+spawnerBuilding = NodePath("..")
+type = 2
+maxSoldierAmount = 2
 
 [editable path="village"]

@@ -12,6 +12,8 @@ signal doCameraShake(amount: float) # not ideal, but it works.
 @onready var music2: AudioStreamPlayer = %Music2
 @onready var music3: AudioStreamPlayer = %Music3
 @onready var allMusic = [music1, music2, music3]
+@onready var dwarfHall = %DwarfHall
+@onready var lavaTower = %LavaTower
 
 @onready var animalFactory: AnimalFactory = %AnimalFactory
 @onready var buildingFactory: BuildingFactory = %BuildingFactory
@@ -49,6 +51,8 @@ func _ready() -> void:
 	_spawnBuildingOnRequested()
 	animalCreator.spawnDeerRandomly()
 	animalCreator.spawnWolfRandomly()
+	animalCreator.spawnMystiqueFoxRandomly()
+	createPreloadedBuildings()
 
 
 func _playRandomMusic() -> void:
@@ -127,3 +131,7 @@ func applyBuildingCost(type: Building.Type):
 		_:
 			push_error("Invalid building type")
 			return null
+
+func createPreloadedBuildings():
+	onBuildingAdded.emit(dwarfHall)
+	onBuildingAdded.emit(lavaTower)

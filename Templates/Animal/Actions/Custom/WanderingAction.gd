@@ -12,6 +12,8 @@ func begin(animal: Animal) -> void:
 	#_log.info("WanderingAction begin with target position: ", pathFinder.target_position)
 
 func process(animal: Animal, delta: float) -> void:
+	if(pathFinder == null):
+		return
 	pathFinder.target_position = _randomPosition # brug!
 
 	# Change animal velocity to reach target position
@@ -50,8 +52,8 @@ func _is_close_enough_to_increment_position(ourAnimal: Animal):
 	return false
 
 func finish(animal: Animal) -> void:
-	#_log.info("WanderingAction finish")
-	pass
+	pathFinder = null
+	print("FINSIHED")
 
 func _getRandomPosition() -> Vector3:
 	const MIN: float = 0;
