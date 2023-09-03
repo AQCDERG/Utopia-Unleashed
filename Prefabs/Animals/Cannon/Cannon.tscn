@@ -11,22 +11,21 @@
 [ext_resource type="Script" path="res://components/PathVisualiserComponent.gd" id="9_wvdcr"]
 [ext_resource type="Script" path="res://Templates/Animal/Actions/AnimalActionManager.gd" id="10_g58jn"]
 [ext_resource type="Script" path="res://Templates/Animal/Actions/Custom/WanderingAction.gd" id="11_doedy"]
-[ext_resource type="Script" path="res://Templates/Animal/Actions/Custom/AttackAction.gd" id="12_6037a"]
 [ext_resource type="Shader" path="res://Shader/HealthBar.gdshader" id="13_b5lds"]
 [ext_resource type="AudioStream" uid="uid://bkqoyvjplnsva" path="res://Sounds/wolf-howl-6310.mp3" id="14_ferpw"]
+[ext_resource type="Script" path="res://Templates/Animal/Actions/Custom/RangeAttackAction.gd" id="15_rlw3j"]
 [ext_resource type="Script" path="res://Scripts/GamertagGenerator.gd" id="15_uvbb4"]
 [ext_resource type="Script" path="res://Scripts/AnimalName.gd" id="16_kk5b0"]
 [ext_resource type="PackedScene" uid="uid://nh34j4l2aoiq" path="res://FinishedBlednerGoods/Creatures/CannonDwarf2.glb" id="17_4x32i"]
-[ext_resource type="Script" path="res://managers/RangeComponenet.gd" id="18_cj0k3"]
 [ext_resource type="Script" path="res://components/ShootingComponenet.gd" id="19_bh63s"]
 [ext_resource type="PackedScene" uid="uid://yga3dm17we5m" path="res://Scenes/bullet.tscn" id="20_c81r4"]
 [ext_resource type="AudioStream" uid="uid://bxbc3bqi52pju" path="res://Sounds/magic-smite-6012.mp3" id="21_xuk8n"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_0mic7"]
+radius = 120.106
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_3wqdg"]
 size = Vector3(12.8517, 7.60012, 20.1388)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_ecda1"]
-radius = 15.0779
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1vtuf"]
 render_priority = 0
@@ -903,10 +902,14 @@ _data = {
 radius = 4.66251
 height = 22.0288
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_dfaxq"]
+radius = 64.3589
+
 [node name="Cannon" type="CharacterBody3D"]
-transform = Transform3D(-0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, 0, 0, 0)
+transform = Transform3D(-0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, 0.355141, 0, 0)
 script = ExtResource("1_6wguo")
 type = 6
+faction = 1
 
 [node name="Components" type="Node3D" parent="."]
 
@@ -916,7 +919,12 @@ script = ExtResource("2_2bxra")
 
 [node name="AnimalDetectionComponent" type="Area3D" parent="Components"]
 unique_name_in_owner = true
+input_ray_pickable = false
 script = ExtResource("3_kejtn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Components/AnimalDetectionComponent"]
+transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_0mic7")
 
 [node name="PathFinderComponent" type="NavigationAgent3D" parent="Components"]
 script = ExtResource("4_mdgih")
@@ -933,15 +941,11 @@ script = ExtResource("6_kn4a0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.271226, 3.47097, 0.3866)
 shape = SubResource("BoxShape3D_3wqdg")
 
-[node name="RangeComponenet" type="Node3D" parent="Components"]
-transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 0, 0, 0)
-script = ExtResource("18_cj0k3")
-
 [node name="ShootingComponenet" type="Node3D" parent="Components"]
 transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 0, 0, 0)
 script = ExtResource("19_bh63s")
 _attackIntervalSeconds = 1.0
-damage = 5
+damage = 20
 bullet = ExtResource("20_c81r4")
 
 [node name="Controllers" type="Node3D" parent="."]
@@ -970,16 +974,9 @@ script = ExtResource("10_g58jn")
 unique_name_in_owner = true
 script = ExtResource("11_doedy")
 
-[node name="AttackAction" type="Node" parent="AnimalActionManager"]
+[node name="RangeAttackAction" type="Node" parent="AnimalActionManager"]
 unique_name_in_owner = true
-script = ExtResource("12_6037a")
-
-[node name="AttackArea" type="Area3D" parent="AnimalActionManager/AttackAction"]
-unique_name_in_owner = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimalActionManager/AttackAction/AttackArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("SphereShape3D_ecda1")
+script = ExtResource("15_rlw3j")
 
 [node name="HurtParticles" type="GPUParticles3D" parent="."]
 unique_name_in_owner = true
@@ -1045,7 +1042,7 @@ script = ExtResource("16_kk5b0")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 4, 0)
 
 [node name="DwarfCannon0101_DwarfCannon1" parent="CannonDwarf2" index="0"]
-transform = Transform3D(-1.14944, -8.678e-08, -8.678e-08, 8.678e-08, 0, -1.14944, 8.67801e-08, -1.14944, 0, 4.76838e-06, 0, -9.53674e-06)
+transform = Transform3D(-1.14944, -8.678e-08, -8.678e-08, 8.678e-08, 0, -1.14944, 8.67801e-08, -1.14944, 1.69407e-21, 4.76838e-06, 0, -9.53674e-06)
 
 [node name="Sounds" type="Node3D" parent="."]
 
@@ -1053,6 +1050,12 @@ transform = Transform3D(-1.14944, -8.678e-08, -8.678e-08, 8.678e-08, 0, -1.14944
 unique_name_in_owner = true
 stream = ExtResource("21_xuk8n")
 
-[connection signal="body_entered" from="AnimalActionManager/AttackAction/AttackArea" to="AnimalActionManager/AttackAction" method="_on_attack_area_body_entered" flags=18]
+[node name="AttackArea" type="Area3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_kejtn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
+transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_dfaxq")
 
 [editable path="CannonDwarf2"]

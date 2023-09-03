@@ -8,15 +8,15 @@ var bulletVelocity: Vector3
 
 
 @export var bullet: PackedScene
-@onready var _attackArea: Area3D = %AttackArea # You need to have this node in your scene.
+@onready var _attackArea: AnimalDetectionComponent = %AttackArea # You need to have this node in your scene.
 @onready var shootSound: AudioStreamPlayer3D = %AttackSound
 
 var _currentTarget: Animal
 
 func _ready() -> void:
 	_createAndConfigureTimer()
-	_attackArea.body_entered.connect(_target)
-	_attackArea.body_exited.connect(_disengage)
+	_attackArea.onAnimalEntered.connect(_target)
+	_attackArea.onAnimalExited.connect(_disengage)
 
 func _createAndConfigureTimer() -> void:
 	var timer: Timer = Timer.new()
@@ -47,6 +47,8 @@ func _target(possibleVictim: Node3D) -> void:
 	if(possibleVictim == self):
 		#print("FAILED")
 		return
+	if(owner is Animal):
+		_currentTarget = owner.getTarget() 
 	if(possibleVictim is Animal || possibleVictim is Building):
 		_currentTarget = possibleVictim
 		#print("TARGET")

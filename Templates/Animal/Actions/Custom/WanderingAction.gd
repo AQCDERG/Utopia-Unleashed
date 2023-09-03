@@ -53,7 +53,6 @@ func _is_close_enough_to_increment_position(ourAnimal: Animal):
 
 func finish(animal: Animal) -> void:
 	pathFinder = null
-	print("FINSIHED")
 
 func _getRandomPosition() -> Vector3:
 	const MIN: float = 0;

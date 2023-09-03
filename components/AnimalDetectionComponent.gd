@@ -1,4 +1,4 @@
-class_name AnimalDetectionComponent 
+class_name AnimalDetectionComponent
 extends Area3D
 
 signal onAnimalEntered(target: Animal)
@@ -19,13 +19,17 @@ func _ready() -> void:
 
 func registerAnimalDetectors() -> void:
   body_entered.connect(func(body) -> void:
-    if (body is Animal && body != owner):
+    if ((body is Animal || body is Building) && body != owner):
+      if(body.faction == owner.faction):
+        return
       animalsWithinRange.append(body)
       onAnimalEntered.emit(body)
   )
 
   body_exited.connect(func(body) -> void:
-    if(body is Animal):
+    if(body is Animal || body is Building):
+      if(body.faction == owner.faction):
+        return
       animalsWithinRange.erase(body)
       onAnimalExited.emit(body)
   )

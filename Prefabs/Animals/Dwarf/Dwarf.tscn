@@ -23,14 +23,11 @@
 [ext_resource type="Texture2D" uid="uid://bt70mkxhwtjqx" path="res://FinishedBlednerGoods/Creatures/Viking/Nornal.png" id="21_78mac"]
 [ext_resource type="Texture2D" uid="uid://qjrcdehu42hy" path="res://FinishedBlednerGoods/Creatures/Viking/Roughness.png" id="22_uladv"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_7k1dl"]
-radius = 11.9891
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_hvggt"]
 size = Vector3(5.12614, 4.2443, 5.49109)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_3t876"]
-radius = 4.27406
+[sub_resource type="SphereShape3D" id="SphereShape3D_7k1dl"]
+radius = 11.9891
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1vtuf"]
 render_priority = 0
@@ -468,8 +465,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_501ai"]
-radius = 2.13036
-height = 5.16695
+radius = 0.973538
+height = 2.72823
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pul2m"]
 albedo_texture = ExtResource("18_rh1qu")
@@ -563,24 +560,19 @@ emission_texture = ExtResource("19_taac0")
 normal_enabled = true
 normal_texture = ExtResource("21_78mac")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_lrui8"]
+radius = 7.80035
+
 [node name="Dwarf" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 13, 0)
 script = ExtResource("1_5evpa")
 type = 4
+faction = 1
 
 [node name="Components" type="Node3D" parent="."]
 
 [node name="HealthComponent" type="Node" parent="Components"]
 unique_name_in_owner = true
 script = ExtResource("2_4vgq0")
-
-[node name="AnimalDetectionComponent" type="Area3D" parent="Components"]
-unique_name_in_owner = true
-input_ray_pickable = false
-script = ExtResource("3_yo4ge")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Components/AnimalDetectionComponent"]
-shape = SubResource("SphereShape3D_7k1dl")
 
 [node name="PathFinderComponent" type="NavigationAgent3D" parent="Components"]
 script = ExtResource("4_rxgh0")
@@ -596,6 +588,13 @@ script = ExtResource("6_gct8d")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Components/ClickDetectionComponent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.071226, 2.47097, 0.3866)
 shape = SubResource("BoxShape3D_hvggt")
+
+[node name="AnimalDetectionComponent" type="Area3D" parent="Components"]
+unique_name_in_owner = true
+script = ExtResource("3_yo4ge")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Components/AnimalDetectionComponent"]
+shape = SubResource("SphereShape3D_7k1dl")
 
 [node name="Controllers" type="Node3D" parent="."]
 
@@ -626,12 +625,6 @@ script = ExtResource("11_cgcl3")
 [node name="AttackAction" type="Node" parent="AnimalActionManager"]
 unique_name_in_owner = true
 script = ExtResource("12_x05qr")
-
-[node name="AttackArea" type="Area3D" parent="AnimalActionManager/AttackAction"]
-unique_name_in_owner = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimalActionManager/AttackAction/AttackArea"]
-shape = SubResource("SphereShape3D_3t876")
 
 [node name="AttackTimer" type="Timer" parent="AnimalActionManager/AttackAction"]
 
@@ -680,7 +673,7 @@ libraries = {
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Collisions/AreaOfAttack"]
 
 [node name="CollisionBody" type="CollisionShape3D" parent="."]
-transform = Transform3D(2.98023e-08, 0, -1, -1.06581e-14, 1, -2.11758e-22, 1, 1.06581e-14, 2.98023e-08, 0.1, 2.19604, 0.391026)
+transform = Transform3D(2.98023e-08, 0, -1, -1.06581e-14, 1, -2.11758e-22, 1, 1.06581e-14, 2.98023e-08, 0.1, 1.19604, 0.391026)
 shape = SubResource("CapsuleShape3D_501ai")
 
 [node name="NameGenerator" type="Node" parent="."]
@@ -815,6 +808,11 @@ material_override = SubResource("StandardMaterial3D_akb3h")
 [node name="shoulder pad" parent="Dwarf2/Armature/Skeleton3D" index="9"]
 material_override = SubResource("StandardMaterial3D_sefdl")
 
-[connection signal="body_entered" from="AnimalActionManager/AttackAction/AttackArea" to="AnimalActionManager/AttackAction" method="_on_attack_area_body_entered" flags=18]
+[node name="AttackArea" type="Area3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_yo4ge")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
+shape = SubResource("SphereShape3D_lrui8")
 
 [editable path="Dwarf2"]

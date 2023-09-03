@@ -1,6 +1,8 @@
 CollisionShape3D
-Timer
+AnimalDetectionComponent
 Node3D
+RangeAttackAction
+Timer
 Animal
 Control
 HealthComponent
@@ -28,5 +30,3 @@ CreateBuildingMenu
 AnimalMenuManager
 AnimalActionManager
 Label
-AnimalMenu
-Label3D

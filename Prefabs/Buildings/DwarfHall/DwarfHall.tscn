@@ -161,7 +161,7 @@ spawnerTime = 5
 spawnerBuilding = NodePath("..")
 type = 4
 type2 = 6
-maxSoldierAmount = 2
+maxSoldierAmount = 1
 
 [node name="Effects" type="Node3D" parent="."]
 

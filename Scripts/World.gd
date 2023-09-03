@@ -50,6 +50,9 @@ func _ready() -> void:
 	_passiveIncome() # Give money IMMEDIATELY.
 	_spawnBuildingOnRequested()
 	animalCreator.spawnDeerRandomly()
+	animalCreator.spawnDeerRandomly()
+	animalCreator.spawnDeerRandomly()
+	animalCreator.spawnDeerRandomly()
 	animalCreator.spawnWolfRandomly()
 	animalCreator.spawnMystiqueFoxRandomly()
 	createPreloadedBuildings()

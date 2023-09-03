@@ -34,11 +34,14 @@ func play_attack_animation() -> void:
 func play_moving_animation() -> void:
 	movingAnimation.play("Bip01|Take 001|BaseLayer")
 
-#func _on_attack_area_body_entered(body:Node3D) -> void:
-	#actionManager.changeActionTo(attackAction)
 
 func beginAttack(body: Node3D) -> void:
+	if(body.faction == self.faction):
+		return
+	
 	actionManager.changeActionTo(attackAction)
 
 func endAttack(body: Node3D) -> void:
+	if(body.faction == self.faction):
+		return
 	actionManager.changeActionTo(wanderingAction)

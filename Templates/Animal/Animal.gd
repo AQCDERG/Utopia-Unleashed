@@ -29,12 +29,24 @@ enum Team{
 	CONTROLABLE,
 
 }
+
+enum Weapon{
+	RANGE,
+	MELEE
+}
+
+enum Faction{
+	NONE,
+	DWARF,
+	Chinesse
+}
 const hunterMenu := preload("res://Prefabs/AnimalMenus/Hunter/HunterMenu.tscn")
 const AnimalName := preload("res://Scripts/AnimalName.gd")
 
 @export var animalConfiguration: AnimalConfiguration
 @onready var hurtParticles: GPUParticles3D = %HurtParticles
 @export var type: Type
+@export var faction: Faction
 @onready var autonomousController: AutonomousAnimalController = %AutonomousAnimalController
 @onready var playerController: PlayerAnimalController = %PlayerAnimalController
 @onready var actionManager: AnimalActionManager = %AnimalActionManager
@@ -102,5 +114,3 @@ func rotateMoveDirection() -> void:
 	#	look_at(velocity + Vector3(90,0,0))
 	#elif(self.rotation.x < 180):
 	#	look_at(velocity +  Vector3(180,0,0))
-
-

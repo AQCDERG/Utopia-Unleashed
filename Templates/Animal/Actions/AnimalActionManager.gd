@@ -33,11 +33,13 @@ func changeActionTo(action: AnimalAction) -> void:
 func _finishLastAction() -> void:
 	if(animal.currentAction != null):
 		animal.currentAction.finish(animal)
+		currentActionType = ActionType.WANDERING
 
 func _beginNewAction(action: AnimalAction) -> void:
 	animal.currentAction = action
 	if(animal.currentAction != null):
 		animal.currentAction.begin(animal)
+		
 
 func getCurrentAction() -> ActionType:
-	return ActionType.ATTACKING
+	return currentActionType

@@ -1974,11 +1974,6 @@ script = ExtResource("14_c1j4n")
 unique_name_in_owner = true
 script = ExtResource("15_d1ejx")
 
-[node name="AttackArea" type="Area3D" parent="AnimalActionManager/AttackAction"]
-unique_name_in_owner = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimalActionManager/AttackAction/AttackArea"]
-
 [node name="HurtParticles" type="GPUParticles3D" parent="."]
 unique_name_in_owner = true
 
@@ -2042,4 +2037,8 @@ billboard = 1
 text = "wfeewffew"
 script = ExtResource("20_etv5m")
 
-[connection signal="body_entered" from="AnimalActionManager/AttackAction/AttackArea" to="AnimalActionManager/AttackAction" method="_on_attack_area_body_entered" flags=18]
+[node name="AttackArea" type="Area3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_s64xx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
