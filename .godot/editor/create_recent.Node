@@ -1,11 +1,10 @@
-AnimationPlayer
-Control
-Node3D
 CollisionShape3D
 AnimalDetectionComponent
+Node3D
 RangeAttackAction
 Timer
 Animal
+Control
 HealthComponent
 Building
 Area3D
@@ -23,8 +22,10 @@ CharacterBody3D
 Button
 CanvasLayer
 TextureRect
+AnimationPlayer
 ProgressBar
 RichTextLabel
+Sprite2D
 CreateBuildingMenu
 AnimalMenuManager
 AnimalActionManager

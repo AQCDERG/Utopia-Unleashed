@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c5wxqy3kel0v4"]
+[gd_scene load_steps=33 format=3 uid="uid://c5wxqy3kel0v4"]
 
 [ext_resource type="Script" path="res://Prefabs/Buildings/DefenderBuildings/LavaTower/finishedlava_towwer.gd" id="2_3xmph"]
 [ext_resource type="Texture2D" uid="uid://c8gw3ds38rx3k" path="res://ParticleProject/Images/brightGlowParticle.png" id="2_8gc2q"]
@@ -125,42 +125,6 @@ albedo_texture = ExtResource("2_vy2jo")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xcmje"]
 albedo_texture = ExtResource("4_5htnb")
 
-[sub_resource type="Animation" id="Animation_5t1qw"]
-resource_name = "LavaAnimation"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Componenets:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.7),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_ctg2p"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Componenets:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jjof8"]
-_data = {
-"LavaAnimation": SubResource("Animation_5t1qw"),
-"RESET": SubResource("Animation_ctg2p")
-}
-
 [node name="LavaTower" type="StaticBody3D"]
 script = ExtResource("2_3xmph")
 price = 1
@@ -261,10 +225,5 @@ spawnerTime = 8
 spawnerBuilding = NodePath("..")
 type = 2
 maxSoldierAmount = 2
-
-[node name="Animation" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_jjof8")
-}
 
 [editable path="village"]
