@@ -33,6 +33,10 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=2
 
+[dotnet]
+
+project/assembly_name="Utopia Unleashed"
+
 [input]
 
 move_a={

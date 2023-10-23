@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dt82srqd46778"]
+[gd_scene load_steps=32 format=3 uid="uid://dt82srqd46778"]
 
 [ext_resource type="Shader" path="res://Prefabs/VolumetricClouds/clouds.gdshader" id="1_h3xby"]
 [ext_resource type="Texture2D" uid="uid://c8gw3ds38rx3k" path="res://ParticleProject/Images/brightGlowParticle.png" id="1_nd4il"]
@@ -13,10 +13,8 @@
 [ext_resource type="AudioStream" uid="uid://b26ai7uvobe0x" path="res://Sounds/chinese-new-year-background-music-127668.mp3" id="12_p3pqj"]
 [ext_resource type="Shader" path="res://Shader/Gradient.gdshader" id="13_pjben"]
 [ext_resource type="FontFile" uid="uid://b00urqx5bpvto" path="res://Fonts/Shanghi Font/shanghai.ttf" id="13_wrdvr"]
-[ext_resource type="Texture2D" uid="uid://ddy4tm3tyfk3x" path="res://SpriteImages/yinyangSymbol.png" id="16_shrjk"]
 [ext_resource type="Script" path="res://Scripts/ButtonManager.gd" id="17_4eb44"]
 [ext_resource type="Texture2D" uid="uid://bnq4r4llen24n" path="res://SpriteImages/HellHoundImage.jpg" id="17_f6djx"]
-[ext_resource type="Script" path="res://Scripts/YinyangSymbol.gd" id="17_riax0"]
 [ext_resource type="Texture2D" uid="uid://12hbgrvkuavx" path="res://SpriteImages/139Z_chinese_frame_6.png" id="17_sljma"]
 
 [sub_resource type="Gradient" id="Gradient_b1cm2"]
@@ -207,13 +205,13 @@ curve = SubResource("Curve3D_2reu5")
 [node name="newOrigin" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182.108, 208, -333)
 
-[node name="chineaseSpyBallon" parent="." node_paths=PackedStringArray("newOrigin") instance=ExtResource("6_5tr3f")]
+[node name="Ballon" parent="." node_paths=PackedStringArray("newOrigin") instance=ExtResource("6_5tr3f")]
 transform = Transform3D(-0.599998, 0, 1.03923, 0, 1.2, 0, -1.03923, 0, -0.599998, -182.946, 138.49, -347.967)
 newOrigin = NodePath("../newOrigin")
 angle_speed = 0.05
 rotation_speed = 25
 
-[node name="StartTurning" type="Timer" parent="chineaseSpyBallon"]
+[node name="StartTurning" type="Timer" parent="Ballon"]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 material = SubResource("ShaderMaterial_aegbx")
@@ -230,13 +228,6 @@ text = "[center]Utopia Unleshed[/center]"
 scroll_active = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-
-[node name="YinyangSymbol" type="Sprite2D" parent="."]
-position = Vector2(1098, 591)
-rotation = 0.927881
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("16_shrjk")
-script = ExtResource("17_riax0")
 
 [node name="ButtonManager" type="Control" parent="."]
 layout_mode = 3
@@ -305,5 +296,16 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[connection signal="timeout" from="chineaseSpyBallon/StartTurning" to="chineaseSpyBallon" method="_on_start_turning_timeout"]
+[node name="Furance" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.99863, 0.052336, 0, -0.052336, -0.99863, 1.03, 0, 0)
+
+[node name="Node3D" type="Node3D" parent="Furance"]
+
+[node name="Control" type="Control" parent="Furance"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="timeout" from="Ballon/StartTurning" to="Ballon" method="_on_start_turning_timeout"]
 [connection signal="pressed" from="ButtonManager/Play" to="ButtonManager" method="_on_play_pressed"]
