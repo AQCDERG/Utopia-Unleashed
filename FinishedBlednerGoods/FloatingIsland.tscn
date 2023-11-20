@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cfy7iqvm6fo33"]
 
-[ext_resource type="PackedScene" uid="uid://pemqmaolcqgm" path="res://FinishedBlednerGoods/Chinesse/haunted_house_halloween/scene.gltf" id="1_ji1n5"]
+[ext_resource type="PackedScene" uid="uid://pemqmaolcqgm" path="res://FinishedBlednerGoods/Golden/haunted_house_halloween/scene.gltf" id="1_ji1n5"]
 
 [node name="scene" instance=ExtResource("1_ji1n5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)

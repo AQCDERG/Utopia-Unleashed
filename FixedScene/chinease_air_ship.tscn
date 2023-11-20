@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://6cmjmwg18cuv"]
 
-[ext_resource type="PackedScene" uid="uid://mqjspjp880a6" path="res://FinishedBlednerGoods/Chinesse/ChineaseAirShip/ChineaseAirShip.gltf" id="1_1i54p"]
+[ext_resource type="PackedScene" uid="uid://mqjspjp880a6" path="res://FinishedBlednerGoods/Golden/ChineaseAirShip/ChineaseAirShip.gltf" id="1_1i54p"]
 
 [node name="ChineaseAirShip" instance=ExtResource("1_1i54p")]
 

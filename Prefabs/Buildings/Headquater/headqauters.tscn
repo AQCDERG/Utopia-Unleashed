@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://dyrusigikm186"]
 
 [ext_resource type="Script" path="res://Prefabs/Buildings/Headquater/Headqauters.gd" id="1_rsuee"]
-[ext_resource type="PackedScene" uid="uid://cbjkomilqcngh" path="res://FinishedBlednerGoods/Chinesse/NewChineaseHeadquaters/WorkingChineaseHeadqauters.glb" id="2_01jm5"]
+[ext_resource type="PackedScene" uid="uid://cbjkomilqcngh" path="res://FinishedBlednerGoods/Golden/NewChineaseHeadquaters/WorkingChineaseHeadqauters.glb" id="2_01jm5"]
 [ext_resource type="Texture2D" uid="uid://c8gw3ds38rx3k" path="res://ParticleProject/Images/brightGlowParticle.png" id="2_nnndw"]
 [ext_resource type="Texture2D" uid="uid://cnckwdw8gjqss" path="res://ParticleProject/Images/SuperSmokeCCO.png" id="3_0veyu"]
 [ext_resource type="Script" path="res://components/ClickDetectionComponent.gd" id="4_r00sq"]

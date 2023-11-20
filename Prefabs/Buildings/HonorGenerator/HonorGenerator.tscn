@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=3 uid="uid://dsdqcvgne7wp6"]
 
-[ext_resource type="PackedScene" uid="uid://dqydj4adr2nm2" path="res://FinishedBlednerGoods/Chinesse/CHINEASE/ChineaseHeadQautersa.glb" id="1_ejkf6"]
+[ext_resource type="PackedScene" uid="uid://dqydj4adr2nm2" path="res://FinishedBlednerGoods/Golden/CHINEASE/ChineaseHeadQautersa.glb" id="1_ejkf6"]
 [ext_resource type="Script" path="res://Prefabs/Buildings/HonorGenerator/HonorGenerator.gd" id="1_vtio6"]
 [ext_resource type="Texture2D" uid="uid://c8gw3ds38rx3k" path="res://ParticleProject/Images/brightGlowParticle.png" id="2_e2hhs"]
 [ext_resource type="Texture2D" uid="uid://cnckwdw8gjqss" path="res://ParticleProject/Images/SuperSmokeCCO.png" id="3_rcdb1"]

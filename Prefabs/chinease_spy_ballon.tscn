@@ -1,13 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://ympy38k3umbr"]
+[gd_scene load_steps=5 format=3 uid="uid://ympy38k3umbr"]
 
-[ext_resource type="PackedScene" uid="uid://dib6qg1hk40mq" path="res://FinishedBlednerGoods/Chinesse/ChineaseSpyBallon/chineaseSpyBallon.gltf" id="1_rwlvt"]
+[ext_resource type="PackedScene" uid="uid://dib6qg1hk40mq" path="res://FinishedBlednerGoods/Golden/Balloon/chineaseSpyBallon.gltf" id="1_1k12v"]
 [ext_resource type="Script" path="res://Scripts/Spyballon.gd" id="2_k0rke"]
+[ext_resource type="Texture2D" uid="uid://fejyi7evvpju" path="res://FinishedBlednerGoods/Golden/ChineaseAirShip/airship_baseColor.jpg" id="3_5mwl1"]
 
-[node name="chineaseSpyBallon" instance=ExtResource("1_rwlvt")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjgv2"]
+albedo_texture = ExtResource("3_5mwl1")
+
+[node name="Ballon" instance=ExtResource("1_1k12v")]
 script = ExtResource("2_k0rke")
 
 [node name="Cube" parent="." index="0"]
 transform = Transform3D(0.368692, -0.929551, 0, 0.929551, 0.368692, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="balloon" parent="armature_balloon/Skeleton3D" index="0"]
+material_override = SubResource("StandardMaterial3D_rjgv2")
 
 [node name="AnimationPlayer" parent="." index="2"]
 method_call_mode = 1

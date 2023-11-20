@@ -84,14 +84,16 @@ func _createAndConfigureIncomeTimer() -> void:
 	timer.start()
 
 func _passiveIncome() -> void:
-	honor.add(250)
+	honor.add(20)
 	science.add(1)
-	soldiers.add(5)
+	soldiers.add(2)
 	mana.add(2)
 	passion.add(3)
 	death.add(4)
-	life.add(6)
-	harmony.add(7)
+	life.add(3)
+	harmony.add(2)
+	mana.add(4);
+	mana.add(20);
 	#_log.info("Passive income added.")
 
 func _spawnBuildingOnRequested() -> void:

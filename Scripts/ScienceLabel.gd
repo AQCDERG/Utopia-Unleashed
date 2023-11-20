@@ -5,3 +5,4 @@ func _ready() -> void:
 	world.science.onCurrencyChanged.connect(func(newScience: int):
 		text = str(newScience)
 	)
+	print("New Mana/Science resource")

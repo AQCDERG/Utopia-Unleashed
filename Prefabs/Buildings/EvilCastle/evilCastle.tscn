@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://d1hg22jgnkh2e"]
 
 [ext_resource type="Script" path="res://Prefabs/Buildings/EvilCastle/evilCastle.gd" id="1_uac10"]
-[ext_resource type="PackedScene" uid="uid://0m2buk2j2111" path="res://FinishedBlednerGoods/Chinesse/evilCastle.glb" id="2_8yn81"]
+[ext_resource type="PackedScene" uid="uid://0m2buk2j2111" path="res://FinishedBlednerGoods/Golden/evilCastle.glb" id="2_8yn81"]
 [ext_resource type="Material" uid="uid://cil2k5j4rlg1x" path="res://Prefabs/Buildings/Headquater/CreationParticle.tres" id="2_bmm4c"]
 [ext_resource type="Texture2D" uid="uid://c8gw3ds38rx3k" path="res://ParticleProject/Images/brightGlowParticle.png" id="3_aigjt"]
 [ext_resource type="Texture2D" uid="uid://cnckwdw8gjqss" path="res://ParticleProject/Images/SuperSmokeCCO.png" id="4_n133s"]

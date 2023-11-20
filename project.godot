@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Utopia Unleashed"
-run/main_scene="res://oldMain.tscn"
+run/main_scene="res://Other/oldMain.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Other/icon.svg"
+
+[audio]
+
+buses/default_bus_layout="res://Other/default_bus_layout.tres"
 
 [autoload]
 
@@ -32,6 +36,10 @@ window/size/always_on_top=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=2
+
+[dotnet]
+
+project/assembly_name="Utopia Unleashed"
 
 [input]
 

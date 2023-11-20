@@ -6,3 +6,4 @@ func _ready() -> void:
 	world.honor.onCurrencyChanged.connect(func(newCash: int):
 		text = str(newCash)
 	)
+	print("Testing System")
